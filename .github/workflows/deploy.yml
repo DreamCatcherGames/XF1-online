@@ -24,8 +24,7 @@ jobs:
         npm install
         npm run-script deploy
     - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@releases/v3
+      uses: JamesIves/github-pages-deploy-action@v4.3.3
       with:
-        SSH: ${{ secrets.DEPLOY_KEY }}
-        BRANCH: gh-pages
-        FOLDER: dist/XF1Online
+        branch: gh-pages
+        folder: dist/XF1Online
