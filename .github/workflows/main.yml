@@ -29,7 +29,7 @@ jobs:
       - name: Build
         run: |
           npm install
-          npm build
+          ng build
       - name: Testing
         run: npm test
       
