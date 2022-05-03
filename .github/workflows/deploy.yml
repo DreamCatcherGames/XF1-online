@@ -29,4 +29,3 @@ jobs:
         branch: gh-pages
         folder: dist/XF1Online
         token: ${{ secrets.DEPLOY_TOKEN }}
-        
