@@ -4,11 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider; ng build",
+    "test": "export NODE_OPTIONS=--openssl-legacy-provider; ng test --watch=false --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy":"ng build --configuration=production --base-href=/XF1-online/"
+    "deploy": "ng build --configuration=production --base-href=/XF1-online/"
   },
   "private": true,
   "dependencies": {
@@ -36,6 +36,7 @@
     "karma": "~6.1.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.0.3",
+    "karma-firefox-launcher": "^2.1.2",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.7.0",
     "protractor": "~7.0.0",
