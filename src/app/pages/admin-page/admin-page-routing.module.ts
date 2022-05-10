@@ -11,6 +11,11 @@ const routes: Routes = [
       {
         path:'campeonato-actual',
         component:CampeonatoActualComponent
+      },
+      {
+        path:'',
+        redirectTo: 'campeonato-actual',
+        pathMatch: 'full'
       }
     ]
   }

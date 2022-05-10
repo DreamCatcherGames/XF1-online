@@ -5,9 +5,32 @@
 	<div class="body">
 		<div class="left">
 
-		</div>
-		<div class="right">
+			<div class="nombre">
+				<p class="nombre--title">Nombre:</p>
+				<mat-form-field class="nombre--field">
+					<mat-label>Nombre del campeonato</mat-label>
+					<input matInput type="text" name="nombre" id="nameInput">
+				</mat-form-field>
+			</div>
 
+			<div class="reglas">
+				<p class="reglas--title">Reglas de puntuacion:</p>
+				<mat-form-field class="reglas--field">
+					<mat-label>Reglas de puntuacion</mat-label>
+					<textarea matInput type="text" name="reglas"></textarea>
+				</mat-form-field>
+			</div>
 		</div>
+
+		<div class="right">
+			<div class="fecha-inicio">
+				<p class="fecha-inicio--title">Fecha de inicio:</p>
+				<mat-form-field class="fecha-inicio--field">
+					<input matInput [ngxMatDatetimePicker]="picker" placeholder="Fecha de inicio">
+					<ngx-mat-datetime-picker #picker> </ngx-mat-datetime-picker>
+				</mat-form-field>
+			</div>
+		</div>
+
 	</div>
 </div>
