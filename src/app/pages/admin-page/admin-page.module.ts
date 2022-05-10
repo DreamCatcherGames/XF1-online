@@ -6,6 +6,7 @@ import { AdminPageComponent } from './admin-page.component';
 import { CampeonatoActualComponent } from './campeonato-actual/campeonato-actual.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { CampeonatoInfoComponent } from './components/campeonato-info/campeonato-info.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { FooterComponent } from './components/footer/footer.component';
     AdminPageComponent,
     CampeonatoActualComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    CampeonatoInfoComponent
   ],
   imports: [
     CommonModule,
