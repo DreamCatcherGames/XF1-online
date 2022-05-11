@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CampeonatoActualComponent implements OnInit {
 
+  showNuevoCampeonatoModal: boolean;
+  showNuevaCarrera: boolean;
+
   constructor() { }
 
   ngOnInit(): void {

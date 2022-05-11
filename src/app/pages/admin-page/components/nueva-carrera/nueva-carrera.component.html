@@ -1,0 +1,97 @@
+<div class="content">
+	<div class="title title__first">
+		<p>Creacion de nueva carrera</p>
+	</div>
+
+	<div class="fields">
+
+		<div class="fields--nombre">
+			<div class="title">
+				<p>Nombre de la nueva carrera</p>
+			</div>
+			<mat-form-field class="field">
+				<mat-label> Nombre</mat-label>
+				<input matInput type="text" name="nombre" id="nameInput">
+			</mat-form-field>
+		</div>
+
+		<div class="fields--dates">
+
+			<div class="title">
+				<p>Fecha de inicio y finalizacion</p>
+			</div>
+
+			<mat-form-field class="field field__start">
+				<input matInput [ngxMatDatetimePicker]="startDatePicker" placeholder="Fecha y hora de inicio">
+				<mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+				<ngx-mat-datetime-picker #startDatePicker></ngx-mat-datetime-picker>
+			</mat-form-field>
+
+			<mat-form-field class="field field__end">
+				<input matInput [ngxMatDatetimePicker]="endDatePicker" placeholder="Fecha y hora de inicio">
+				<mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+				<ngx-mat-datetime-picker #endDatePicker></ngx-mat-datetime-picker>
+			</mat-form-field>
+
+		</div>
+		
+		<div class="fields--dates">
+
+			<div class="title">
+				<p>Fecha de clasificatoria y competencia</p>
+			</div>
+
+			<mat-form-field class="field field__start">
+				<input matInput [ngxMatDatetimePicker]="clasificatoriaDatePicker" placeholder="Fecha de clasificatoria">
+				<mat-datepicker-toggle matSuffix [for]="clasificatoriaDatePicker"></mat-datepicker-toggle>
+				<ngx-mat-datetime-picker #clasificatoriaDatePicker></ngx-mat-datetime-picker>
+			</mat-form-field>
+
+			<mat-form-field class="field field__end">
+				<input matInput [ngxMatDatetimePicker]="competenciaDatePicker" placeholder="Fecha de competencia">
+				<mat-datepicker-toggle matSuffix [for]="competenciaDatePicker"></mat-datepicker-toggle>
+				<ngx-mat-datetime-picker #competenciaDatePicker></ngx-mat-datetime-picker>
+			</mat-form-field>
+
+		</div>
+
+		<div class="fields--pais">
+			<div class="title">
+				<p>Pais:</p>
+			</div>
+			<mat-form-field class="field" appearance="fill">
+				<mat-select>
+					<mat-option>Costa Rica</mat-option>
+					<mat-option>Panama</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+
+		<div class="fields--nombre-pista">
+			<div class="title">
+				<p>Nombre de la pista:</p>
+			</div>
+			<mat-form-field class="field">
+				<mat-label> Nombre</mat-label>
+				<input matInput type="text" name="nombre" id="nameInput">
+			</mat-form-field>
+		</div>
+
+		<div class="fields--campeonato">
+			<div class="title">
+				<p>Nombre del campeonato:</p>
+			</div>
+			<mat-form-field class="field">
+				<mat-label> Nombre </mat-label>
+				<input matInput disabled type="text" name="nombre" id="nameInput">
+			</mat-form-field>
+		</div>
+
+	</div>
+
+	<div class="buttons">
+		<button mat-raised-button color="warn">Cancelar</button>
+		<button mat-raised-button color="primary">Crear</button>
+	</div>
+
+</div>

@@ -1,6 +1,6 @@
 <app-header></app-header>
+
 <div class="body">
-	
 	<div class="campeonato-info">
 		<div class="title">
 			<p>Informacion del campeonato actual</p>
@@ -30,4 +30,14 @@
 	</div>
 
 </div>
+
+<div class="modal modal--nuevo-campeonato" *ngIf=showNuevoCampeonatoModal>
+	<app-nuevo-campeonato></app-nuevo-campeonato>
+</div>
+
+<div class="modal modal--nueva-carrera" *ngIf="showNuevaCarrera">
+	<app-nueva-carrera></app-nueva-carrera>
+</div>
+
+
 <app-footer></app-footer>
