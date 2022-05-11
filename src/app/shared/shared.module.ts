@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 // Modulos de Material
 import { MatInputModule} from '@angular/material/input';
@@ -9,18 +8,16 @@ import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-mat
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule, 
-    MatInputModule, 
+    MatInputModule,
     MatFormFieldModule,
-    NgxMatTimepickerModule,
-    NgxMatDatetimePickerModule
+    NgxMatDatetimePickerModule,
+    NgxMatTimepickerModule
   ],
   exports: [
-    CommonModule, 
-    MatInputModule, 
+    MatInputModule,
     MatFormFieldModule,
-    NgxMatTimepickerModule,
-    NgxMatDatetimePickerModule
+    NgxMatDatetimePickerModule,
+    NgxMatTimepickerModule
   ]
 })
 export class SharedModule { }
