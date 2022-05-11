@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CampeonatoInfoComponent implements OnInit {
 
-  myDatePicker:any;
+  startDatetime:any;
+  endDatetime:any;
 
   constructor() { }
 
