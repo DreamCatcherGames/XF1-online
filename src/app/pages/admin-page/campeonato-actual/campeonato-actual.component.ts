@@ -7,12 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CampeonatoActualComponent implements OnInit {
 
-  showNuevoCampeonatoModal: boolean;
-  showNuevaCarrera: boolean;
+  isShowingNuevoCampeonatoModal: boolean=false;
+  isShowingNuevaCarreraModal: boolean=false;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  showNuevoCampeonatoModal():void {
+    this.isShowingNuevoCampeonatoModal = true;
+    console.log('aaa')
   }
 
 }

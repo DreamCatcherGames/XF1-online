@@ -34,9 +34,9 @@
 		<div class="fecha-final">
 			<p class="fecha-final--title">Fecha de finalizacion:</p>
 			<mat-form-field class="fecha-final--field">
-				<input matInput [ngxMatDatetimePicker]="startDatePicker" placeholder="Fecha y hora de finalizacion" [(ngModel)]="endDatetime">
-				<mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
-				<ngx-mat-datetime-picker #startDatePicker></ngx-mat-datetime-picker>
+				<input matInput [ngxMatDatetimePicker]="endDatePicker" placeholder="Fecha y hora de finalizacion" [(ngModel)]="endDatetime">
+				<mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+				<ngx-mat-datetime-picker #endDatePicker></ngx-mat-datetime-picker>
 			</mat-form-field>
 		</div>
 

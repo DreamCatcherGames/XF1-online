@@ -19,23 +19,23 @@
 
 	<div class="buttons">
 		<div class="buttons--new-campeonato">
-			<button mat-raised-button color="primary">Crear nuevo campeonato</button>
+			<button mat-raised-button color="primary" (click)="this.isShowingNuevoCampeonatoModal=true">Crear nuevo campeonato</button>
 		</div>
 		<div class="buttons--new-carrera"> 
-			<button mat-raised-button color="primary">Crear nueva carrera</button>
+			<button mat-raised-button color="primary" (click)="this.isShowingNuevaCarreraModal=true">Crear nueva carrera</button>
 		</div>
 		<div class="buttons--historico">
-			<button mat-raised-button color="primary">Ver campeonatos antiguos</button>
+			<button mat-raised-button color="primary"  >Ver campeonatos antiguos</button>
 		</div>
 	</div>
 
 </div>
 
-<div class="modal modal--nuevo-campeonato" *ngIf=showNuevoCampeonatoModal>
+<div class="modal modal--nuevo-campeonato" *ngIf="isShowingNuevoCampeonatoModal">
 	<app-nuevo-campeonato></app-nuevo-campeonato>
 </div>
 
-<div class="modal modal--nueva-carrera" *ngIf="showNuevaCarrera">
+<div class="modal modal--nueva-carrera" *ngIf="isShowingNuevaCarreraModal">
 	<app-nueva-carrera></app-nueva-carrera>
 </div>
 
