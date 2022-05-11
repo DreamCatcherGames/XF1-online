@@ -23,4 +23,31 @@
 			}
 		}
 	}
+
+	.right{
+		
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+		.fecha-inicio{
+			display: flex;
+			align-content: center;
+			align-items: center;
+			margin-bottom: 10%;
+
+			&--title{
+				margin-right: auto;
+			}
+		}
+
+		.fecha-final{
+			display: flex;
+			align-items: center;
+
+			&--title{
+				margin-right: 1rem;
+			}
+		}
+	}
 }

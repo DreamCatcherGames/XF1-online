@@ -5,12 +5,16 @@ import { HeaderComponent } from './header/header.component';
 import { CampeonatoInfoComponent } from './campeonato-info/campeonato-info.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ListaCarrerasComponent } from './lista-carreras/lista-carreras.component';
+import { CarreraCardComponent } from './carrera-card/carrera-card.component';
 
 @NgModule({
   declarations: [
 	  FooterComponent,
 	  HeaderComponent,
 	  CampeonatoInfoComponent,
+   	  ListaCarrerasComponent,
+      CarreraCardComponent,
   ],
   imports: [
 	 SharedModule,
@@ -21,7 +25,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   exports:[
 	  FooterComponent,
 	  HeaderComponent,
-	  CampeonatoInfoComponent
+	  CampeonatoInfoComponent,
+	  ListaCarrerasComponent
   ]
 })
 export class AdminComponentsModule { }
