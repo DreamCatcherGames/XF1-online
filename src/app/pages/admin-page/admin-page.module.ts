@@ -7,12 +7,14 @@ import { CampeonatoActualComponent } from './campeonato-actual/campeonato-actual
 import {AdminComponentsModule} from './components/admin-components.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HistoricoCampeonatosComponent } from './historico-campeonatos/historico-campeonatos.component';
+import { CampeonatoComponent } from './campeonato/campeonato.component';
 
 @NgModule({
   declarations: [
     AdminPageComponent,
     CampeonatoActualComponent,
     HistoricoCampeonatosComponent,
+    CampeonatoComponent,
   ],
   imports: [
     CommonModule,
