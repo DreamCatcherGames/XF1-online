@@ -10,6 +10,8 @@ import { LoginComponent } from './login/login.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AdminComponentsModule } from './components/admin-components.module';
 import { InfoCarreraComponent } from './info-carrera/info-carrera.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { InfoCarreraComponent } from './info-carrera/info-carrera.component';
     CommonModule,
     AdminPageRoutingModule,
     AdminComponentsModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminPageModule { }
