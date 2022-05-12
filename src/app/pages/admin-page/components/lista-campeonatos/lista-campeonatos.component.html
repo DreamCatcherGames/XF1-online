@@ -1,5 +1,5 @@
 <div class="content">
 	<div class="lista">
-		<app-campeonato-card *ngFor="let campeonato of listaCampeonatos" [campeonatoJson]=" campeonato | json"></app-campeonato-card>
+		<app-campeonato-card (click)="goToCampeonato(campeonato)" *ngFor="let campeonato of listaCampeonatos" [campeonatoJson]=" campeonato | json"></app-campeonato-card>
 	</div>
 </div>

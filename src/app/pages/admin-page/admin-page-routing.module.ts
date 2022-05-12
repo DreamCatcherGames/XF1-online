@@ -23,7 +23,7 @@ const routes: Routes = [
       },
       {
         path:'',
-        redirectTo: 'historico',
+        redirectTo: 'campeonato-actual',
         pathMatch: 'full'
       }
     ]

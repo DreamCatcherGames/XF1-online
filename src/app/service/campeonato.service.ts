@@ -70,7 +70,8 @@ export class CampeonatoService {
         startTime: element.Beginning_Time,
         endDate: element.Ending_Date,
         endTime: element.Ending_Time,
-        rules: element.Rules_Description
+        rules: element.Rules_Description,
+        id: element.Unique_Key
       });
     })
 

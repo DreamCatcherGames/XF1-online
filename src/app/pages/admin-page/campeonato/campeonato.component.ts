@@ -39,7 +39,6 @@ export class CampeonatoComponent implements OnInit {
       this.id=this.activatedRoute.snapshot.paramMap.get("champId");
       this.campeonatoActual = await this.campeonatoService.getCampeonato(this.id);
       this.carreras = await this.campeonatoService.getRaces(this.campeonatoActual.id);
-
   }
 
   showNuevoCampeonatoModal():void{
