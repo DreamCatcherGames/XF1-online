@@ -8,18 +8,20 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { AdminComponentsModule } from './components/admin-components.module';
+import { InfoCarreraComponent } from './info-carrera/info-carrera.component';
 
 @NgModule({
   declarations: [
     AdminPageComponent,
     CampeonatoActualComponent,
-    HeaderComponent,
-    FooterComponent,
-    LoginComponent
+    LoginComponent,
+    InfoCarreraComponent
   ],
   imports: [
     CommonModule,
     AdminPageRoutingModule,
+    AdminComponentsModule,
     SharedModule
   ]
 })

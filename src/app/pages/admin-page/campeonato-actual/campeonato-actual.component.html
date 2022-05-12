@@ -1,3 +1,43 @@
 <app-header></app-header>
-<p>campeonato-actual works!</p>
+
+<div class="body">
+	<div class="campeonato-info">
+		<div class="title">
+			<p>Informacion del campeonato actual</p>
+		</div>
+
+		<app-campeonato-info></app-campeonato-info>
+	</div>
+
+	<div class="lista-carreras">
+		<div class="title">
+			<p>Lista de Carreras del Campeonato</p>
+		</div>
+
+		<app-lista-carreras></app-lista-carreras>
+	</div>
+
+	<div class="buttons">
+		<div class="buttons--new-campeonato">
+			<button mat-raised-button color="primary" (click)="this.isShowingNuevoCampeonatoModal=true">Crear nuevo campeonato</button>
+		</div>
+		<div class="buttons--new-carrera"> 
+			<button mat-raised-button color="primary" (click)="this.isShowingNuevaCarreraModal=true">Crear nueva carrera</button>
+		</div>
+		<div class="buttons--historico">
+			<button mat-raised-button color="primary"  >Ver campeonatos antiguos</button>
+		</div>
+	</div>
+
+</div>
+
+<div class="modal modal--nuevo-campeonato" *ngIf="isShowingNuevoCampeonatoModal">
+	<app-nuevo-campeonato (closeEvent)="closeNuevoCampeonatoModal()" ></app-nuevo-campeonato>
+</div>
+
+<div class="modal modal--nueva-carrera" *ngIf="isShowingNuevaCarreraModal">
+	<app-nueva-carrera></app-nueva-carrera>
+</div>
+
+
 <app-footer></app-footer>
