@@ -7,7 +7,7 @@ import { CampeonatoActualComponent } from './campeonato-actual/campeonato-actual
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './login/login.component';
-
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import { LoginComponent } from './login/login.component';
   ],
   imports: [
     CommonModule,
-    AdminPageRoutingModule
+    AdminPageRoutingModule,
+    SharedModule
   ]
 })
 export class AdminPageModule { }
