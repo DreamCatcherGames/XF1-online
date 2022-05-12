@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Output, EventEmitter} from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 
 import {Campeonato} from 'src/app/models/campeonato';
@@ -13,6 +13,8 @@ import { CustomValidatorsService } from 'src/app/service/custom-validators.servi
 export class NuevoCampeonatoComponent implements OnInit {
 
   formData: FormGroup;
+
+  @Output() closeEvent = new EventEmitter();
 
   constructor(
     private fb: FormBuilder,
@@ -34,8 +36,9 @@ export class NuevoCampeonatoComponent implements OnInit {
   }
 
   onClickSubmit(){
-      //console.log(this.formData.value);
-      //this.validateForm();
+    if(this.formData.valid){
+      this.closeEvent.emit();
+    }
   }
 
   validateForm():boolean{

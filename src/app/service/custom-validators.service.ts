@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
-import * as moment from 'moment-js';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +17,17 @@ export class CustomValidatorsService {
       const firstDateControl = formGroup.controls[firstDate];
       const secondDateControl = formGroup.controls[secondDate];
 
-      const momentString = moment(firstDateControl.value);
+      const momentFirstDate = moment(firstDateControl.value);
+      const momentSecondDate = moment(secondDateControl.value);
 
-      console.log(momentString);
+      console.log(momentFirstDate.isAfter(momentSecondDate))
 
-      firstDateControl.setErrors({passwordMismatch:true});
+      if(momentFirstDate.isAfter(momentSecondDate)){
+        firstDateControl.setErrors({firstDateIsAfter:true});
+      }else{
+        firstDateControl.setErrors(null);
+      }
+
     }
   }
 

@@ -32,7 +32,7 @@
 </div>
 
 <div class="modal modal--nuevo-campeonato" *ngIf="isShowingNuevoCampeonatoModal">
-	<app-nuevo-campeonato></app-nuevo-campeonato>
+	<app-nuevo-campeonato (closeEvent)="closeNuevoCampeonatoModal()" ></app-nuevo-campeonato>
 </div>
 
 <div class="modal modal--nueva-carrera" *ngIf="isShowingNuevaCarreraModal">

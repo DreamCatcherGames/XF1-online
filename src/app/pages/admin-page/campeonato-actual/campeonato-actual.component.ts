@@ -17,7 +17,10 @@ export class CampeonatoActualComponent implements OnInit {
 
   showNuevoCampeonatoModal():void {
     this.isShowingNuevoCampeonatoModal = true;
-    console.log('aaa')
+  }
+
+  closeNuevoCampeonatoModal():void{
+    this.isShowingNuevoCampeonatoModal = false;
   }
 
 }
