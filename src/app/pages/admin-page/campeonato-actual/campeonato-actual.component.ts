@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import {Campeonato} from 'src/app/models/campeonato';
+import { Carrera } from 'src/app/models/carrera';
 import { CampeonatoService } from 'src/app/service/campeonato.service';
 
 @Component({
@@ -13,15 +14,24 @@ export class CampeonatoActualComponent implements OnInit {
   isShowingNuevoCampeonatoModal: boolean=false;
   isShowingNuevaCarreraModal: boolean=false;
 
-  campeonatoActual:Campeonato;
+  campeonatoActual:Campeonato={
+    name:'',
+    rules:'',
+    startDate:'',
+    startTime:'',
+    endDate:'',
+    endTime:''
+  };
+
+  carreras:Carrera[] = [];
 
   constructor(
     private campeonatoService:CampeonatoService,
   ) { }
 
   async ngOnInit(){
-    this.campeonatoActual = await this.campeonatoService.getCurrentCampeonato();
-    console.log(this.campeonatoActual);
+      this.campeonatoActual = await this.campeonatoService.getCurrentCampeonato();
+      this.carreras = await this.campeonatoService.getRaces(this.campeonatoActual.id);
   }
 
   showNuevoCampeonatoModal():void{

@@ -5,8 +5,7 @@
 		<div class="title">
 			<p>Informacion del campeonato actual</p>
 		</div>
-
-		<app-campeonato-info></app-campeonato-info>
+		<app-campeonato-info [inputCampeonatoJson]="this.campeonatoActual | json"></app-campeonato-info>
 	</div>
 
 	<div class="lista-carreras">
@@ -14,7 +13,7 @@
 			<p>Lista de Carreras del Campeonato</p>
 		</div>
 
-		<app-lista-carreras></app-lista-carreras>
+		<app-lista-carreras [listaCarrerasJson]="this.carreras | json"></app-lista-carreras>
 	</div>
 
 	<div class="buttons">

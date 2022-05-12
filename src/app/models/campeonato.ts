@@ -1,4 +1,5 @@
 export class Campeonato {
+	id?:string;
 	name:string;
 	isCurrentChamp?:boolean;
 	rules:string;

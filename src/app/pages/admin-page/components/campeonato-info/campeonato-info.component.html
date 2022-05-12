@@ -6,7 +6,7 @@
 			<p class="nombre--title">Nombre:</p>
 			<mat-form-field class="nombre--field">
 				<mat-label>Nombre del campeonato</mat-label>
-				<input matInput type="text" name="nombre" id="nameInput">
+				<input matInput type="text" name="nombre" id="nameInput" disabled [(ngModel)]="this.campeonato.name">
 			</mat-form-field>
 		</div>
 
@@ -14,7 +14,7 @@
 			<p class="reglas--title">Reglas de puntuacion:</p>
 			<mat-form-field class="reglas--field">
 				<mat-label>Reglas de puntuacion</mat-label>
-				<textarea matInput type="text" name="reglas"></textarea>
+				<textarea matInput disabled type="text" name="reglas" [(ngModel)]="this.campeonato.rules" ></textarea>
 			</mat-form-field>
 		</div>
 
@@ -25,7 +25,11 @@
 		<div class="fecha-inicio">
 			<p class="fecha-inicio--title">Fecha de inicio:</p>
 			<mat-form-field class="fecha-inicio--field">
-				<input matInput [ngxMatDatetimePicker]="startDatePicker" placeholder="Fecha y hora de inicio" [(ngModel)]="startDatetime">
+				<input 
+					matInput [ngxMatDatetimePicker]="startDatePicker" 
+					placeholder="Fecha y hora de inicio" [(ngModel)]="this.campeonato.startDate"
+					disabled 
+				>
 				<mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
 				<ngx-mat-datetime-picker #startDatePicker></ngx-mat-datetime-picker>
 			</mat-form-field>
@@ -34,7 +38,10 @@
 		<div class="fecha-final">
 			<p class="fecha-final--title">Fecha de finalizacion:</p>
 			<mat-form-field class="fecha-final--field">
-				<input matInput [ngxMatDatetimePicker]="endDatePicker" placeholder="Fecha y hora de finalizacion" [(ngModel)]="endDatetime">
+				<input matInput [ngxMatDatetimePicker]="endDatePicker" 
+					placeholder="Fecha y hora de finalizacion" [(ngModel)]="this.campeonato.endDate"
+					disabled
+				>
 				<mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
 				<ngx-mat-datetime-picker #endDatePicker></ngx-mat-datetime-picker>
 			</mat-form-field>

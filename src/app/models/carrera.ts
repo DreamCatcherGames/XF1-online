@@ -6,5 +6,5 @@ export class Carrera{
 	endTime:string;
 	country:string;
 	trackName:string;
-	championship:string;
+	championship?:string;
 }

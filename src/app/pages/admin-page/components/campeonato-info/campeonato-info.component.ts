@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import {Campeonato} from 'src/app/models/campeonato';
 
 @Component({
   selector: 'app-campeonato-info',
@@ -10,9 +12,18 @@ export class CampeonatoInfoComponent implements OnInit {
   startDatetime:any;
   endDatetime:any;
 
+  @Input() inputCampeonatoJson:string;
+
+  campeonato:Campeonato;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.campeonato = JSON.parse(this.inputCampeonatoJson);
+  }
+
+  ngOnChanges(){
+    this.campeonato = JSON.parse(this.inputCampeonatoJson);    
   }
 
 }
