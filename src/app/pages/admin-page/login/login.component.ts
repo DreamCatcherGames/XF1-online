@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import {Router, ActivatedRoute} from '@angular/router';
 import { Perfil } from 'src/app/models/perfil';
 import { AuthService } from 'src/app/service/auth-service';
 import { RestService } from 'src/app/service/rest.service';
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
 
 
   constructor(
-
+    private router: Router,
     private fb: FormBuilder,
     private restService: RestService,
     public authService: AuthService
@@ -43,6 +44,7 @@ export class LoginComponent implements OnInit {
      this.authService.loginRequest(dataToSend).then( response => {
         console.log(response)
         this.authService.perfil = response as Perfil
+        this.router.navigateByUrl('/admin/info-carrera')
     
       }).catch( error => {
         console.log(error)

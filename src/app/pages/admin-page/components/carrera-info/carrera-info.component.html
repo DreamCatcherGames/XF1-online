@@ -6,7 +6,7 @@
 			<p class="nombre--title">Nombre:</p>
 			<mat-form-field class="nombre--field">
 				<mat-label>Nombre de carrera</mat-label>
-				<input matInput type="text" name="nombre" id="nameRace">
+				<input matInput type="text" name="nombre" id="nameRace" [(ngModel)]="nameRace">
 			</mat-form-field>
 		</div>
 
@@ -14,7 +14,7 @@
 			<p class="nombre--title">País:</p>
 			<mat-form-field class="nombre--field">
 				<mat-label>Pais de carrera</mat-label>
-				<input matInput type="text" name="nombre" id="countryRace">
+				<input matInput type="text" name="nombre" disabled id="countryRace" [(ngModel)]="countryRace">
 			</mat-form-field>
 		</div>
 
@@ -23,7 +23,7 @@
 			<p class="nombre--title">Campeonato:</p>
 			<mat-form-field class="nombre--field">
 				<mat-label>Campeonato XF1</mat-label>
-				<input matInput type="text" name="nombre" id="championshipRace">
+				<input matInput type="text" name="nombre" id="championshipRace" [(ngModel)]="championshipRace">
 			</mat-form-field>
 		</div>
 
@@ -32,7 +32,7 @@
 			<p class="nombre--title">Pista:</p>
 			<mat-form-field class="nombre--field">
 				<mat-label>Pista Florencio Florentini</mat-label>
-				<input matInput type="text" name="nombre" id="racetrack">
+				<input matInput type="text" name="nombre" id="racetrack" [(ngModel)]="racetrack">
 			</mat-form-field>
 		</div>
     </div>

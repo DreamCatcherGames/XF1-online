@@ -23,7 +23,7 @@ export class AuthService {
       }else{
         throw response
       }
-    } )
+    })
   }
 
 }
