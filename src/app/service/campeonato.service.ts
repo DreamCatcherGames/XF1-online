@@ -52,6 +52,32 @@ export class CampeonatoService {
     private restService:RestService,
   ) { }
 
+  async getAllButCurrent():Promise<Campeonato[]> {
+
+    const httpResponse:responseCampeonato[] = await this.restService.get(
+      'Championship/getNotCurrentChampionship/'+'/'+this.authToken+'/'+this.salt
+    ).then(response=>{
+      return response.json();
+    });
+
+
+    let response:Campeonato[] = [];
+
+    httpResponse.forEach((element:responseCampeonato)=>{
+      response.push({
+        name:element.Name,
+        startDate: element.Beginning_Date,
+        startTime: element.Beginning_Time,
+        endDate: element.Ending_Date,
+        endTime: element.Ending_Time,
+        rules: element.Rules_Description
+      });
+    })
+
+    return response;
+
+  }
+
   createNewCampeonato(newCampeonato:Campeonato):Promise<Response>{
 
     const requestCampeonatoObj: requestCampeonato = {
@@ -87,6 +113,8 @@ export class CampeonatoService {
         endTime: element.Ending_Time,
         country: element.Country,
         trackName: element.Track_Name,
+        clasificatoriaDate: element.Qualification_Date,
+        competenciaDate: element.Competition_Date
       });
     })
 
@@ -114,5 +142,28 @@ export class CampeonatoService {
     return response;
 
   }
+
+  async getCampeonato(champId:string):Promise<Campeonato>{
+
+    const httpResponse:responseCampeonato = await this.restService.get(
+      'Championship/getChampionship/'+champId+'/'+ this.authToken+'/'+this.salt
+    ).then(response=>{
+      return response.json();
+    });
+
+    const response:Campeonato = {
+      id: httpResponse.Unique_Key,
+      name: httpResponse.Name,
+      isCurrentChamp: httpResponse.CurrentChamp,
+      rules: httpResponse.Rules_Description,
+      startDate: httpResponse.Beginning_Date,
+      startTime: httpResponse.Beginning_Time,
+      endDate: httpResponse.Ending_Date,
+      endTime: httpResponse.Ending_Time
+    }
+
+    return response;
+  }
+
 
 }

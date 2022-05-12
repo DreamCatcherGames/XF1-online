@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminPageComponent } from './admin-page.component';
 import { CampeonatoActualComponent } from './campeonato-actual/campeonato-actual.component';
+import { HistoricoCampeonatosComponent } from './historico-campeonatos/historico-campeonatos.component';
 
 const routes: Routes = [
   {
@@ -13,8 +14,12 @@ const routes: Routes = [
         component:CampeonatoActualComponent
       },
       {
+        path: 'historico',
+        component:HistoricoCampeonatosComponent
+      },
+      {
         path:'',
-        redirectTo: 'campeonato-actual',
+        redirectTo: 'historico',
         pathMatch: 'full'
       }
     ]

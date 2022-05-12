@@ -7,4 +7,6 @@ export class Carrera{
 	country:string;
 	trackName:string;
 	championship?:string;
+	clasificatoriaDate:string;
+	competenciaDate:string;
 }

@@ -1,5 +1,3 @@
-<app-header></app-header>
-
 <div class="body">
 	<div class="campeonato-info">
 		<div class="title">
@@ -35,8 +33,5 @@
 </div>
 
 <div class="modal modal--nueva-carrera" *ngIf="isShowingNuevaCarreraModal">
-	<app-nueva-carrera (closeEvent)="closeNuevaCarreraModal()"></app-nueva-carrera>
+	<app-nueva-carrera (closeEvent)="closeNuevaCarreraModal()" [championshipId]="this.campeonatoActual.id" ></app-nueva-carrera>
 </div>
-
-
-<app-footer></app-footer>

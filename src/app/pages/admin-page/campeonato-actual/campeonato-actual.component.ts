@@ -20,7 +20,8 @@ export class CampeonatoActualComponent implements OnInit {
     startDate:'',
     startTime:'',
     endDate:'',
-    endTime:''
+    endTime:'', 
+    id:''
   };
 
   carreras:Carrera[] = [];

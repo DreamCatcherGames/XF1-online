@@ -19,7 +19,6 @@ export class ListaCarrerasComponent implements OnInit {
 
   ngOnChanges(){
     this.listaCarreras = JSON.parse(this.listaCarrerasJson);
-    console.log(this.listaCarreras)
   }
 
 }
