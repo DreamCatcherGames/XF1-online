@@ -1,7 +1,5 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import {FormGroup, Validators, FormBuilder} from '@angular/forms';
-import {Carrera} from 'src/app/models/Carrera';
-import {Campeonato} from 'src/app/models/Campeonato';
 import {CarreraService} from 'src/app/service/carrera.service';
 
 import * as moment from 'moment';
