@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
+import {FormGroup, Validators, FormBuilder} from '@angular/forms';
 import {Carrera} from 'src/app/models/Carrera';
+
+import {CustomValidatorsService} from 'src/app/service/custom-validators.service';
 
 @Component({
   selector: 'app-nueva-carrera',
@@ -9,12 +11,17 @@ import {Carrera} from 'src/app/models/Carrera';
 })
 export class NuevaCarreraComponent implements OnInit {
 
-  formData;
+  formData: FormGroup;
 
-  constructor() {}
+  constructor(
+    private fb: FormBuilder,
+    private customValidatorsService: CustomValidatorsService
+
+  ) {}
 
   ngOnInit(): void {
-    this.formData = new FormGroup({
+    this.formData = this.fb.group({
+       nombre: ['', Validators.required],
 
     })
   }
