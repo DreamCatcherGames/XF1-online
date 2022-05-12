@@ -36,7 +36,7 @@
 </div>
 
 <div class="modal modal--nueva-carrera" *ngIf="isShowingNuevaCarreraModal">
-	<app-nueva-carrera></app-nueva-carrera>
+	<app-nueva-carrera (closeEvent)="closeNuevaCarreraModal()"></app-nueva-carrera>
 </div>
 
 

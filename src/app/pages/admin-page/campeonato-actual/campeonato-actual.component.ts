@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import {Campeonato} from 'src/app/models/campeonato';
+import { CampeonatoService } from 'src/app/service/campeonato.service';
+
 @Component({
   selector: 'app-campeonato-actual',
   templateUrl: './campeonato-actual.component.html',
@@ -10,17 +13,27 @@ export class CampeonatoActualComponent implements OnInit {
   isShowingNuevoCampeonatoModal: boolean=false;
   isShowingNuevaCarreraModal: boolean=false;
 
-  constructor() { }
+  campeonatoActual:Campeonato;
 
-  ngOnInit(): void {
+  constructor(
+    private campeonatoService:CampeonatoService,
+  ) { }
+
+  async ngOnInit(){
+    this.campeonatoActual = await this.campeonatoService.getCurrentCampeonato();
+    console.log(this.campeonatoActual);
   }
 
-  showNuevoCampeonatoModal():void {
+  showNuevoCampeonatoModal():void{
     this.isShowingNuevoCampeonatoModal = true;
   }
 
   closeNuevoCampeonatoModal():void{
     this.isShowingNuevoCampeonatoModal = false;
+  }
+
+  closeNuevaCarreraModal():void {
+    this.isShowingNuevaCarreraModal = false;
   }
 
 }

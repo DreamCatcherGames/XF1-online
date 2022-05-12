@@ -3,7 +3,7 @@
 		<p>Creacion de nueva carrera</p>
 	</div>
 
-	<form [formGroup]="formData">
+	<form [formGroup]="formData" (ngSubmit)="submit()">
 		
 		<div class="fields">
 
@@ -24,13 +24,13 @@
 				</div>
 
 				<mat-form-field class="field field__start">
-					<input matInput [ngxMatDatetimePicker]="startDatePicker" placeholder="Fecha y hora de inicio">
+					<input matInput formControlName="startDatetime" [ngxMatDatetimePicker]="startDatePicker" placeholder="Fecha y hora de inicio">
 					<mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
 					<ngx-mat-datetime-picker #startDatePicker></ngx-mat-datetime-picker>
 				</mat-form-field>
 
 				<mat-form-field class="field field__end">
-					<input matInput [ngxMatDatetimePicker]="endDatePicker" placeholder="Fecha y hora de inicio">
+					<input matInput formControlName="endDatetime" [ngxMatDatetimePicker]="endDatePicker" placeholder="Fecha y hora de inicio">
 					<mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
 					<ngx-mat-datetime-picker #endDatePicker></ngx-mat-datetime-picker>
 				</mat-form-field>
@@ -44,13 +44,13 @@
 				</div>
 
 				<mat-form-field class="field field__start">
-					<input matInput [ngxMatDatetimePicker]="clasificatoriaDatePicker" placeholder="Fecha de clasificatoria">
+					<input matInput formControlName="clasificatoriaDatetime" [ngxMatDatetimePicker]="clasificatoriaDatePicker" placeholder="Fecha de clasificatoria">
 					<mat-datepicker-toggle matSuffix [for]="clasificatoriaDatePicker"></mat-datepicker-toggle>
 					<ngx-mat-datetime-picker #clasificatoriaDatePicker></ngx-mat-datetime-picker>
 				</mat-form-field>
 
 				<mat-form-field class="field field__end">
-					<input matInput [ngxMatDatetimePicker]="competenciaDatePicker" placeholder="Fecha de competencia">
+					<input matInput formControlName="competenciaDatetime" [ngxMatDatetimePicker]="competenciaDatePicker" placeholder="Fecha de competencia">
 					<mat-datepicker-toggle matSuffix [for]="competenciaDatePicker"></mat-datepicker-toggle>
 					<ngx-mat-datetime-picker #competenciaDatePicker></ngx-mat-datetime-picker>
 				</mat-form-field>
@@ -62,9 +62,9 @@
 					<p>Pais:</p>
 				</div>
 				<mat-form-field class="field" appearance="fill">
-					<mat-select>
-						<mat-option>Costa Rica</mat-option>
-						<mat-option>Panama</mat-option>
+					<mat-select formControlName="pais">
+						<mat-option [value]="'Costa Rica'">Costa Rica</mat-option>
+						<mat-option [value]="'Panama'">Panama</mat-option>
 					</mat-select>
 				</mat-form-field>
 			</div>
@@ -75,7 +75,7 @@
 				</div>
 				<mat-form-field class="field">
 					<mat-label> Nombre</mat-label>
-					<input matInput type="text" name="nombre" id="nameInput">
+					<input formControlName="nombrePista" matInput type="text" name="nombre" id="nameInput">
 				</mat-form-field>
 			</div>
 
@@ -85,15 +85,15 @@
 				</div>
 				<mat-form-field class="field">
 					<mat-label> Nombre </mat-label>
-					<input matInput disabled type="text" name="nombre" id="nameInput">
+					<input formControlName="nombreCampeonato" matInput disabled type="text" name="nombre" id="nameInput">
 				</mat-form-field>
 			</div>
 
 		</div>
 
 		<div class="buttons">
-			<button mat-raised-button color="warn">Cancelar</button>
-			<button mat-raised-button color="primary">Crear</button>
+			<button mat-raised-button color="warn" (click)="closeModal()">Cancelar</button>
+			<button type="submit" mat-raised-button color="primary">Crear</button>
 		</div>
 
 	</form>
