@@ -17,7 +17,6 @@ export class RestService {
 
   post(endpoint:string, body:string){
     const fullUrl = this.url + '/' + endpoint;
-    console.log(fullUrl)
     const requestObj = {
       method : 'POST',
       headers : {

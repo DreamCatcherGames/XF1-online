@@ -1,5 +1,6 @@
 import { Component, OnInit , Output, EventEmitter} from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
+import Swal from 'sweetalert2';
 
 import * as moment from 'moment';
 
@@ -39,12 +40,15 @@ export class NuevoCampeonatoComponent implements OnInit {
     )
   }
 
+  closeModal(){
+    this.closeEvent.emit();
+  }
+
   onSubmit(){
     if(this.formData.valid){
       const momentStartdatetime = moment(this.formData.value.startDatetime);
       const momentEnddatetime = moment(this.formData.value.endDatetime);
 
-      console.log(momentStartdatetime.toString());
       this.campeonatoService.createNewCampeonato(
         {
           name:this.formData.value.name,
@@ -54,9 +58,26 @@ export class NuevoCampeonatoComponent implements OnInit {
           startTime:momentStartdatetime.format('H:m:s'),
           endTime:momentEnddatetime.format('H:m:s')
         }
-      ).then(()=>{
-        this.closeEvent.emit();
-      });
+      ).then((response)=>{
+        if (response.status != 200){
+          throw response;
+        }else{
+          return response
+        }
+      }).then((res)=>{
+        Swal.fire(
+          'Exito!',
+          'El campeonato fue creado con exito',
+          'success'
+        );
+        this.closeModal();
+      }).catch((err)=>{
+        Swal.fire(
+          'Error',
+          'Ocurrio un error, por favor revise su formulario',
+          'error'
+        )
+      })
     }
   }
 
