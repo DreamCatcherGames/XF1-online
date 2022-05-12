@@ -1,6 +1,8 @@
 import { Component, OnInit , Output, EventEmitter} from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 
+import * as moment from 'moment';
+
 import {Campeonato} from 'src/app/models/campeonato';
 
 import { CustomValidatorsService } from 'src/app/service/custom-validators.service';
@@ -37,10 +39,24 @@ export class NuevoCampeonatoComponent implements OnInit {
     )
   }
 
-  onClickSubmit(){
+  onSubmit(){
     if(this.formData.valid){
-      this.closeEvent.emit();
+      const momentStartdatetime = moment(this.formData.value.startDatetime);
+      const momentEnddatetime = moment(this.formData.value.endDatetime);
 
+      console.log(momentStartdatetime.toString());
+      this.campeonatoService.createNewCampeonato(
+        {
+          name:this.formData.value.name,
+          rules:this.formData.value.rules,
+          startDate:momentStartdatetime.format('YYYY-MM-DD'),
+          endDate:momentEnddatetime.format('YYYY-MM-DD'),
+          startTime:momentStartdatetime.format('H:m:s'),
+          endTime:momentEnddatetime.format('H:m:s')
+        }
+      ).then(()=>{
+        this.closeEvent.emit();
+      });
     }
   }
 

@@ -1,6 +1,6 @@
 export class Campeonato {
 	name:string;
-	isCurrentChamp:boolean;
+	isCurrentChamp?:boolean;
 	rules:string;
 	startDate:string;
 	endDate:string;

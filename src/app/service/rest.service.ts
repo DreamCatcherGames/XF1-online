@@ -17,9 +17,13 @@ export class RestService {
 
   post(endpoint:string, body:string){
     const fullUrl = this.url + '/' + endpoint;
+    console.log(fullUrl)
     const requestObj = {
       method : 'POST',
-      body: body
+      headers : {
+        'Content-Type' : 'application/json'
+      },
+      body: body,
     };
     return fetch(fullUrl, requestObj);
   }
