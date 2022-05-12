@@ -1,0 +1,67 @@
+<div class="content">
+	<div class="title title__first">
+		<p>Creacion de nuevo campeonato</p>
+	</div>
+
+	<form [formGroup]="formData" (ngSubmit)="onSubmit()">
+		
+		<div class="fields">
+
+			<div class="fields--nombre">
+				<div class="title">
+					<p>Nombre del nuevo campeonato</p>
+				</div>
+				<mat-form-field class="field">
+					<mat-label> Nombre</mat-label>
+					<input matInput type="text" 
+						name="nombre" id="nameInput" formControlName="name">
+				</mat-form-field>
+			</div>
+
+			<div class="fields--dates">
+
+				<div class="title">
+					<p>Fecha de inicio y finalizacion</p>
+				</div>
+
+				<mat-form-field class="field field__start">
+					<input matInput 
+						[ngxMatDatetimePicker]="startDatePicker" 
+						placeholder="Fecha y hora de inicio" formControlName="startDatetime">
+					<mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+					<ngx-mat-datetime-picker #startDatePicker></ngx-mat-datetime-picker>
+				</mat-form-field>
+
+				<mat-form-field class="field field__end">
+					<input matInput [ngxMatDatetimePicker]="endDatePicker" 
+						placeholder="Fecha y hora de inicio" formControlName="endDatetime">
+					<mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+					<ngx-mat-datetime-picker #endDatePicker></ngx-mat-datetime-picker>
+				</mat-form-field>
+
+			</div>
+
+			<div class="fields--rules">
+
+				<div class="title">
+					<p>Descripcion de las reglas de puntuacion</p>
+				</div>
+
+				<mat-form-field class="field">
+					<mat-label>Descripcion de reglas</mat-label>
+					<textarea matInput id="reglasInput" formControlName="rules"></textarea>
+				</mat-form-field>	
+
+			</div>
+
+		</div>
+
+		<div class="buttons">
+			<button mat-raised-button color="warn" (click)="this.closeModal()" >Cancelar</button>
+			<button type="submit" mat-raised-button color="primary" >Crear</button>
+		</div>
+	</form>
+	
+
+
+</div>

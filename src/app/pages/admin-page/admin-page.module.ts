@@ -4,18 +4,23 @@ import { CommonModule } from '@angular/common';
 import { AdminPageRoutingModule } from './admin-page-routing.module';
 import { AdminPageComponent } from './admin-page.component';
 import { CampeonatoActualComponent } from './campeonato-actual/campeonato-actual.component';
-import { HeaderComponent } from './components/header/header.component';
-
+import {AdminComponentsModule} from './components/admin-components.module';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { HistoricoCampeonatosComponent } from './historico-campeonatos/historico-campeonatos.component';
+import { CampeonatoComponent } from './campeonato/campeonato.component';
 
 @NgModule({
   declarations: [
     AdminPageComponent,
     CampeonatoActualComponent,
-    HeaderComponent
+    HistoricoCampeonatosComponent,
+    CampeonatoComponent,
   ],
   imports: [
     CommonModule,
-    AdminPageRoutingModule
+    AdminPageRoutingModule,
+    AdminComponentsModule,
+    SharedModule
   ]
 })
 export class AdminPageModule { }
