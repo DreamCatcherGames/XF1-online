@@ -23,4 +23,8 @@ export class CampeonatoActualComponent implements OnInit {
     this.isShowingNuevoCampeonatoModal = false;
   }
 
+  closeNuevaCarreraModal():void {
+    this.isShowingNuevaCarreraModal = false;
+  }
+
 }

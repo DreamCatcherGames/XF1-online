@@ -4,6 +4,7 @@ import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import {Campeonato} from 'src/app/models/campeonato';
 
 import { CustomValidatorsService } from 'src/app/service/custom-validators.service';
+import {CampeonatoService} from 'src/app/service/campeonato.service';
 
 @Component({
   selector: 'app-nuevo-campeonato',
@@ -18,7 +19,8 @@ export class NuevoCampeonatoComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private customValidatorsService: CustomValidatorsService
+    private customValidatorsService: CustomValidatorsService,
+    private campeonatoService: CampeonatoService
   ) { }
 
   ngOnInit(): void {
@@ -38,11 +40,11 @@ export class NuevoCampeonatoComponent implements OnInit {
   onClickSubmit(){
     if(this.formData.valid){
       this.closeEvent.emit();
+
     }
   }
 
   validateForm():boolean{
-    //this.formData.controls['name'].setErrors({passwordMismatch:true}); 
     return true;
   }
 
