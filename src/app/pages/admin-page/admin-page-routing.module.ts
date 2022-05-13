@@ -20,16 +20,16 @@ const routes: Routes = [
         component:CampeonatoComponent
       },
       {
+        path:'info-carrera/:carreraId/:nombre/:pais',
+        component:InfoCarreraComponent
+      },
+      {
         path: 'historico',
         component:HistoricoCampeonatosComponent
       },
       {
         path:'login',
         component:LoginComponent
-      },
-      {
-        path:'info-carrera',
-        component:InfoCarreraComponent
       },
       {
         path:'',
