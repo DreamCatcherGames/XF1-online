@@ -9,6 +9,7 @@ import { ListaCarrerasComponent } from './lista-carreras/lista-carreras.componen
 import { CarreraCardComponent } from './carrera-card/carrera-card.component';
 import { NuevoCampeonatoComponent } from './nuevo-campeonato/nuevo-campeonato.component';
 import { NuevaCarreraComponent } from './nueva-carrera/nueva-carrera.component';
+import { CarreraInfoComponent } from './carrera-info/carrera-info.component';
 import { ListaCampeonatosComponent } from './lista-campeonatos/lista-campeonatos.component';
 import { CampeonatoCardComponent } from './campeonato-card/campeonato-card.component';
 
@@ -21,6 +22,7 @@ import { CampeonatoCardComponent } from './campeonato-card/campeonato-card.compo
       CarreraCardComponent,
       NuevoCampeonatoComponent,
       NuevaCarreraComponent,
+      CarreraInfoComponent,
       ListaCampeonatosComponent,
       CampeonatoCardComponent,
   ],
@@ -37,6 +39,7 @@ import { CampeonatoCardComponent } from './campeonato-card/campeonato-card.compo
 	  ListaCarrerasComponent,
 	  NuevoCampeonatoComponent,
 	  NuevaCarreraComponent,
+	  CarreraInfoComponent,
 	  ListaCampeonatosComponent,
 	  CampeonatoCardComponent
   ]

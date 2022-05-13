@@ -14,7 +14,7 @@ export class RestService {
     const fullUrl = this.url + '/' + endpoint;
     return fetch(fullUrl);
   }
-
+  
   post(endpoint:string, body:string){
     const fullUrl = this.url + '/' + endpoint;
     const requestObj = {

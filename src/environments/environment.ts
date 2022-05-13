@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url: 'https://192.168.0.101:45455'
+  url: 'https://xf1-online-rest.conveyor.cloud'
 };
 
 /*

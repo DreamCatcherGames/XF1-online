@@ -23,7 +23,7 @@ export class HistoricoCampeonatosComponent implements OnInit {
 
 
   goToInicial(){
-    this.router.navigateByUrl('/admin')
+    this.router.navigateByUrl('/admin/campeonato-actual')
   }
 
 }

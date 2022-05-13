@@ -1,0 +1,62 @@
+<div class="body">
+
+	<div class="left">
+
+		<div class="nombre">
+			<p class="nombre--title">Nombre:</p>
+			<mat-form-field class="nombre--field">
+				<mat-label>Nombre de carrera</mat-label>
+				<input matInput type="text" name="nombre" id="nameRace" [(ngModel)]="this.carrera.championship">
+			</mat-form-field>
+		</div>
+
+		<div class="nombre">
+			<p class="nombre--title">País:</p>
+			<mat-form-field class="nombre--field">
+				<mat-label>Pais de carrera</mat-label>
+				<input matInput type="text" name="nombre" disabled id="countryRace" [(ngModel)]="this.carrera.country">
+			</mat-form-field>
+		</div>
+
+
+        <div class="nombre">
+			<p class="nombre--title">Campeonato:</p>
+			<mat-form-field class="nombre--field">
+				<mat-label>Campeonato XF1</mat-label>
+				<input matInput type="text" name="nombre" id="championshipRace" [(ngModel)]="this.carrera.championship">
+			</mat-form-field>
+		</div>
+
+
+        <div class="nombre">
+			<p class="nombre--title">Pista:</p>
+			<mat-form-field class="nombre--field">
+				<mat-label>Pista Florencio Florentini</mat-label>
+				<input matInput type="text" name="nombre" id="racetrack" [(ngModel)]="this.carrera.trackName">
+			</mat-form-field>
+		</div>
+    </div>
+
+	<div class="right">
+
+		<div class="fecha-inicio">
+			<p class="fecha-inicio--title">Fecha de inicio:</p>
+			<mat-form-field class="fecha-inicio--field">
+				<input matInput [ngxMatDatetimePicker]="startDatePicker" placeholder="Fecha y hora de inicio" [(ngModel)]="this.carrera.startDate">
+				<mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+				<ngx-mat-datetime-picker #startDatePicker></ngx-mat-datetime-picker>
+			</mat-form-field>
+		</div>
+
+		<div class="fecha-final">
+			<p class="fecha-final--title">Fecha de finalizacion:</p>
+			<mat-form-field class="fecha-final--field">
+				<input matInput [ngxMatDatetimePicker]="endDatePicker" placeholder="Fecha y hora de finalizacion" [(ngModel)]="this.carrera.endDate">
+				<mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+				<ngx-mat-datetime-picker #endDatePicker></ngx-mat-datetime-picker>
+			</mat-form-field>
+		</div>
+
+	</div>
+
+</div>
