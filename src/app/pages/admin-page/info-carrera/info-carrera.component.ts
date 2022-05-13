@@ -30,6 +30,7 @@ export class InfoCarreraComponent implements OnInit {
     this.pais = this.activatedRoute.snapshot.paramMap.get("pais");
 
     this.carreraActual = await this.carreraService.getCarrera(this.carreraId, this.nombreCampeonato, this.pais);
+    console.log(this.carreraActual);
 
     //this.campeonatoActual = await this.campeonatoService.getCampeonato(this.id);
     //this.carreras = await this.campeonatoService.getRaces(this.campeonatoActual.id);

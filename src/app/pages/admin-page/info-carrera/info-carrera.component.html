@@ -1,4 +1,3 @@
-<app-header></app-header>
 
 <div class="body">
 	<div class="campeonato-info">
@@ -6,8 +5,6 @@
 			<p>Informacion de la carrera actual</p>
 		</div>
 
-		<app-carrera-info></app-carrera-info>
+		<app-carrera-info [carreraJson]="this.carreraActual | json"></app-carrera-info>
 	</div>
 </div>
-
-<app-footer></app-footer>
