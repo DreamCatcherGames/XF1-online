@@ -5,6 +5,8 @@ import { Perfil } from 'src/app/models/perfil';
 import { AuthService } from 'src/app/service/auth-service';
 import { RestService } from 'src/app/service/rest.service';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -40,14 +42,13 @@ export class LoginComponent implements OnInit {
         "Username":this.formData.value.email,
         "Password":this.formData.value.password
       }
-
      this.authService.loginRequest(dataToSend).then( response => {
         console.log(response)
         this.authService.perfil = response as Perfil
-        this.router.navigateByUrl('/admin/info-carrera')
-    
+        this.router.navigateByUrl('/admin/campeonato-actual')
       }).catch( error => {
         console.log(error)
+        Swal.fire({title:'Error', text:'Credenciales incorrectas', icon:'error'})
       })
     }
   }

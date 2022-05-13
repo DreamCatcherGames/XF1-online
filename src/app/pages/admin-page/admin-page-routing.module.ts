@@ -33,7 +33,7 @@ const routes: Routes = [
       },
       {
         path:'',
-        redirectTo: 'campeonato-actual',
+        redirectTo: 'login',
         pathMatch: 'full'
       }
     ]
