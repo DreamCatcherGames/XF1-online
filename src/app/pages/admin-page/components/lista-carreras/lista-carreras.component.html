@@ -1,5 +1,5 @@
 <div class="content">
 	<div class="lista">
-		<app-carrera-card></app-carrera-card>
+		<app-carrera-card *ngFor="let carrera of listaCarreras" [carreraJson]=" carrera | json"></app-carrera-card>
 	</div>
 </div>

@@ -4,6 +4,8 @@ import { AdminPageComponent } from './admin-page.component';
 import { CampeonatoActualComponent } from './campeonato-actual/campeonato-actual.component';
 import { InfoCarreraComponent } from './info-carrera/info-carrera.component';
 import { LoginComponent } from './login/login.component';
+import { CampeonatoComponent } from './campeonato/campeonato.component';
+import { HistoricoCampeonatosComponent } from './historico-campeonatos/historico-campeonatos.component';
 
 const routes: Routes = [
   {
@@ -13,6 +15,13 @@ const routes: Routes = [
       {
         path:'campeonato-actual',
         component:CampeonatoActualComponent
+      },{
+        path:'campeonato/:champId',
+        component:CampeonatoComponent
+      },
+      {
+        path: 'historico',
+        component:HistoricoCampeonatosComponent
       },
       {
         path:'login',

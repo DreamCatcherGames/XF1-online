@@ -12,13 +12,17 @@ import { AdminComponentsModule } from './components/admin-components.module';
 import { InfoCarreraComponent } from './info-carrera/info-carrera.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { HistoricoCampeonatosComponent } from './historico-campeonatos/historico-campeonatos.component';
+import { CampeonatoComponent } from './campeonato/campeonato.component';
 
 @NgModule({
   declarations: [
     AdminPageComponent,
     CampeonatoActualComponent,
     LoginComponent,
-    InfoCarreraComponent
+    InfoCarreraComponent,
+    HistoricoCampeonatosComponent,
+    CampeonatoComponent,
   ],
   imports: [
     CommonModule,

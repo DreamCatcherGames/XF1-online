@@ -1,5 +1,5 @@
 import { Component, OnInit , Output, EventEmitter} from '@angular/core';
-import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
+import {FormGroup, Validators, FormBuilder} from '@angular/forms';
 import Swal from 'sweetalert2';
 
 import * as moment from 'moment';
@@ -29,7 +29,7 @@ export class NuevoCampeonatoComponent implements OnInit {
   ngOnInit(): void {
     this.formData = this.fb.group(
       {
-        name: ['', Validators.required],
+        name: ['', Validators.required], 
         startDatetime: ['', Validators.required],
         endDatetime : ['', Validators.required],
         rules: ['', Validators.required]
