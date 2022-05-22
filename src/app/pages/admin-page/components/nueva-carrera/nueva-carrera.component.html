@@ -1,6 +1,6 @@
 <div class="content">
 	<div class="title title__first">
-		<p>Creacion de nueva carrera</p>
+		<p>Creation of new race</p>
 	</div>
 
 	<form [formGroup]="formData" (ngSubmit)="submit()">
@@ -9,10 +9,10 @@
 
 			<div class="fields--nombre">
 				<div class="title">
-					<p>Nombre de la nueva carrera</p>
+					<p>Name of new race</p>
 				</div>
 				<mat-form-field class="field">
-					<mat-label> Nombre</mat-label>
+					<mat-label> Name</mat-label>
 					<input matInput type="text" name="nombre" id="nameInput" formControlName="nombre">
 				</mat-form-field>
 			</div>
@@ -20,17 +20,17 @@
 			<div class="fields--dates">
 
 				<div class="title">
-					<p>Fecha de inicio y finalizacion</p>
+					<p>Initial and ending date</p>
 				</div>
 
 				<mat-form-field class="field field__start">
-					<input matInput formControlName="startDatetime" [ngxMatDatetimePicker]="startDatePicker" placeholder="Fecha y hora de inicio">
+					<input matInput formControlName="startDatetime" [ngxMatDatetimePicker]="startDatePicker" placeholder="Initial date and time">
 					<mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
 					<ngx-mat-datetime-picker #startDatePicker></ngx-mat-datetime-picker>
 				</mat-form-field>
 
 				<mat-form-field class="field field__end">
-					<input matInput formControlName="endDatetime" [ngxMatDatetimePicker]="endDatePicker" placeholder="Fecha y hora de inicio">
+					<input matInput formControlName="endDatetime" [ngxMatDatetimePicker]="endDatePicker" placeholder="Ending date and time">
 					<mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
 					<ngx-mat-datetime-picker #endDatePicker></ngx-mat-datetime-picker>
 				</mat-form-field>
@@ -40,17 +40,17 @@
 			<div class="fields--dates">
 
 				<div class="title">
-					<p>Fecha de clasificatoria y competencia</p>
+					<p>Classification and competition date</p>
 				</div>
 
 				<mat-form-field class="field field__start">
-					<input matInput formControlName="clasificatoriaDatetime" [ngxMatDatetimePicker]="clasificatoriaDatePicker" placeholder="Fecha de clasificatoria">
+					<input matInput formControlName="clasificatoriaDatetime" [ngxMatDatetimePicker]="clasificatoriaDatePicker" placeholder="Classification date">
 					<mat-datepicker-toggle matSuffix [for]="clasificatoriaDatePicker"></mat-datepicker-toggle>
 					<ngx-mat-datetime-picker #clasificatoriaDatePicker></ngx-mat-datetime-picker>
 				</mat-form-field>
 
 				<mat-form-field class="field field__end">
-					<input matInput formControlName="competenciaDatetime" [ngxMatDatetimePicker]="competenciaDatePicker" placeholder="Fecha de competencia">
+					<input matInput formControlName="competenciaDatetime" [ngxMatDatetimePicker]="competenciaDatePicker" placeholder="Competition date">
 					<mat-datepicker-toggle matSuffix [for]="competenciaDatePicker"></mat-datepicker-toggle>
 					<ngx-mat-datetime-picker #competenciaDatePicker></ngx-mat-datetime-picker>
 				</mat-form-field>
@@ -59,7 +59,7 @@
 
 			<div class="fields--pais">
 				<div class="title">
-					<p>Pais:</p>
+					<p>Country:</p>
 				</div>
 				<mat-form-field class="field" appearance="fill">
 					<mat-select formControlName="pais">
@@ -71,29 +71,31 @@
 
 			<div class="fields--nombre-pista">
 				<div class="title">
-					<p>Nombre de la pista:</p>
+					<p>Name of Road:</p>
 				</div>
 				<mat-form-field class="field">
-					<mat-label> Nombre</mat-label>
+					<mat-label> Road</mat-label>
 					<input formControlName="nombrePista" matInput type="text" name="nombre" id="nameInput">
 				</mat-form-field>
 			</div>
 
 			<div class="fields--campeonato">
 				<div class="title">
-					<p>Nombre del campeonato:</p>
+					<p>Name of championship:</p>
 				</div>
 				<mat-form-field class="field">
-					<mat-label> Nombre </mat-label>
+					<mat-label> Name </mat-label>
 					<input formControlName="nombreCampeonato" matInput disabled type="text" name="nombre" id="nameInput">
 				</mat-form-field>
 			</div>
 
 		</div>
 
+		<p style="font-size: 0.7rem; color:gray;">* Fields are required.</p>
+
 		<div class="buttons">
-			<button mat-raised-button color="warn" (click)="closeModal()">Cancelar</button>
-			<button type="submit" mat-raised-button color="primary">Crear</button>
+			<button mat-raised-button color="warn" (click)="closeModal()">Cancel</button>
+			<button type="submit" mat-raised-button color="primary">Create</button>
 		</div>
 
 	</form>
