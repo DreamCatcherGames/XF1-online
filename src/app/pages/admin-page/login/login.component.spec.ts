@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
-import { AuthService } from 'src/app/service/auth-service';
+import { AuthService } from 'src/app/service/auth.service';
 
 import { LoginComponent } from './login.component';
 
@@ -26,13 +26,11 @@ describe('LoginComponent', () => {
   };
 
   beforeEach(async () => {
-
-
     // creating fakes
     fakeRouter = jasmine.createSpyObj<Router>(
       'Router',
       {
-        navigateByUrl:undefined
+        navigateByUrl:undefined,
       }
     );
 
@@ -52,7 +50,8 @@ describe('LoginComponent', () => {
       {
         loginRequest:new Promise((resolve, reject) => {
           resolve(fakeProfile);
-        })
+        }),
+        setPerfil:undefined
       }
     )
 
@@ -73,6 +72,15 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
   });
 
+  function setValidFormData(){
+    mockFormGroup.setValue(
+      {
+        email: 'test@test.com',
+        password: 'test1234'
+      }
+    )
+  }
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });
@@ -86,30 +94,27 @@ describe('LoginComponent', () => {
 
   it('should call rest when formData is valid', () => {
     // Act
-    mockFormGroup.setValue(
-      {
-        email: 'test@test.com',
-        password: 'test1234'
-      }
-    )
+    setValidFormData();
     component.onSubmit();
     // Expect
     expect(fakeAuthService.loginRequest).toHaveBeenCalled();
   })
 
-  it('should update profile after succesfully calling submit', () => {
-    // Act
-    mockFormGroup.setValue(
-      {
-        email: 'test@test.com',
-        password: 'test1234'
-      }
-    )
+  it('should update profile after form submission', fakeAsync(() => {
+    setValidFormData();
     component.onSubmit();
+    tick();
+
+    expect(fakeAuthService.setPerfil).toHaveBeenCalled();
+  }));
+
+  it('should navigate to campeonato actual after succesful submission', fakeAsync(() => {
+    // Act
+    setValidFormData();
+    component.onSubmit();
+    tick();
     // Expect
-    expect(fakeAuthService.perfil).toBeTruthy();
-  })
-
-
+    expect(fakeRouter.navigateByUrl).toHaveBeenCalled();
+  }));
 
 });

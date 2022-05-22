@@ -26,4 +26,12 @@ export class AuthService {
     })
   }
 
+  setPerfil(perfil : Perfil){
+    this.perfil = perfil;
+  }
+
+  getPerfil(perfil:Perfil){
+    return perfil;
+  }
+
 }

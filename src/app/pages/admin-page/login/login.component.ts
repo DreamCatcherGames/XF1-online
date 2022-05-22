@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
 
   formData: FormGroup;
 
-
   constructor(
     private router: Router,
     private fb: FormBuilder,
@@ -42,7 +41,7 @@ export class LoginComponent implements OnInit {
       }
      this.authService.loginRequest(dataToSend).then( response => {
         console.log(response)
-        this.authService.perfil = response as Perfil
+        this.authService.setPerfil(response as Perfil);
         this.router.navigateByUrl('/admin/campeonato-actual')
       }).catch( error => {
         console.log(error)
