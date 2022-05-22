@@ -6,6 +6,7 @@ import { InfoCarreraComponent } from './info-carrera/info-carrera.component';
 import { LoginComponent } from './login/login.component';
 import { CampeonatoComponent } from './campeonato/campeonato.component';
 import { HistoricoCampeonatosComponent } from './historico-campeonatos/historico-campeonatos.component';
+import { AdminGuard } from 'src/app/service/guard/admin.guard';
 
 const routes: Routes = [
   {
@@ -14,17 +15,21 @@ const routes: Routes = [
     children: [
       {
         path:'campeonato-actual',
+        canActivate:[AdminGuard],
         component:CampeonatoActualComponent
       },{
         path:'campeonato/:champId',
+        canActivate:[AdminGuard],
         component:CampeonatoComponent
       },
       {
         path:'info-carrera/:carreraId/:nombre/:pais',
+        canActivate:[AdminGuard],
         component:InfoCarreraComponent
       },
       {
         path: 'historico',
+        canActivate:[AdminGuard],
         component:HistoricoCampeonatosComponent
       },
       {

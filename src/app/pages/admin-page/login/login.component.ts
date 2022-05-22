@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import { Perfil } from 'src/app/models/perfil';
-import { AuthService } from 'src/app/service/auth-service';
+import { AuthService } from 'src/app/service/auth.service';
 import { RestService } from 'src/app/service/rest.service';
 
 import Swal from 'sweetalert2';
