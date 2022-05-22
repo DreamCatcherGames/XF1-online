@@ -25,13 +25,12 @@
 			<button mat-raised-button color="primary"  (click)="showHistorico()">View past championships</button>
 		</div>
 	</div>
-
 </div>
 
 <div class="modal modal--nuevo-campeonato" *ngIf="isShowingNuevoCampeonatoModal">
 	<app-nuevo-campeonato (closeEvent)="closeNuevoCampeonatoModal()" ></app-nuevo-campeonato>
 </div>
-
+	
 <div class="modal modal--nueva-carrera" *ngIf="isShowingNuevaCarreraModal">
 	<app-nueva-carrera (closeEvent)="closeNuevaCarreraModal()" [championshipId]="this.campeonatoActual.id" ></app-nueva-carrera>
 </div>

@@ -1,19 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CampeonatoActualComponent } from './campeonato-actual.component';
 
-describe('CampeonatoActualComponent', () => {
-  let component: CampeonatoActualComponent;
-  let fixture: ComponentFixture<CampeonatoActualComponent>;
+import { UserPageComponent } from './user-page.component';
+
+describe('UserPageComponent', () => {
+  let component: UserPageComponent;
+  let fixture: ComponentFixture<UserPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CampeonatoActualComponent ]
+      declarations: [ UserPageComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CampeonatoActualComponent);
+    fixture = TestBed.createComponent(UserPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
