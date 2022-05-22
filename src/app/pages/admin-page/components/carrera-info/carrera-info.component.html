@@ -3,35 +3,35 @@
 	<div class="left">
 
 		<div class="nombre">
-			<p class="nombre--title">Nombre:</p>
+			<p class="nombre--title">Name:</p>
 			<mat-form-field class="nombre--field">
-				<mat-label>Nombre de carrera</mat-label>
+				<mat-label>Name of race</mat-label>
 				<input matInput type="text" name="nombre" id="nameRace" [(ngModel)]="nameRace">
 			</mat-form-field>
 		</div>
 
 		<div class="nombre">
-			<p class="nombre--title">País:</p>
+			<p class="nombre--title">Country:</p>
 			<mat-form-field class="nombre--field">
-				<mat-label>Pais de carrera</mat-label>
+				<mat-label>Country of race</mat-label>
 				<input matInput type="text" name="nombre" disabled id="countryRace" [(ngModel)]="countryRace">
 			</mat-form-field>
 		</div>
 
 
         <div class="nombre">
-			<p class="nombre--title">Campeonato:</p>
+			<p class="nombre--title">Championship:</p>
 			<mat-form-field class="nombre--field">
-				<mat-label>Campeonato XF1</mat-label>
+				<mat-label>XF1 Championship</mat-label>
 				<input matInput type="text" name="nombre" id="championshipRace" [(ngModel)]="championshipRace">
 			</mat-form-field>
 		</div>
 
 
         <div class="nombre">
-			<p class="nombre--title">Pista:</p>
+			<p class="nombre--title">Road:</p>
 			<mat-form-field class="nombre--field">
-				<mat-label>Pista Florencio Florentini</mat-label>
+				<mat-label>Florencio Florentini Road</mat-label>
 				<input matInput type="text" name="nombre" id="racetrack" [(ngModel)]="racetrack">
 			</mat-form-field>
 		</div>
@@ -40,7 +40,7 @@
 	<div class="right">
 
 		<div class="fecha-inicio">
-			<p class="fecha-inicio--title">Fecha de inicio:</p>
+			<p class="fecha-inicio--title">Initial date:</p>
 			<mat-form-field class="fecha-inicio--field">
 				<input matInput [ngxMatDatetimePicker]="startDatePicker" placeholder="Fecha y hora de inicio" [(ngModel)]="startDatetime">
 				<mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
@@ -49,7 +49,7 @@
 		</div>
 
 		<div class="fecha-final">
-			<p class="fecha-final--title">Fecha de finalizacion:</p>
+			<p class="fecha-final--title">Ending date:</p>
 			<mat-form-field class="fecha-final--field">
 				<input matInput [ngxMatDatetimePicker]="endDatePicker" placeholder="Fecha y hora de finalizacion" [(ngModel)]="endDatetime">
 				<mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
