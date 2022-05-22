@@ -10,8 +10,8 @@ module.exports = function (config) {
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
-      require('@angular-devkit/build-angular/plugins/karma'),
-      require('karma-firefox-launcher')
+      require('karma-firefox-launcher'),
+      require('@angular-devkit/build-angular/plugins/karma')
     ],
     client: {
       jasmine: {
@@ -26,7 +26,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/XF1Online'),
+      dir: require('path').join(__dirname, './coverage/xf1-online'),
       subdir: '.',
       reporters: [
         { type: 'html' },
@@ -42,9 +42,7 @@ module.exports = function (config) {
     customLaunchers: {
       'FirefoxHeadless':{
         base: 'Firefox',
-        flags: [
-          '-headless',
-        ],
+        flags: ['-headless']
       }
     },
     singleRun: false,

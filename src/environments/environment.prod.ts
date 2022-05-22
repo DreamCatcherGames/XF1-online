@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  url: 'https://xf1onlinerest.azurewebsites.net'
 };
