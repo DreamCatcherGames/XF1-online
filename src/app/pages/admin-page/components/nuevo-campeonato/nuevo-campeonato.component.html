@@ -1,6 +1,6 @@
 <div class="content">
 	<div class="title title__first">
-		<p>Creacion de nuevo campeonato</p>
+		<p>Creation of new championship</p>
 	</div>
 
 	<form [formGroup]="formData" (ngSubmit)="onSubmit()">
@@ -9,10 +9,10 @@
 
 			<div class="fields--nombre">
 				<div class="title">
-					<p>Nombre del nuevo campeonato</p>
+					<p>Name of new championship</p>
 				</div>
 				<mat-form-field class="field">
-					<mat-label> Nombre</mat-label>
+					<mat-label> Name</mat-label>
 					<input matInput type="text" 
 						name="nombre" id="nameInput" formControlName="name">
 				</mat-form-field>
@@ -21,20 +21,20 @@
 			<div class="fields--dates">
 
 				<div class="title">
-					<p>Fecha de inicio y finalizacion</p>
+					<p>Initial and ending date</p>
 				</div>
 
 				<mat-form-field class="field field__start">
 					<input matInput 
 						[ngxMatDatetimePicker]="startDatePicker" 
-						placeholder="Fecha y hora de inicio" formControlName="startDatetime">
+						placeholder="Initial date and time" formControlName="startDatetime">
 					<mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
 					<ngx-mat-datetime-picker #startDatePicker></ngx-mat-datetime-picker>
 				</mat-form-field>
 
 				<mat-form-field class="field field__end">
 					<input matInput [ngxMatDatetimePicker]="endDatePicker" 
-						placeholder="Fecha y hora de inicio" formControlName="endDatetime">
+						placeholder="Ending date and time" formControlName="endDatetime">
 					<mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
 					<ngx-mat-datetime-picker #endDatePicker></ngx-mat-datetime-picker>
 				</mat-form-field>
@@ -44,11 +44,11 @@
 			<div class="fields--rules">
 
 				<div class="title">
-					<p>Descripcion de las reglas de puntuacion</p>
+					<p>Description of scoring rules</p>
 				</div>
 
 				<mat-form-field class="field">
-					<mat-label>Descripcion de reglas</mat-label>
+					<mat-label>Scoring rules</mat-label>
 					<textarea matInput id="reglasInput" formControlName="rules"></textarea>
 				</mat-form-field>	
 
@@ -56,9 +56,11 @@
 
 		</div>
 
+		<p>* Fields are required.</p>
+
 		<div class="buttons">
-			<button mat-raised-button color="warn" (click)="this.closeModal()" >Cancelar</button>
-			<button type="submit" mat-raised-button color="primary" >Crear</button>
+			<button mat-raised-button color="warn" (click)="this.closeModal()" >Cancel</button>
+			<button type="submit" mat-raised-button color="primary" >Create</button>
 		</div>
 	</form>
 	

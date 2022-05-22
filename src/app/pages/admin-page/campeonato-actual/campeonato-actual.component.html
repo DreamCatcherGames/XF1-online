@@ -1,14 +1,14 @@
 <div class="body">
 	<div class="campeonato-info">
 		<div class="title">
-			<p>Informacion del campeonato actual</p>
+			<p>Information of actual championship</p>
 		</div>
 		<app-campeonato-info [inputCampeonatoJson]="this.campeonatoActual | json"></app-campeonato-info>
 	</div>
 
 	<div class="lista-carreras">
 		<div class="title">
-			<p>Lista de Carreras del Campeonato</p>
+			<p>List of races from championship</p>
 		</div>
 
 		<app-lista-carreras [listaCarrerasJson]="this.carreras | json"></app-lista-carreras>
@@ -16,13 +16,13 @@
 
 	<div class="buttons">
 		<div class="buttons--new-campeonato">
-			<button mat-raised-button color="primary" (click)="this.isShowingNuevoCampeonatoModal=true">Crear nuevo campeonato</button>
+			<button mat-raised-button color="primary" (click)="this.isShowingNuevoCampeonatoModal=true">Create new championship</button>
 		</div>
 		<div class="buttons--new-carrera"> 
-			<button mat-raised-button color="primary" (click)="this.isShowingNuevaCarreraModal=true">Crear nueva carrera</button>
+			<button mat-raised-button color="primary" (click)="this.isShowingNuevaCarreraModal=true">Create new race</button>
 		</div>
 		<div class="buttons--historico">
-			<button mat-raised-button color="primary"  (click)="showHistorico()">Ver campeonatos antiguos</button>
+			<button mat-raised-button color="primary"  (click)="showHistorico()">View past championships</button>
 		</div>
 	</div>
 
