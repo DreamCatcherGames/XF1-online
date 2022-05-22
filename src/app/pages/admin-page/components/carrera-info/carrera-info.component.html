@@ -42,7 +42,7 @@
 		<div class="fecha-inicio">
 			<p class="fecha-inicio--title">Initial date:</p>
 			<mat-form-field class="fecha-inicio--field">
-				<input matInput [ngxMatDatetimePicker]="startDatePicker" placeholder="Fecha y hora de inicio" [(ngModel)]="startDatetime">
+				<input matInput [ngxMatDatetimePicker]="startDatePicker" placeholder="Fecha y hora de inicio" [(ngModel)]="this.carrera.startDate">
 				<mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
 				<ngx-mat-datetime-picker #startDatePicker></ngx-mat-datetime-picker>
 			</mat-form-field>
@@ -51,7 +51,7 @@
 		<div class="fecha-final">
 			<p class="fecha-final--title">Ending date:</p>
 			<mat-form-field class="fecha-final--field">
-				<input matInput [ngxMatDatetimePicker]="endDatePicker" placeholder="Fecha y hora de finalizacion" [(ngModel)]="endDatetime">
+				<input matInput [ngxMatDatetimePicker]="endDatePicker" placeholder="Fecha y hora de finalizacion" [(ngModel)]="this.carrera.endDate">
 				<mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
 				<ngx-mat-datetime-picker #endDatePicker></ngx-mat-datetime-picker>
 			</mat-form-field>

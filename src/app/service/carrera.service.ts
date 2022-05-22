@@ -46,11 +46,36 @@ export class CarreraService {
       Competition_Date: newCarrera.competenciaDate,
       Track_Name: newCarrera.trackName
     };
-
     return this.restService.post(
       'Race/addRace/'+this.authToken+'/'+this.salt, 
       JSON.stringify(requestCampeonatoObj));
+  } 
+
+  async getCarrera(champId:string, pais:string, nombreCampeonato:string){
+    const httpResponse:requestRace = await this.restService.get(
+      'Championship/getChampionship/'+champId+'/'+ this.authToken+'/'+this.salt
+    ).then(response=>{
+      return response.json();
+    });
+
+    const response:Carrera = {
+      name: httpResponse.Name,
+      startDate: httpResponse.Beginning_Date,
+      startTime: httpResponse.Beginning_Time,
+      endDate: httpResponse.Ending_Date,
+      endTime: httpResponse.Ending_Time,
+      country: httpResponse.Country,
+      trackName: httpResponse.Track_Name,
+      championship: httpResponse.Champ_Key,
+      clasificatoriaDate: httpResponse.Qualification_Date,
+      competenciaDate: httpResponse.Competition_Date
+    }
+
+    return response;
 
   }
+
+
+
 
 }
