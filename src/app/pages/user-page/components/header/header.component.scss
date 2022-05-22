@@ -1,0 +1,21 @@
+.content {
+	background-color: #d3d3d3;
+	padding: 5px 1rem;
+	.title {
+		&--content {
+			font-family: 'Roboto';
+		}
+	}
+	.logo{
+		width: 5%;
+		height: auto;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		top: 0.7%;		   
+		&--image{
+			width:100%;
+		}
+	}
+}
+
