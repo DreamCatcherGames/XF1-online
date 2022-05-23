@@ -35,4 +35,4 @@ jobs:
           npm install
           npm run-script build
       - name: Testing
-        run: npm test
+        run: ng test --watch=false --code-coverage
