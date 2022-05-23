@@ -1,0 +1,43 @@
+.logo{
+    width: 50%;
+    height: auto;
+    margin-top: 7rem;	   
+    &--image{
+        width:100%;
+    }
+}
+
+.contenedor{
+    display: flex;
+    flex-direction: row;
+
+    .contenedor-izq{
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgb(106, 90, 90);
+
+        .name{
+            margin-bottom: 2rem;
+        }
+        
+        .label-a{
+            display: flex;
+            flex-direction: row;
+            align-content: space-between;
+            p{
+                margin-left: 0.3rem;
+                margin-top: 0rem;
+
+            }
+        }
+    }
+
+    .contenedor-der{
+        width: 70%;
+    }
+
+}
+
+

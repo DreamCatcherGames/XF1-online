@@ -1,0 +1,27 @@
+.card2{
+    height: 6rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: gray;
+}
+
+.card1{
+    height: 6rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: gray;
+}
+
+.logo{
+    width: 10%;
+    height: auto; 
+    margin-left: 1rem;  
+    &--image{
+  
+        width:100%;
+    }
+}
