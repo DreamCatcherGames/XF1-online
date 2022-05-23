@@ -9,7 +9,7 @@ import { Carrera } from 'src/app/models/carrera';
 })
 export class ListaCarrerasComponent implements OnInit {
 
-  @Input() listaCarrerasJson: string;
+  @Input() listaCarrerasJson: string='{}';
   listaCarreras: Carrera[];
 
   constructor() { }
