@@ -4,17 +4,24 @@ import { UserPageComponent } from './user-page.component';
 import { UserPageRoutingModule } from './user-page-routing.module';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { LoginComponent } from './login/login.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     UserPageComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
-    UserPageRoutingModule
+    UserPageRoutingModule,
+    SharedModule,
+    FormsModule, 
+    ReactiveFormsModule
   ]
 })
 export class UserPageModule { }
