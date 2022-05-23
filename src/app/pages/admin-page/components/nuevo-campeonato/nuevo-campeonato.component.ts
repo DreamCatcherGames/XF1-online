@@ -80,9 +80,4 @@ export class NuevoCampeonatoComponent implements OnInit {
       })
     }
   }
-
-  validateForm():boolean{
-    return true;
-  }
-
 }
