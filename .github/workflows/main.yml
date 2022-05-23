@@ -36,3 +36,4 @@ jobs:
           npm run-script build
       - name: Testing
         run: npm run-script test
+
