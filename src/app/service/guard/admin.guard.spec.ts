@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 import { AdminGuard } from './admin.guard';
 
@@ -7,19 +8,21 @@ describe('AdminGuard', () => {
   let guard: AdminGuard;
 
   let fakeRouter:Router;
-  let fakeActivatedRoute: ActivatedRoute;
+  let fakeAuthService: AuthService;
   
   beforeEach(async () => {
 
     fakeRouter = jasmine.createSpyObj<Router>('Router', ['navigateByUrl']);
-    fakeActivatedRoute = jasmine.createSpyObj<ActivatedRoute>('ActivatedRoute',
-      ['snapshot']
+    fakeAuthService = jasmine.createSpyObj<AuthService>('AuthService', 
+      {
+        perfil:true
+      }
     );
     
     await TestBed.configureTestingModule({
       providers: [
-        {provide: ActivatedRoute, useValue: fakeActivatedRoute},
         {provide: Router, useValue: fakeRouter},
+        {provide: AuthService, useValue: fakeAuthService}
       ]
     })
     .compileComponents();
@@ -33,4 +36,5 @@ describe('AdminGuard', () => {
   it('should be created', () => {
     expect(guard).toBeTruthy();
   });
+
 });
