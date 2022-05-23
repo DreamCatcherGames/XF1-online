@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class ListaCampeonatosComponent implements OnInit {
 
-  @Input() listaCampeonatosJson: string;
+  @Input() listaCampeonatosJson: string='{}';
   listaCampeonatos: Campeonato[];
 
   constructor(
