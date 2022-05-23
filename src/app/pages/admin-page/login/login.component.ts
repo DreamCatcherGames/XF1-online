@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     if(this.formData.valid){
       const dataToSend = {
         "Username":this.formData.value.email,
-        "Password":this.formData.value.password
+        "Encrypt_Password":this.formData.value.password
       }
      this.authService.loginRequest(dataToSend).then( response => {
         console.log(response)
