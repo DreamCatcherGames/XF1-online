@@ -8,6 +8,7 @@ import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerMod
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [],
@@ -17,9 +18,11 @@ import { MatSelectModule } from '@angular/material/select';
     NgxMatDatetimePickerModule,
     NgxMatTimepickerModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatIconModule
   ],
   exports: [
+    MatIconModule,
     MatInputModule,
     MatFormFieldModule,
     MatDatepickerModule,

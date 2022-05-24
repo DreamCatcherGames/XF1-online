@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EquipoPageComponent } from './equipo-page/equipo-page.component';
 import { UserPageComponent } from './user-page.component';
 
 const routes: Routes = [
@@ -9,10 +10,13 @@ const routes: Routes = [
       children: [
         {
           path:'login',
+        },{
+          path:'equipo',
+          component:EquipoPageComponent
         },
         {
           path:'',
-          redirectTo: 'login',
+          redirectTo: 'equipo',
           pathMatch: 'full'
         }
       ]

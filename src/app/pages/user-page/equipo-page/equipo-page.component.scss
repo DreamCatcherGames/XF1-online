@@ -1,0 +1,134 @@
+.content{
+	height: 100%;
+	overflow-y: hidden;
+	display: flex;
+	flex-direction: row-reverse;
+
+	img{
+		width: 100%;
+	}
+
+	.conformacion{
+		flex: 3 2 75%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		.escuderia{
+			height: auto;
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content:center;
+			margin-bottom: 5%;
+
+
+			&--image{
+				width:15%;
+				&:hover{
+					cursor: pointer;
+					box-shadow: 0 0 2rem #c7c5c7;
+					clip-path: inset(0px 0px -45px 0px);
+				}
+			}
+
+			.active{
+				box-shadow: 0 0 2rem yellow;
+				clip-path: inset(0px 0px -45px 0px);
+			}
+		}
+
+		.pilotos{
+			display:flex;
+			width: 100%;
+			height: auto;
+			justify-content: space-evenly;
+
+			.image-div{
+				width:10%;
+
+				&:hover{
+					cursor: pointer;
+					box-shadow: 0 0 2rem #c7c5c7;
+					clip-path: inset(0px 0px -45px 0px);
+				}
+			}
+		}
+
+		.buttons{
+			display: flex;
+			width: 25%;
+			justify-content: space-around;
+			height: 3.5rem;
+			margin-top: 5rem;
+			
+			& > *{
+				width:100%;
+				display: flex;
+				justify-content: center;	
+
+				button{
+					width: 100%;
+				}
+
+			}
+
+			.cancel{
+				margin-right: 10%;
+			}
+
+		}
+
+	}
+
+	.market{
+		flex:1 0 25%;
+		background-color: black;
+		color:white;
+		width:100%;
+
+		.section-saldo{
+			font-size: 1.4em;
+			text-align: center;
+			width: 100%;
+			border-bottom: 1px solid white;
+			margin-bottom: 7%;
+
+			.saldo{
+				display:inline-block;
+				border: 2px solid white;
+				border-radius: 15px;
+				width: 70%;
+				margin-bottom: 5%;
+
+				box-shadow: 0 0 2rem #30a848;
+			}
+		}
+		
+		.items{
+			display: flex;
+
+			.card-item{
+				display: flex;
+				width: 100%;
+				padding: 0.5rem 1rem;
+				border-top: 1px solid white;
+				border-bottom: 1px solid white;
+
+				.image{
+					width: 6rem;
+					margin-right: 2rem;
+				}
+				
+				&:hover{
+					cursor:pointer;
+					box-shadow: -5px 0 10px white;
+				}
+			}
+		}
+	}
+
+
+	
+
+}
