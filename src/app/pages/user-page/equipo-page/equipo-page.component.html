@@ -1,26 +1,26 @@
 <div class="content">
-	<div class="conformacion">
+	<div class="conformacion"> 
 		<div class="escuderia">
-			<div class="escuderia--image active">
-				<img src="assets/frame.png" alt="Frame" class="escuderia">
+			<div class="escuderia--image" [ngClass]="(selectedFrame==1?'active':'')">
+				<img #frame1 src="assets/frame.png" alt="Frame" class="escuderia toggleMarket" (click)="setActiveFrameEscuderia(1)">
 			</div>
 		</div>
 
 		<div class="pilotos">
-				<div class="top--image image-div" >
-					<img src="assets/frame.png" alt="Frame" class="piloto">
+				<div class="top--image image-div" [ngClass]="(selectedFrame==2?'active':'')">
+					<img #frame2 src="assets/frame.png" alt="Frame" class="piloto toggleMarket"(click)="setActiveFrame(2)">
 				</div>
-				<div class="top--image image-div">
-					<img src="assets/frame.png" alt="Frame" class="piloto">
+				<div class="top--image image-div"[ngClass]="(selectedFrame==3?'active':'')">
+					<img #frame3 src="assets/frame.png" alt="Frame" class="piloto toggleMarket"(click)="setActiveFrame(3)">
 				</div>
-				<div class="top--image image-div">
-					<img src="assets/frame.png" alt="Frame" class="piloto">
+				<div class="top--image image-div"[ngClass]="(selectedFrame==4?'active':'')">
+					<img #frame4 src="assets/frame.png" alt="Frame" class="piloto toggleMarket"(click)="setActiveFrame(4)">
 				</div>
-				<div class="bottom--image image-div">
-					<img src="assets/frame.png" alt="Frame" class="piloto">
+				<div class="bottom--image image-div"[ngClass]="(selectedFrame==5?'active':'')">
+					<img #frame5 src="assets/frame.png" alt="Frame" class="piloto toggleMarket"(click)="setActiveFrame(5)">
 				</div>
-				<div class="bottom--image image-div">
-					<img src="assets/frame.png" alt="Frame" class="piloto">
+				<div class="bottom--image image-div"[ngClass]="(selectedFrame==6?'active':'')">
+					<img #frame6 src="assets/frame.png" alt="Frame" class="piloto toggleMarket"(click)="setActiveFrame(6)">
 				</div>
 		</div>
 
@@ -34,7 +34,7 @@
 		</div>
 	</div>
 
-	<div class="market">
+	<div class="market" *ngIf="showingMarket">
 		<div class="section-saldo">
 			<div class="title">
 				<p>Available</p>

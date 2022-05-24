@@ -53,6 +53,12 @@
 					clip-path: inset(0px 0px -45px 0px);
 				}
 			}
+			
+			.active{
+				box-shadow: 0 0 2rem yellow !important;
+				clip-path: inset(0px 0px -45px 0px);
+			}
+
 		}
 
 		.buttons{
