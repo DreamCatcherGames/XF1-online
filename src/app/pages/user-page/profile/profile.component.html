@@ -26,7 +26,9 @@
 
     <div class="contenedor-der"> <!--Contenedor derecha-->
        
-        <app-equipo-card></app-equipo-card>
+        <app-equipo-card class="equipo-card"></app-equipo-card>
+
+        <app-equipo-card *ngIf="hasTeam1" class="equipo-card"></app-equipo-card> 
     </div>
 
 </div>

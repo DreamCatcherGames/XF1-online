@@ -36,6 +36,13 @@
 
     .contenedor-der{
         width: 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .equipo-card{
+            margin: 3rem;
+        }
     }
 
 }
