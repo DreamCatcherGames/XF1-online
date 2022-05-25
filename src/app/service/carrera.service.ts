@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import {Carrera} from 'src/app/models/carrera';
+import { AuthService } from './auth.service';
 import { RestService } from './rest.service';
 
 
@@ -24,12 +25,9 @@ class requestRace {
 })
 export class CarreraService {
 
-  // Remove
-  private authToken:string='dkQhxuDOS02Z1jZJ2KRpng==';
-  private salt:string='YGXMKyXDIemAKw==';
-
   constructor(
-    private restService:RestService
+    private restService:RestService,
+    private authService:AuthService
   ) { }
 
   createNewCarrera(newCarrera:Carrera, champId:string){
@@ -47,13 +45,13 @@ export class CarreraService {
       Track_Name: newCarrera.trackName
     };
     return this.restService.post(
-      'Race/addRace/'+this.authToken+'/'+this.salt, 
+      'Race/addRace/'+this.authService.perfil.Token+'/'+this.authService.perfil.Salt, 
       JSON.stringify(requestCampeonatoObj));
   } 
 
   async getCarrera(champId:string, pais:string, nombreCampeonato:string){
     const httpResponse:requestRace = await this.restService.get(
-      'Championship/getChampionship/'+champId+'/'+ this.authToken+'/'+this.salt
+      'Championship/getChampionship/'+champId+'/'+ this.authService.perfil.Token+'/'+this.authService.perfil.Salt
     ).then(response=>{
       return response.json();
     });

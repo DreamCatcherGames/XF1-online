@@ -19,11 +19,16 @@ export class CarreraCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.carrera = new Carrera();
+    this.carrera = this.carrera? this.carrera: new Carrera();
   }
 
   ngOnChanges(): void {
     this.carrera = JSON.parse(this.carreraJson);
+    console.log(this.carreraJson);
+  }
+
+  getCarreraName(){
+    return this.carrera.name;
   }
 
   getStartDateFormated(){

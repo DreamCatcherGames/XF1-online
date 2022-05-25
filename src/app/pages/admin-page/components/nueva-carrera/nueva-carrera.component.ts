@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 
 import {CustomValidatorsService} from 'src/app/service/custom-validators.service';
 import { CampeonatoService } from 'src/app/service/campeonato.service';
+import { ErrorService } from 'src/app/service/error.service';
 
 @Component({
   selector: 'app-nueva-carrera',
@@ -26,7 +27,8 @@ export class NuevaCarreraComponent implements OnInit {
     private fb: FormBuilder,
     private customValidatorsService: CustomValidatorsService,
     private carreraService: CarreraService,
-    private campeonatoService: CampeonatoService
+    private campeonatoService: CampeonatoService, 
+    private errorService: ErrorService,
   ) {}
 
   ngOnInit(): void {
@@ -60,6 +62,7 @@ export class NuevaCarreraComponent implements OnInit {
 
   submit(){
     if(this.formData.valid){
+      this.errorService.showLoading();
       const momentStartdatetime = moment(this.formData.value.startDatetime);
       const momentEnddatetime = moment(this.formData.value.endDatetime);
       const momentQualificationdate = moment(this.formData.value.clasificatoriaDatetime);
@@ -89,13 +92,11 @@ export class NuevaCarreraComponent implements OnInit {
           'La carrera fue creada con exito',
           'success'
         );
+        Swal.hideLoading();
         this.closeModal();
       }).catch((err)=>{
-        Swal.fire(
-          'Error',
-          'Ocurrio un error, por favor revise su formulario',
-          'error'
-        )
+        this.errorService.hideLoading();
+        this.errorService.handle(err);
       })
     }
   }
