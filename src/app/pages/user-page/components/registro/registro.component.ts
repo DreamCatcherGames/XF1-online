@@ -4,6 +4,7 @@ import * as moment from 'moment';
 import { CustomValidatorsService } from 'src/app/service/custom-validators.service';
 import { RegistroService } from 'src/app/service/registro.service';
 import Swal from 'sweetalert2';
+import * as countries from 'country-data';
 
 @Component({
   selector: 'app-registro',
@@ -13,7 +14,7 @@ import Swal from 'sweetalert2';
 export class RegistroComponent implements OnInit {
 
   formData: FormGroup;
-
+  countriesData = countries.countries.all;
   constructor(
     private fb: FormBuilder,
     private registroService: RegistroService
@@ -36,6 +37,7 @@ export class RegistroComponent implements OnInit {
   @Output() closeEvent = new EventEmitter();
 
   closeModal(){
+    console.log(this.countriesData)
     this.closeEvent.emit();
   }
 
