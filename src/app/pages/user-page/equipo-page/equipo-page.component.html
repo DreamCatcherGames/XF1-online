@@ -3,12 +3,17 @@
 		<div class="escuderia">
 			<div class="escuderia--image" [ngClass]="(selectedFrame==1?'active':'')">
 				<img #frame1 src="assets/frame.png" alt="Frame" class="toggleMarket" (click)="setActiveFrameEscuderia(1)">
+				<img class="escuderia--logo" src="https://www.carlogos.org/car-logos/ferrari-logo-750x1100-show.png" alt="">
+				<p  class="escuderia--name">Ferrari</p>
+				<p  class="escuderia--pais">Italia</p>
 			</div>
 		</div>
 
 		<div class="pilotos">
-				<div class="top--image image-div" [ngClass]="(selectedFrame==2?'active':'')">
+				<div class="top--image image-div piloto" [ngClass]="(selectedFrame==2?'active':'')">
 					<img #frame2 src="assets/frame.png" alt="Frame" class="piloto toggleMarket"(click)="setActiveFrame(2)">
+					<img src="assets/pilotoSample.png" alt="Sample" class="piloto--image">
+					<p  class="piloto--name">Carlo Issoni</p>
 				</div>
 				<div class="top--image image-div"[ngClass]="(selectedFrame==3?'active':'')">
 					<img #frame3 src="assets/frame.png" alt="Frame" class="piloto toggleMarket"(click)="setActiveFrame(3)">
