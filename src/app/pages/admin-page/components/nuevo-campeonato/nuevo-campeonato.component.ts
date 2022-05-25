@@ -9,7 +9,6 @@ import {Campeonato} from 'src/app/models/campeonato';
 import { CustomValidatorsService } from 'src/app/service/custom-validators.service';
 import {CampeonatoService} from 'src/app/service/campeonato.service';
 import { ErrorService } from 'src/app/service/error.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nuevo-campeonato',
@@ -27,7 +26,6 @@ export class NuevoCampeonatoComponent implements OnInit {
     private customValidatorsService: CustomValidatorsService,
     private campeonatoService: CampeonatoService, 
     private errorService: ErrorService,
-    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -77,7 +75,6 @@ export class NuevoCampeonatoComponent implements OnInit {
         );
         Swal.hideLoading();
         this.closeModal();
-        this.router.navigateByUrl('/admin/')
       }).catch((err)=>{
         this.errorService.hideLoading();
         this.errorService.handle(err);

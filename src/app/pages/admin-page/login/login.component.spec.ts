@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { AuthService } from 'src/app/service/auth.service';
+import { ErrorService } from 'src/app/service/error.service';
 
 import { LoginComponent } from './login.component';
 
@@ -14,6 +15,7 @@ describe('LoginComponent', () => {
   let fakeRouter:Router;
   let fakeFb:FormBuilder;
   let fakeAuthService:AuthService;
+  let fakeErrorService:ErrorService;
 
   let mockFormGroup:FormGroup;
 
@@ -49,18 +51,21 @@ describe('LoginComponent', () => {
       'AuthService',
       {
         loginRequest:new Promise((resolve, reject) => {
-          resolve(fakeProfile);
+          resolve({status:200, json:()=>undefined});
         }),
         setPerfil:undefined
       }
     )
+    
+    fakeErrorService = jasmine.createSpyObj<ErrorService>('ErrorService',['handle', 'showLoading', 'hideLoading'])
 
     await TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
       providers: [
         {provide: Router, useValue: fakeRouter},
         {provide: FormBuilder, useValue: fakeFb},
-        {provide: AuthService, useValue: fakeAuthService}
+        {provide: AuthService, useValue: fakeAuthService},
+        {provide: ErrorService, useValue: fakeErrorService}
       ]
     })
     .compileComponents();
@@ -99,14 +104,6 @@ describe('LoginComponent', () => {
     // Expect
     expect(fakeAuthService.loginRequest).toHaveBeenCalled();
   })
-
-  it('should update profile after form submission', fakeAsync(() => {
-    setValidFormData();
-    component.onSubmit();
-    tick();
-
-    expect(fakeAuthService.setPerfil).toHaveBeenCalled();
-  }));
 
   it('should navigate to campeonato actual after succesful submission', fakeAsync(() => {
     // Act
