@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -6,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  hasTeam1: boolean = true
+  hasTeam1: boolean = true;
 
-  constructor() { }
+  constructor(
+    authService: AuthService,
+  ) { }
 
   ngOnInit(): void {
   }
