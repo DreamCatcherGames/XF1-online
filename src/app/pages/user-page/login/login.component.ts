@@ -15,7 +15,7 @@ import Swal from 'sweetalert2';
 export class LoginComponent implements OnInit {
 
   formData: FormGroup;
-
+  isShowingNuevoRegistroModal:boolean = false;
   constructor(
     private router: Router,
     private fb: FormBuilder,
@@ -49,5 +49,10 @@ export class LoginComponent implements OnInit {
       })
     }
   }
+
+  closeNuevoRegistroModal():void{
+    this.isShowingNuevoRegistroModal = false;
+  }
+
 
 }
