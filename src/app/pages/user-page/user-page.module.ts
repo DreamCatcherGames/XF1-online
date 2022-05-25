@@ -7,13 +7,17 @@ import { FooterComponent } from './components/footer/footer.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+
+
 
 @NgModule({
   declarations: [
     UserPageComponent,
     HeaderComponent,
     FooterComponent,
-    RegistroComponent
+    RegistroComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,

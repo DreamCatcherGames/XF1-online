@@ -12,7 +12,7 @@ export class CampeonatoInfoComponent implements OnInit {
   startDatetime:any;
   endDatetime:any;
 
-  @Input() inputCampeonatoJson:string;
+  @Input() inputCampeonatoJson:string='{}';
 
   campeonato:Campeonato;
 

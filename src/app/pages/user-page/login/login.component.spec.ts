@@ -48,7 +48,7 @@ describe('LoginComponent', () => {
     fakeAuthService = jasmine.createSpyObj<AuthService>(
       'AuthService',
       {
-        loginRequest:new Promise((resolve, reject) => {
+        loginRequestUser:new Promise((resolve, reject) => {
           resolve(fakeProfile);
         }),
         setPerfil:undefined
@@ -89,7 +89,7 @@ describe('LoginComponent', () => {
     // Act
     component.onSubmit();
     // Expect
-    expect(fakeAuthService.loginRequest).not.toHaveBeenCalled();
+    expect(fakeAuthService.loginRequestUser).not.toHaveBeenCalled();
   });
 
   it('should call rest when formData is valid', () => {
@@ -97,16 +97,8 @@ describe('LoginComponent', () => {
     setValidFormData();
     component.onSubmit();
     // Expect
-    expect(fakeAuthService.loginRequest).toHaveBeenCalled();
+    expect(fakeAuthService.loginRequestUser).toHaveBeenCalled();
   })
-
-  it('should update profile after form submission', fakeAsync(() => {
-    setValidFormData();
-    component.onSubmit();
-    tick();
-
-    expect(fakeAuthService.setPerfil).toHaveBeenCalled();
-  }));
 
   it('should navigate to campeonato actual after succesful submission', fakeAsync(() => {
     // Act

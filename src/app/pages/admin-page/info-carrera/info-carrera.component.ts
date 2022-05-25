@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { CarreraService } from 'src/app/service/carrera.service';
 import {Carrera} from 'src/app/models/carrera';
 
@@ -20,7 +19,6 @@ export class InfoCarreraComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private carreraService: CarreraService
-
   ){
   }
 

@@ -3,7 +3,7 @@
 		<p>Account creation</p>
 	</div>
 
-	<form [formGroup]="formData">
+	<form [formGroup]="formData" (ngSubmit)="onSubmit()">
 
 		<div class="fields">
 
@@ -62,7 +62,7 @@
 					<p>Country:</p>
 				</div>
 				<mat-form-field class="field" appearance="fill">
-					<mat-select formControlName="pais">
+					<mat-select formControlName="country">
 						<mat-option [value]="'Costa Rica'">Costa Rica</mat-option>
 						<mat-option [value]="'Panama'">Panama</mat-option>
 					</mat-select>
