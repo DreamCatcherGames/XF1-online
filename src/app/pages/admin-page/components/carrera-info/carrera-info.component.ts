@@ -26,7 +26,7 @@ export class CarreraInfoComponent implements OnInit {
   ngOnInit(): void {
 
     
-    this.carrera={
+    this.carrera=this.carrera?this.carrera:{
       name:'', 
       startDate:'',
       startTime:'',

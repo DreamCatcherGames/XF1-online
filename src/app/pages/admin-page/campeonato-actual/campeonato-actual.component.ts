@@ -43,10 +43,12 @@ export class CampeonatoActualComponent implements OnInit {
 
   closeNuevoCampeonatoModal():void{
     this.isShowingNuevoCampeonatoModal = false;
+    this.ngOnInit();
   }
 
   closeNuevaCarreraModal():void {
     this.isShowingNuevaCarreraModal = false;
+    this.ngOnInit();
   }
 
   showHistorico():void{
