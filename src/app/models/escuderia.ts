@@ -1,6 +1,6 @@
 export class Escuderia {
 	image:string;
 	nombre:string;
-	precio:string;
+	precio:number;
 	pais:string;
 }

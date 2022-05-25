@@ -1,7 +1,7 @@
 export class Piloto {
 	image:string;
 	nombre:string;
-	precio:string;
+	precio:number;
 	pais:string;
 	escuderia:string;
 }
