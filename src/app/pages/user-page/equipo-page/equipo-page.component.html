@@ -2,7 +2,7 @@
 	<div class="conformacion"> 
 		<div class="escuderia">
 			<div class="escuderia--image" [ngClass]="(selectedFrame==1?'active':'')">
-				<img #frame1 src="assets/frame.png" alt="Frame" class="escuderia toggleMarket" (click)="setActiveFrameEscuderia(1)">
+				<img #frame1 src="assets/frame.png" alt="Frame" class="toggleMarket" (click)="setActiveFrameEscuderia(1)">
 			</div>
 		</div>
 
@@ -46,19 +46,139 @@
 		</div>
 
 		<div class="items">
-			<div class="card-item">
-				<div class="image">
-					<img src="assets/pilotoSample.png" alt="Imagen de piloto">
-				</div>
-				<div class="description">
-					<div class="nombre">
-						<p>Carlo Sainz</p>
+
+
+			<mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+			<mat-expansion-panel-header>
+				<mat-panel-title>
+					Filters
+				</mat-panel-title>
+			</mat-expansion-panel-header>
+				<div class="filtros">
+					<div class="up">
+						<div class="nombre">
+							<mat-form-field appearance="fill" color="warn">
+								<mat-label>Nombre</mat-label>
+								<input matInput>
+							</mat-form-field>
+						</div>
 					</div>
-					<div class="precio">
-						<p>1.000.000.000</p>
+					<div class="down">
+						<div class="escuderia">
+							<mat-form-field>
+								<mat-label>Escuderia</mat-label>
+								<mat-select>
+									<mat-option value="one">First</mat-option>
+								</mat-select>
+							</mat-form-field>
+						</div>
+						<div class="pais">
+							<mat-form-field>
+								<mat-label>Pais</mat-label>
+								<mat-select>
+									<mat-option value="one">First</mat-option>
+								</mat-select>
+							</mat-form-field>
+						</div>
 					</div>
 				</div>
+			</mat-expansion-panel>
+
+
+			<div class="opciones">
+				<div class="card-item">
+					<div class="image">
+						<img src="assets/pilotoSample.png" alt="Imagen de piloto">
+					</div>
+					<div class="description">
+						<div class="nombre">
+							<p>Carlo Sainz</p>
+						</div>
+						<div class="precio">
+							<p>1.000.000.000</p>
+						</div>
+					</div>
+				</div>
+
+				
+				<div class="card-item">
+					<div class="image">
+						<img src="assets/pilotoSample.png" alt="Imagen de piloto">
+					</div>
+					<div class="description">
+						<div class="nombre">
+							<p>Carlo Sainz</p>
+						</div>
+						<div class="precio">
+							<p>1.000.000.000</p>
+						</div>
+					</div>
+				</div>
+
+
+				
+				<div class="card-item">
+					<div class="image">
+						<img src="assets/pilotoSample.png" alt="Imagen de piloto">
+					</div>
+					<div class="description">
+						<div class="nombre">
+							<p>Carlo Sainz</p>
+						</div>
+						<div class="precio">
+							<p>1.000.000.000</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="card-item">
+					<div class="image">
+						<img src="assets/pilotoSample.png" alt="Imagen de piloto">
+					</div>
+					<div class="description">
+						<div class="nombre">
+							<p>Carlo Sainz</p>
+						</div>
+						<div class="precio">
+							<p>1.000.000.000</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="card-item">
+					<div class="image">
+						<img src="assets/pilotoSample.png" alt="Imagen de piloto">
+					</div>
+					<div class="description">
+						<div class="nombre">
+							<p>Carlo Sainz</p>
+						</div>
+						<div class="precio">
+							<p>1.000.000.000</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="card-item">
+					<div class="image">
+						<img src="assets/pilotoSample.png" alt="Imagen de piloto">
+					</div>
+					<div class="description">
+						<div class="nombre">
+							<p>Carlo Sainz</p>
+						</div>
+						<div class="precio">
+							<p>1.000.000.000</p>
+						</div>
+					</div>
+				</div>
+
+
+
 			</div>
+
+
 		</div>
 
 	</div>

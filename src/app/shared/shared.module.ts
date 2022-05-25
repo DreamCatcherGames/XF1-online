@@ -9,6 +9,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [],
@@ -19,7 +20,8 @@ import { MatIconModule } from '@angular/material/icon';
     NgxMatTimepickerModule,
     MatButtonModule,
     MatSelectModule,
-    MatIconModule
+    MatIconModule,
+    MatExpansionModule,
   ],
   exports: [
     MatIconModule,
@@ -30,7 +32,8 @@ import { MatIconModule } from '@angular/material/icon';
     NgxMatTimepickerModule,
     NgxMatNativeDateModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatExpansionModule,
   ]
 })
 export class SharedModule { }

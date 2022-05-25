@@ -15,7 +15,7 @@ export class EquipoPageComponent implements OnInit {
     this.renderer.listen('window', 'click', e=>{
       console.log(e.target)
       if(
-          !(e.target.className.includes("toggleMarket"))
+          e.target.className.includes("conformacion") || e.target.className.includes("escuderia") || e.target.className.includes("pilotos")
         ){
           this.showingMarket = false;
           this.selectedFrame = 0;
