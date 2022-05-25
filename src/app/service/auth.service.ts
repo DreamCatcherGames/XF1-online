@@ -20,6 +20,17 @@ export class AuthService {
     return this.restService.post("Admin/loginRequest",JSON.stringify(dataToSend));
   }
 
+  loginRequestUser(dataToSend):Promise<any>{
+    return this.restService.post("Player/loginRequest",JSON.stringify(dataToSend)).then( response => {
+      if(response.status == 200)
+      {
+        return response.json()
+      }else{
+        return response.text().then(text=>{throw new Error(text)});
+      }
+    })
+  }
+
   setPerfil(perf : Perfil){
     this.perfil = perf;
     console.log(this.perfil.Salt)

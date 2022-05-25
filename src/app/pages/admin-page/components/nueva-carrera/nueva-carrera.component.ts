@@ -9,6 +9,8 @@ import {CustomValidatorsService} from 'src/app/service/custom-validators.service
 import { CampeonatoService } from 'src/app/service/campeonato.service';
 import { ErrorService } from 'src/app/service/error.service';
 
+import * as countries from 'country-data';
+
 @Component({
   selector: 'app-nueva-carrera',
   templateUrl: './nueva-carrera.component.html',
@@ -22,6 +24,7 @@ export class NuevaCarreraComponent implements OnInit {
   @Input() championshipId :string;
 
   championshipName:string;
+  paises:string[];
 
   constructor(
     private fb: FormBuilder,
@@ -32,6 +35,9 @@ export class NuevaCarreraComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
+    this.paises = countries.countries.all;
+
     this.formData = this.fb.group({
        nombre: ['', Validators.required],
        startDatetime: ['', Validators.required],
