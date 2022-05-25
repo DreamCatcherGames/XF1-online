@@ -35,26 +35,5 @@ describe('CampeonatoService', () => {
     service = TestBed.inject(CampeonatoService);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-
-  it('should call get from rest when getting', ()=>{
-    service.getCampeonato('abc');
-    service.getRaces('abc');
-    service.getCurrentCampeonato();
-
-    expect(fakeRestService.get).toHaveBeenCalledTimes(3);
-  })
-
-  it('should call post from rest when creating', ()=>{
-    service.createNewCampeonato(
-      new Campeonato()
-    );
-
-    expect(fakeRestService.post).toHaveBeenCalled();
-  });
-
-
 
 });
