@@ -14,6 +14,8 @@ export class CampeonatoActualComponent implements OnInit {
 
   isShowingNuevoCampeonatoModal: boolean=false;
   isShowingNuevaCarreraModal: boolean=false;
+  isShowingNuevoPilotoModal: boolean=false;
+  isShowingNuevaEscuderiaModal: boolean=false;
 
   campeonatoActual:Campeonato={
     name:'',
@@ -47,6 +49,14 @@ export class CampeonatoActualComponent implements OnInit {
 
   closeNuevaCarreraModal():void {
     this.isShowingNuevaCarreraModal = false;
+  }
+
+  closeNuevaEscuderiaModal():void {
+    this.isShowingNuevaEscuderiaModal = false;
+  }
+
+  closeNuevoPilotoModal():void{
+    this.isShowingNuevoPilotoModal = false;
   }
 
   showHistorico():void{

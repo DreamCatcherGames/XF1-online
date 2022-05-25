@@ -1,0 +1,62 @@
+<div class="content">
+	<div class="title title__first">
+		<p>Creation of new race team</p>
+	</div>
+
+	<form [formGroup]="formData" (ngSubmit)="submit()">
+		
+		<div class="fields">
+
+			<div class="fields--nombre">
+				<div class="title">
+					<p>Name of the new pilot</p>
+				</div>
+				<mat-form-field class="field">
+					<mat-label> Name</mat-label>
+					<input matInput type="text" name="nombre" id="nameInput" formControlName="nombre">
+				</mat-form-field>
+			</div>
+
+			<div class="fields--pais">
+				<div class="title">
+					<p>Racing Team:</p>
+				</div>
+				<mat-form-field class="field" appearance="fill">
+					<mat-select formControlName="escuderia">
+						<mat-option [value]="escuderia.name" *ngFor="let escuderia of escuderias">{{escuderia.name}}</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>
+
+			<div class="fields--precio">
+				<div class="title">
+					<p>Price:</p>
+				</div>
+				<mat-form-field class="field" appearance="fill">
+					<input matInput type="number" name="precio" formControlName="precio">
+				</mat-form-field>
+			</div>
+
+			<div class="fields--image">
+				<div class="title">
+					<p>Url to the image:</p>
+				</div>
+				<mat-form-field class="field" appearance="fill">
+					<input matInput type="url" name="image" formControlName="precio">
+				</mat-form-field>
+			</div>
+
+		</div>
+
+		<p style="font-size: 0.7rem; color:gray;">* Fields are required.</p>
+
+		<div class="buttons">
+			<button mat-raised-button color="warn" (click)="closeModal()">Cancel</button>
+			<button type="submit" mat-raised-button color="primary">Create</button>
+		</div>
+
+	</form>
+
+
+</div>
+

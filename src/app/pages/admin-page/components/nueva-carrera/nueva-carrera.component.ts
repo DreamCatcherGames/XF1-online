@@ -4,6 +4,7 @@ import {CarreraService} from 'src/app/service/carrera.service';
 
 import * as moment from 'moment';
 import Swal from 'sweetalert2';
+import * as countries from 'country-data';
 
 import {CustomValidatorsService} from 'src/app/service/custom-validators.service';
 import { CampeonatoService } from 'src/app/service/campeonato.service';
@@ -16,6 +17,7 @@ import { CampeonatoService } from 'src/app/service/campeonato.service';
 export class NuevaCarreraComponent implements OnInit {
 
   formData: FormGroup;
+  paises:string[];
 
   @Output() closeEvent = new EventEmitter();
   @Input() championshipId :string;
@@ -30,6 +32,9 @@ export class NuevaCarreraComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
+    this.paises = countries.countries.all;
+
     this.formData = this.fb.group({
        nombre: ['', Validators.required],
        startDatetime: ['', Validators.required],

@@ -15,7 +15,7 @@ const routes: Routes = [
     children: [
       {
         path:'campeonato-actual',
-        canActivate:[AdminGuard],
+        //canActivate:[AdminGuard],
         component:CampeonatoActualComponent
       },{
         path:'campeonato/:champId',

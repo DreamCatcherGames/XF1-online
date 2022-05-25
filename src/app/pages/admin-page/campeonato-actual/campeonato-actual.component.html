@@ -24,6 +24,12 @@
 		<div class="buttons--historico">
 			<button mat-raised-button color="primary"  (click)="showHistorico()">View past championships</button>
 		</div>
+		<div class="new-piloto">
+			<button mat-raised-button color="primary" (click)="this.isShowingNuevoPilotoModal=true">Create new pilot</button>
+		</div>
+		<div class="new-escuderia">
+			<button mat-raised-button color="primary" (click)="this.isShowingNuevaEscuderiaModal=true">Create new racing team</button>
+		</div>
 	</div>
 </div>
 
@@ -33,4 +39,12 @@
 	
 <div class="modal modal--nueva-carrera" *ngIf="isShowingNuevaCarreraModal">
 	<app-nueva-carrera (closeEvent)="closeNuevaCarreraModal()" [championshipId]="this.campeonatoActual.id" ></app-nueva-carrera>
+</div>
+
+<div class="modal modal--nueva-escuderia" *ngIf="isShowingNuevaEscuderiaModal">
+	<app-nueva-escuderia (closeEvent)="closeNuevaEscuderiaModal()"></app-nueva-escuderia>
+</div>
+
+<div class="modal modal--nuevo-piloto" *ngIf="isShowingNuevoPilotoModal">
+	<app-nuevo-piloto (closeEvent)="closeNuevoPilotoModal()"></app-nuevo-piloto>
 </div>

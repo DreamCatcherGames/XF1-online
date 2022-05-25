@@ -12,6 +12,8 @@ import { NuevaCarreraComponent } from './nueva-carrera/nueva-carrera.component';
 import { CarreraInfoComponent } from './carrera-info/carrera-info.component';
 import { ListaCampeonatosComponent } from './lista-campeonatos/lista-campeonatos.component';
 import { CampeonatoCardComponent } from './campeonato-card/campeonato-card.component';
+import { NuevaEscuderiaComponent } from './nueva-escuderia/nueva-escuderia.component';
+import { NuevoPilotoComponent } from './nuevo-piloto/nuevo-piloto.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { CampeonatoCardComponent } from './campeonato-card/campeonato-card.compo
       CarreraInfoComponent,
       ListaCampeonatosComponent,
       CampeonatoCardComponent,
+      NuevaEscuderiaComponent,
+      NuevoPilotoComponent,
   ],
   imports: [
 	 SharedModule,
@@ -41,7 +45,9 @@ import { CampeonatoCardComponent } from './campeonato-card/campeonato-card.compo
 	  NuevaCarreraComponent,
 	  CarreraInfoComponent,
 	  ListaCampeonatosComponent,
-	  CampeonatoCardComponent
+	  CampeonatoCardComponent,
+	  NuevaEscuderiaComponent,
+	  NuevoPilotoComponent,
   ]
 })
 export class AdminComponentsModule { }
