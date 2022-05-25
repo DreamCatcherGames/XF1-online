@@ -60,8 +60,8 @@ export class RegistroComponent implements OnInit {
         }
       }).then((res)=>{
         Swal.fire(
-          'Exito!',
-          'El  usuario fue creado con exito',
+          'Success!',
+          'Please check your email, we have sent an email to verify your account.',
           'success'
         );
         this.closeModal();

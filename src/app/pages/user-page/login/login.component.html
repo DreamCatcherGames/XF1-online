@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="register-button">
-                        <button mat-stroked-button color="primry"> Register </button>
+                        <button mat-stroked-button color="primry" (click)="this.isShowingNuevoRegistroModal=true"> Register </button>
                     </div>
                 </div>
 
@@ -35,4 +35,9 @@
 
     </div>
 </form>
+
+<div class="modal" *ngIf="isShowingNuevoRegistroModal">
+	<app-registro (closeEvent)="closeNuevoRegistroModal()" ></app-registro>
+</div>
+
 </div>

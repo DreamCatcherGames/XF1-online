@@ -84,7 +84,7 @@
 		<p style="font-size: 0.7rem; color:gray;">* Fields are required.</p>
 
 		<div class="buttons">
-			<button mat-raised-button color="warn">Cancel</button>
+			<button (click)="this.closeModal()" mat-raised-button color="warn">Cancel</button>
 			<button type="submit" mat-raised-button color="primary">Create</button>
 		</div>
 	</form>
