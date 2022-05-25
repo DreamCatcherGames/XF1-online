@@ -1,0 +1,93 @@
+<div class="content">
+	<div class="title title__first">
+		<p>Account creation</p>
+	</div>
+
+	<form [formGroup]="formData" (ngSubmit)="onSubmit()">
+
+		<div class="fields">
+
+			<div class="fields--nombre">
+				<div class="title">
+					<p>Mail</p>
+				</div>
+				<mat-form-field class="field">
+					<mat-label> Email</mat-label>
+					<input matInput type="text" name="email" id="emailInput" formControlName="email">
+				</mat-form-field>
+			</div>
+
+            <div class="fields--nombre">
+				<div class="title">
+					<p>Username</p>
+				</div>
+				<mat-form-field class="field">
+					<mat-label> Username</mat-label>
+					<input matInput type="text" name="username" id="usernameInput" formControlName="username">
+				</mat-form-field>
+			</div>
+
+            <div class="fields--nombre">
+				<div class="title">
+					<p>Firstname</p>
+				</div>
+				<mat-form-field class="field">
+					<mat-label> Firstname</mat-label>
+					<input matInput type="text" name="firstname" id="firstnameInput" formControlName="firstname">
+				</mat-form-field>
+			</div>
+
+            <div class="fields--nombre">
+				<div class="title">
+					<p>Lastname</p>
+				</div>
+				<mat-form-field class="field">
+					<mat-label> Lastname</mat-label>
+					<input matInput type="text" name="lastname" id="lastnameInput" formControlName="lastname">
+				</mat-form-field>
+			</div>
+
+            <div class="fields--nombre">
+				<div class="title">
+					<p>Password</p>
+				</div>
+				<mat-form-field class="field">
+					<mat-label> Password</mat-label>
+					<input matInput type="password" name="password" id="passwordInput" formControlName="password">
+				</mat-form-field>
+			</div>
+
+			<div class="fields--nombre">
+				<div class="title">
+					<p>Country:</p>
+				</div>
+				<mat-form-field class="field" appearance="fill">
+					<mat-select formControlName="country">
+						<mat-option *ngFor="let country of countriesData" [value]="country">
+							{{country.name}}
+						</mat-option>
+
+					</mat-select>
+				</mat-form-field>
+			</div>
+
+            <div class="fields--nombre">
+				<div class="title">
+					<p>Age</p>
+				</div>
+				<mat-form-field class="field">
+					<mat-label> 22</mat-label>
+					<input matInput type="text" name="age" id="ageInput" formControlName="age">
+				</mat-form-field>
+			</div>
+
+		</div>
+
+		<p style="font-size: 0.7rem; color:gray;">* Fields are required.</p>
+
+		<div class="buttons">
+			<button (click)="this.closeModal()" mat-raised-button color="warn">Cancel</button>
+			<button type="submit" mat-raised-button color="primary">Create</button>
+		</div>
+	</form>
+</div>
