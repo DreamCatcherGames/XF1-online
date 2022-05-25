@@ -16,7 +16,6 @@ export class RegistroComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private customValidatorsService: CustomValidatorsService,
     private registroService: RegistroService
   ) { }
 
