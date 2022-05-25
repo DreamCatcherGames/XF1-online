@@ -2,6 +2,7 @@ import { Component, OnInit, Renderer2, Input } from '@angular/core';
 import { Escuderia } from 'src/app/models/Escuderia';
 import { Piloto } from 'src/app/models/piloto';
 import { AuthService } from 'src/app/service/auth.service';
+import { EquipoService } from 'src/app/service/equipo.service';
 
 @Component({
   selector: 'app-equipo-page',
@@ -26,7 +27,8 @@ export class EquipoPageComponent implements OnInit {
 
   constructor(
     private renderer:Renderer2,
-    private authService:AuthService
+    private authService:AuthService, 
+    private equipoService: EquipoService
   ) { 
     this.renderer.listen('window', 'click', e=>{
       console.log(e.target)
@@ -75,12 +77,18 @@ export class EquipoPageComponent implements OnInit {
     this.marketType='piloto';
     this.selectedFrame = frameNumber;
     this.showingMarket = true;
+    this.equipoService.getMercadoPilotos().then(res=>{
+      this.opcionesMercado = res;
+    });
   }
 
   setActiveFrameEscuderia(frameNumber:number){
     this.marketType = 'escuderia';
     this.selectedFrame = frameNumber;
     this.showingMarket = true;
+    this.equipoService.getMercadoEscuderias().then(res=>{
+      this.opcionesMercado = res;
+    });
   }
 
 }
