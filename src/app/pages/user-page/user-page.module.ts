@@ -8,7 +8,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { EquipoCardComponent } from './components/equipo-card/equipo-card.component';
-
+import { RegistroComponent } from './components/registro/registro.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -16,11 +17,13 @@ import { EquipoCardComponent } from './components/equipo-card/equipo-card.compon
     HeaderComponent,
     FooterComponent,
     ProfileComponent,
-    EquipoCardComponent
+    EquipoCardComponent,
+    RegistroComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
-    UserPageRoutingModule, 
+    UserPageRoutingModule,
     SharedModule,
     FormsModule,
     ReactiveFormsModule
