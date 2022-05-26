@@ -3,46 +3,46 @@
 		<div class="escuderia">
 			<div class="escuderia--image" [ngClass]="(selectedFrame==1?'active':'')">
 				<img #frame1 src="assets/frame.png"  class="toggleMarket" (click)="setActiveFrameEscuderia(1)">
-				<img class="escuderia--logo" src="{{this.escuderia.image}}" >
-				<p  class="escuderia--name">{{this.escuderia.nombre}}</p>
-				<p  class="escuderia--pais">{{this.escuderia.pais}}</p>
+				<img class="escuderia--logo" src="{{this.escuderia.Photo}}" >
+				<p  class="escuderia--name">{{this.escuderia.Name}}</p>
+				<p  class="escuderia--pais">{{this.escuderia.Country}}</p>
 			</div>
 		</div>
 
 		<div class="pilotos">
 				<div class="top--image image-div piloto" [ngClass]="(selectedFrame==2?'active':'')">
 					<img  src="assets/frame.png"  class="piloto toggleMarket"(click)="setActiveFrame(2)">
-					<img src="{{this.pilotos[1].image}}"  class="piloto--image">
-					<p  class="piloto--name">{{this.pilotos[1].nombre}}</p>
+					<img src="{{this.pilotos[1].Photo}}"  class="piloto--image">
+					<p  class="piloto--name">{{this.pilotos[1].Name}}</p>
 				</div>
 				<div class="top--image image-div"[ngClass]="(selectedFrame==3?'active':'')">
 					<img  src="assets/frame.png" alt="Frame" class="piloto toggleMarket"(click)="setActiveFrame(3)">
-					<img src="{{this.pilotos[2].image}}"  class="piloto--image">
-					<p  class="piloto--name">{{this.pilotos[2].nombre}}</p>
+					<img src="{{this.pilotos[2].Photo}}"  class="piloto--image">
+					<p  class="piloto--name">{{this.pilotos[2].Name}}</p>
 				</div>
 				<div class="top--image image-div"[ngClass]="(selectedFrame==4?'active':'')">
 					<img src="assets/frame.png" alt="Frame" class="piloto toggleMarket"(click)="setActiveFrame(4)">
-					<img src="{{this.pilotos[3].image}}"  class="piloto--image">
-					<p  class="piloto--name">{{this.pilotos[3].nombre}}</p>
+					<img src="{{this.pilotos[3].Photo}}"  class="piloto--image">
+					<p  class="piloto--name">{{this.pilotos[3].Name}}</p>
 				</div>
 				<div class="bottom--image image-div"[ngClass]="(selectedFrame==5?'active':'')">
 					<img src="assets/frame.png" alt="Frame" class="piloto toggleMarket"(click)="setActiveFrame(5)">
-					<img src="{{this.pilotos[4].image}}"  class="piloto--image">
-					<p  class="piloto--name">{{this.pilotos[4].nombre}}</p>
+					<img src="{{this.pilotos[4].Photo}}"  class="piloto--image">
+					<p  class="piloto--name">{{this.pilotos[4].Name}}</p>
 				</div>
 				<div class="bottom--image image-div"[ngClass]="(selectedFrame==6?'active':'')">
 					<img src="assets/frame.png" alt="Frame" class="piloto toggleMarket"(click)="setActiveFrame(6)">
-					<img src="{{this.pilotos[0].image}}"  class="piloto--image">
-					<p  class="piloto--name">{{this.pilotos[0].nombre}}</p>
+					<img src="{{this.pilotos[0].Photo}}"  class="piloto--image">
+					<p  class="piloto--name">{{this.pilotos[0].Name}}</p>
 				</div>
 		</div>
 
 		<div class="buttons">
 			<div class="cancel">
-				<button mat-raised-button color="warn">Cancel</button>
+				<button mat-raised-button color="warn" (click)="goToLeaderboards()">Cancel</button>
 			</div>
 			<div class="Guardar">
-				<button mat-raised-button color="primary">Save</button>
+				<button mat-raised-button color="primary" (click)="saveTeam()">Save</button>
 			</div>
 		</div>
 	</div>
@@ -54,7 +54,7 @@
 			</div>
 
 			<div class="saldo">
-				<p>{{this.authService.perfilUsuario?this.authService.perfilUsuario.saldo:1000000}}</p>
+				<p>${{this.authService.perfilUsuario?this.authService.perfilUsuario.Money.toFixed(2):1000000}}</p>
 			</div>	
 		</div>
 
@@ -77,19 +77,19 @@
 						</div>
 					</div>
 					<div class="down">
-						<div class="escuderia">
+						<div class="escuderia" *ngIf="this.marketType=='piloto'">
 							<mat-form-field>
 								<mat-label>Escuderia</mat-label>
 								<mat-select>
-									<mat-option value="one">First</mat-option>
+									<mat-option [value]="'a'">First</mat-option>
 								</mat-select>
 							</mat-form-field>
 						</div>
-						<div class="pais">
+						<div class="pais" *ngIf="this.marketType=='escuderia'">
 							<mat-form-field>
 								<mat-label>Pais</mat-label>
 								<mat-select>
-									<mat-option value="one">First</mat-option>
+									<mat-option *ngIf="let pais of paises" [value]="pais.name">{{pais.name}}</mat-option>
 								</mat-select>
 							</mat-form-field>
 						</div>
@@ -101,14 +101,14 @@
 			<div class="opciones">
 				<div class="card-item" *ngFor="let opcion of this.opcionesMercado" (click)='buyOpcion(opcion)'>
 					<div class="image">
-						<img src="{{opcion.image}}" alt="Imagen de piloto">
+						<img src="{{opcion.Photo}}" alt="Imagen de piloto">
 					</div>
 					<div class="description">
 						<div class="nombre">
-							<p>{{opcion.nombre}}</p>
+							<p>{{opcion.Name}}</p>
 						</div>
 						<div class="precio">
-							<p>{{opcion.precio}}</p>
+							<p>Price: ${{opcion.Price}}</p>
 						</div>
 					</div>
 				</div>

@@ -1,9 +1,11 @@
 import { Component, OnInit, Renderer2, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Escuderia } from 'src/app/models/Escuderia';
 import { Piloto } from 'src/app/models/piloto';
 import { AuthService } from 'src/app/service/auth.service';
 import { EquipoService } from 'src/app/service/equipo.service';
 import Swal from 'sweetalert2';
+import * as countries from 'country-data';
 
 @Component({
   selector: 'app-equipo-page',
@@ -27,11 +29,14 @@ export class EquipoPageComponent implements OnInit {
   // Objetos del equipo
   escuderia:Escuderia;
   pilotos:Piloto[]=[];
+  escuderias:string[];
+  paises:string[];
 
   constructor(
     private renderer:Renderer2,
     private authService:AuthService, 
-    private equipoService: EquipoService
+    private equipoService: EquipoService,
+    private router: Router
   ) { 
     this.renderer.listen('window', 'click', e=>{
       console.log(e.target)
@@ -45,34 +50,52 @@ export class EquipoPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.paises = countries.countries.all;
     if(!this.authService.perfilUsuario || !this.escuderiaInputJson || this.pilotosInputJson){
       this.escuderia = {
-        nombre:'',
-        pais:'',
-        precio:0, 
-        image:''
+        Name:'',
+        Country:'',
+        Price:0, 
+        Photo:''
       };
       for(let i=0;i<5;i++){
         this.pilotos[i] = {
-          nombre:'',
-          image:'' ,
-          precio:0,
-          escuderia:''
+          Name:'',
+          Photo:'' ,
+          Price:0,
+          Racing_Team:''
         };
       }
     }else{
+      console.log(this.authService.perfilUsuario)
       this.escuderia = JSON.parse(this.escuderiaInputJson);
       this.pilotos = JSON.parse(this.pilotosInputJson);
     }
   }
 
   buyOpcion(opcion:Escuderia|Piloto){
+    let returnedMoney = 0;
+    if(this.authService.perfilUsuario.Money < opcion.Price){
+      Swal.fire('Not enough money', 'You dont have enough money to buy this!', 'warning');
+      return;
+    }
     if(this.selectedFrame == 1){
+      if(this.escuderia){
+        returnedMoney += this.escuderia.Price;
+      }
       this.escuderia = opcion as Escuderia;
     }else{
-      this.pilotos[this.selectedFrame-1] = opcion as Piloto;
+      const pilotoActual = this.pilotos[this.selectedFrame-1];
+      if(this.pilotos.find(e=>e.Name==opcion.Name)){
+        Swal.fire('Error', 'This pilot is already present in your team', 'error');
+        return; 
+      }
+      if(pilotoActual){
+        returnedMoney += pilotoActual.Price;
+      }
+      this.pilotos[this.selectedFrame==6?0:this.selectedFrame-1] = opcion as Piloto;
     }
-    this.authService.perfilUsuario.saldo -= opcion.precio;
+    this.authService.perfilUsuario.Money -= (opcion.Price - returnedMoney);
   }
 
   showMore(){
@@ -123,6 +146,61 @@ export class EquipoPageComponent implements OnInit {
         Swal.close();
       }
     });
+  }
+
+  isTeamComplete(){
+    let teamComplete = true;
+    if(this.escuderia && this.escuderia.Name != ''){
+      this.pilotos.forEach(piloto =>{
+        if(piloto && piloto.Name != ''){
+          teamComplete = teamComplete && true;
+        }else{
+          teamComplete = false;
+        }
+      });
+    }else{
+      teamComplete = false;
+    }
+    return teamComplete;
+  }
+
+  saveTeam(){
+    Swal.fire('Loading', 'Please wait...');
+    Swal.showLoading();
+    if(this.authService.perfilUsuario.Money < 0){
+      Swal.fire('Not enough money', 'You dont have enough money to build this team!', 'warning');
+      return;
+    }
+    if(!this.isTeamComplete()){
+      Swal.fire('Team is not complete', 'Please chose 1 racing team and 5 pilots in order to save your new team!', 'warning');
+      return;
+    }
+    if(this.equipoService.editingTeam == 'Team 1'){
+      this.authService.perfilUsuario.Teams[0] = {
+        Racing_Team:this.escuderia,
+        Pilots:this.pilotos,
+        Name:'Team 1',
+        Username:this.authService.perfilUsuario.Username,
+        Racing_Team_Name:this.escuderia.Name
+      }
+    }else{
+      this.authService.perfilUsuario.Teams[1] = {
+        Racing_Team:this.escuderia,
+        Pilots:this.pilotos,
+        Name:'Team 2',
+        Username:this.authService.perfilUsuario.Username,
+        Racing_Team_Name:this.escuderia.Name
+      }
+    }
+    this.equipoService.uploadEquipo(this.authService.perfilUsuario).then(res=>{
+      Swal.fire('Success','Your teams have been updated!');
+      this.goToLeaderboards();
+    });
+  }
+
+  goToLeaderboards(){
+    // CAMBIAR
+    this.router.navigateByUrl('/user');
   }
 
 }

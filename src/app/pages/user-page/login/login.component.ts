@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit {
         }
       }).then(response=>{
         this.authService.perfilUsuario = response as PerfilUsuario;
+        console.log(this.authService.perfilUsuario);
         this.router.navigateByUrl('/user/equipo')
         Swal.close();
       }).catch( error => {

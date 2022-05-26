@@ -2,21 +2,40 @@ import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Equipo } from '../models/equipo';
 import { Escuderia } from '../models/Escuderia';
+import { PerfilUsuario } from '../models/perfilUsuario';
 import { Piloto } from '../models/piloto';
 import { AuthService } from './auth.service';
+import { ErrorService } from './error.service';
 import { RestService } from './rest.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EquipoService {
+
+  editingTeam:string='Team 1';
+
   constructor(
     private restService:RestService,
-    private authService:AuthService
+    private authService:AuthService,
+    private errorService: ErrorService
   ) { }
 
-  uploadEquipo(equipoToUpload:Equipo):Promise<any>{
-    return new Promise(resolve=>null);
+  uploadEquipo(perfilUpdated:PerfilUsuario):Promise<any>{
+    return this.restService.put(
+      '/Player/updateProfile/' + this.authService.perfilUsuario.Token + '/'+this.authService.perfilUsuario.Salt,
+      JSON.stringify(perfilUpdated)
+    ).then(res=>{
+      if(res.ok){
+        return res.text();
+      }else{
+        throw res;
+      }
+    }).catch(err=>{
+      this.errorService.handle(err);
+    }).catch(err=>{
+      Swal.fire('Error', 'There has been an unknown error', 'error');
+    });
   }
 
   getMercadoEscuderias(pageNumber:number):Promise<Escuderia[] | any >{
@@ -35,12 +54,7 @@ export class EquipoService {
       const escuderiaArray:Escuderia[]=[];
 
       res.forEach(element=>{
-        escuderiaArray.push({
-          nombre:element.Name,
-          pais:element.Country,
-          precio:element.Price,
-          image:element.Photo
-        });
+        escuderiaArray.push(element as Escuderia);
       })
 
       return escuderiaArray;
@@ -67,12 +81,7 @@ export class EquipoService {
       const pilotoArray:Piloto[]=[];
 
       res.forEach(element=>{
-        pilotoArray.push({
-          nombre:element.Name,
-          escuderia:element.Racing_Team,
-          precio:element.Price,
-          image:element.Photo
-        });
+        pilotoArray.push(element as Piloto);
       })
 
       return pilotoArray;

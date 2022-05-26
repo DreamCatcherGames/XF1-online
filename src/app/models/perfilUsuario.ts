@@ -1,9 +1,7 @@
 import { Equipo } from "./equipo";
 
 export class PerfilUsuario {
-	equipoA:Equipo;
-	equipoB:Equipo;
-	saldo:number;
+	Teams:Equipo[];
 	Username:string;
 	Country:string;
 	First_Name:string;
