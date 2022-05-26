@@ -85,28 +85,5 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should not call rest when formData is invalid', ()=>{
-    // Act
-    component.onSubmit();
-    // Expect
-    expect(fakeAuthService.loginRequestUser).not.toHaveBeenCalled();
-  });
-
-  it('should call rest when formData is valid', () => {
-    // Act
-    setValidFormData();
-    component.onSubmit();
-    // Expect
-    expect(fakeAuthService.loginRequestUser).toHaveBeenCalled();
-  })
-
-  it('should navigate to campeonato actual after succesful submission', fakeAsync(() => {
-    // Act
-    setValidFormData();
-    component.onSubmit();
-    tick();
-    // Expect
-    expect(fakeRouter.navigateByUrl).toHaveBeenCalled();
-  }));
 
 });

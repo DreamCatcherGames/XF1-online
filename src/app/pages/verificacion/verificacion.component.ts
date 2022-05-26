@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ErrorService } from 'src/app/service/error.service';
 import { RestService } from 'src/app/service/rest.service';
 import Swal from 'sweetalert2';
 
@@ -10,11 +11,12 @@ import Swal from 'sweetalert2';
 })
 export class VerificacionComponent implements OnInit {
 
-  token:string;
+  token:string='';
 
   constructor(
     private restService: RestService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute, 
+    private errorService: ErrorService
   ) { }
 
   ngOnInit(): void {
@@ -23,10 +25,19 @@ export class VerificacionComponent implements OnInit {
       html: 'Verifying your user',
       allowOutsideClick: false
     });
-    Swal.showLoading();
-
+    this.errorService.showLoading();
     this.token = this.activatedRoute.snapshot.paramMap.get('token');
-    console.log(this.token);
+    this.restService.post('Player/verificationRequest', JSON.stringify({Token:this.token})).then(res=>{
+      if(res.status == 200){
+        return res.text();
+      }else{
+        throw res;
+      }
+    }).then(res=>{
+      Swal.fire('Success!', 'You can close this window and login to the platform');
+    }).catch(err=>{
+      this.errorService.handle(err);
+    });
 
 //    this.restService.post()
 
