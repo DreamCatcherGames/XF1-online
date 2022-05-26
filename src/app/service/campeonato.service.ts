@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { RestService } from './rest.service';
 import { Campeonato } from 'src/app/models/campeonato';
 import { Carrera } from 'src/app/models/carrera';
+import { AuthService } from './auth.service';
 
 // Server Classes
 class requestCampeonato {
@@ -50,12 +51,13 @@ export class CampeonatoService {
 
   constructor(
     private restService:RestService,
+    private authService: AuthService,
   ) { }
 
   async getAllButCurrent():Promise<Campeonato[]> {
 
     const httpResponse:responseCampeonato[] = await this.restService.get(
-      'Championship/getNotCurrentChampionship/'+'/'+this.authToken+'/'+this.salt
+      'Championship/getNotCurrentChampionship/'+'/'+this.authService.perfil.Token+'/'+this.authService.perfil.Salt
     ).then(response=>{
       return response.json();
     });
@@ -91,14 +93,14 @@ export class CampeonatoService {
     };
 
     return this.restService.post(
-      'Championship/addChampionship/'+this.authToken+'/'+this.salt, 
+      'Championship/addChampionship/'+this.authService.perfil.Token+'/'+this.authService.perfil.Salt, 
       JSON.stringify(requestCampeonatoObj));
 
   }
 
   async getRaces(campeonatoId:string){
     const httpResponse:responseRace[] = await this.restService.get(
-      'Race/getRacesChamp/'+campeonatoId+'/'+this.authToken+'/'+this.salt
+      'Race/getRacesChamp/'+campeonatoId+'/'+this.authService.perfil.Token+'/'+this.authService.perfil.Salt
     ).then(response=>{
       return response.json();
     });
@@ -124,7 +126,7 @@ export class CampeonatoService {
 
   async getCurrentCampeonato(){
     const httpResponse:responseCampeonato = await this.restService.get(
-      'Championship/getCurrentChampionship/'+this.authToken+'/'+this.salt
+      'Championship/getCurrentChampionship/'+this.authService.perfil.Token+'/'+this.authService.perfil.Salt
     ).then(response=>{
       return response.json();
     });
@@ -147,7 +149,7 @@ export class CampeonatoService {
   async getCampeonato(champId:string):Promise<Campeonato>{
 
     const httpResponse:responseCampeonato = await this.restService.get(
-      'Championship/getChampionship/'+champId+'/'+ this.authToken+'/'+this.salt
+      'Championship/getChampionship/'+champId+'/'+ this.authService.perfil.Token+'/'+this.authService.perfil.Salt
     ).then(response=>{
       return response.json();
     });

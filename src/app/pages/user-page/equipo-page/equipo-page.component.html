@@ -2,8 +2,8 @@
 	<div class="conformacion"> 
 		<div class="escuderia">
 			<div class="escuderia--image" [ngClass]="(selectedFrame==1?'active':'')">
-				<img #frame1 src="assets/frame.png" alt="Frame" class="toggleMarket" (click)="setActiveFrameEscuderia(1)">
-				<img class="escuderia--logo" src="{{this.escuderia.image}}" alt="Escudery logo">
+				<img #frame1 src="assets/frame.png"  class="toggleMarket" (click)="setActiveFrameEscuderia(1)">
+				<img class="escuderia--logo" src="{{this.escuderia.image}}" >
 				<p  class="escuderia--name">{{this.escuderia.nombre}}</p>
 				<p  class="escuderia--pais">{{this.escuderia.pais}}</p>
 			</div>
@@ -11,28 +11,28 @@
 
 		<div class="pilotos">
 				<div class="top--image image-div piloto" [ngClass]="(selectedFrame==2?'active':'')">
-					<img  src="assets/frame.png" alt="Frame" class="piloto toggleMarket"(click)="setActiveFrame(2)">
-					<img src="{{this.pilotos[1].image}}" alt="Sample" class="piloto--image">
+					<img  src="assets/frame.png"  class="piloto toggleMarket"(click)="setActiveFrame(2)">
+					<img src="{{this.pilotos[1].image}}"  class="piloto--image">
 					<p  class="piloto--name">{{this.pilotos[1].nombre}}</p>
 				</div>
 				<div class="top--image image-div"[ngClass]="(selectedFrame==3?'active':'')">
 					<img  src="assets/frame.png" alt="Frame" class="piloto toggleMarket"(click)="setActiveFrame(3)">
-					<img src="{{this.pilotos[2].image}}" alt="Sample" class="piloto--image">
+					<img src="{{this.pilotos[2].image}}"  class="piloto--image">
 					<p  class="piloto--name">{{this.pilotos[2].nombre}}</p>
 				</div>
 				<div class="top--image image-div"[ngClass]="(selectedFrame==4?'active':'')">
 					<img src="assets/frame.png" alt="Frame" class="piloto toggleMarket"(click)="setActiveFrame(4)">
-					<img src="{{this.pilotos[3].image}}" alt="Sample" class="piloto--image">
+					<img src="{{this.pilotos[3].image}}"  class="piloto--image">
 					<p  class="piloto--name">{{this.pilotos[3].nombre}}</p>
 				</div>
 				<div class="bottom--image image-div"[ngClass]="(selectedFrame==5?'active':'')">
 					<img src="assets/frame.png" alt="Frame" class="piloto toggleMarket"(click)="setActiveFrame(5)">
-					<img src="{{this.pilotos[4].image}}" alt="Sample" class="piloto--image">
+					<img src="{{this.pilotos[4].image}}"  class="piloto--image">
 					<p  class="piloto--name">{{this.pilotos[4].nombre}}</p>
 				</div>
 				<div class="bottom--image image-div"[ngClass]="(selectedFrame==6?'active':'')">
 					<img src="assets/frame.png" alt="Frame" class="piloto toggleMarket"(click)="setActiveFrame(6)">
-					<img src="{{this.pilotos[0].image}}" alt="Sample" class="piloto--image">
+					<img src="{{this.pilotos[0].image}}"  class="piloto--image">
 					<p  class="piloto--name">{{this.pilotos[0].nombre}}</p>
 				</div>
 		</div>
@@ -101,7 +101,7 @@
 			<div class="opciones">
 				<div class="card-item" *ngFor="let opcion of this.opcionesMercado" (click)='buyOpcion(opcion)'>
 					<div class="image">
-						<img src="{{opcion.imagen}}" alt="Imagen de piloto">
+						<img src="{{opcion.image}}" alt="Imagen de piloto">
 					</div>
 					<div class="description">
 						<div class="nombre">
@@ -112,6 +112,7 @@
 						</div>
 					</div>
 				</div>
+				<button mat-raised-button color="primary" (click)="showMore()" >Show more</button>
 			
 			</div>
 

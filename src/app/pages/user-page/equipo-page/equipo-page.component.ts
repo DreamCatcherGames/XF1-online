@@ -3,6 +3,7 @@ import { Escuderia } from 'src/app/models/Escuderia';
 import { Piloto } from 'src/app/models/piloto';
 import { AuthService } from 'src/app/service/auth.service';
 import { EquipoService } from 'src/app/service/equipo.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-equipo-page',
@@ -20,6 +21,8 @@ export class EquipoPageComponent implements OnInit {
   showingMarket:boolean = false;
   marketType:string = '';
   opcionesMercado:Escuderia[]|Piloto[] = [];
+  currentPage:number;
+  existsMoreContent;
 
   // Objetos del equipo
   escuderia:Escuderia;
@@ -42,7 +45,7 @@ export class EquipoPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(!this.authService.perfilUsuario){
+    if(!this.authService.perfilUsuario || !this.escuderiaInputJson || this.pilotosInputJson){
       this.escuderia = {
         nombre:'',
         pais:'',
@@ -54,7 +57,6 @@ export class EquipoPageComponent implements OnInit {
           nombre:'',
           image:'' ,
           precio:0,
-          pais: '',
           escuderia:''
         };
       }
@@ -66,28 +68,60 @@ export class EquipoPageComponent implements OnInit {
 
   buyOpcion(opcion:Escuderia|Piloto){
     if(this.selectedFrame == 1){
-      this.escuderia = opcion;
+      this.escuderia = opcion as Escuderia;
     }else{
       this.pilotos[this.selectedFrame-1] = opcion as Piloto;
     }
     this.authService.perfilUsuario.saldo -= opcion.precio;
   }
 
+  showMore(){
+    this.currentPage += 1; 
+    console.log(this.marketType);
+    if(this.marketType=='piloto'){
+      this.equipoService.getMercadoPilotos(this.currentPage).then(res=>{
+        if(res){
+          res.forEach(e=>(this.opcionesMercado as Piloto[]).push(e as Piloto));
+          Swal.close();
+        }
+      })
+    }else{
+      this.equipoService.getMercadoEscuderias(this.currentPage).then(res=>{
+        if(res){
+          res.forEach(e=>(this.opcionesMercado as Escuderia[]).push(e as Escuderia));
+          Swal.close();
+        }
+      })
+    }
+  }
+
   setActiveFrame(frameNumber:number){
+    Swal.fire('Loading', 'Fetching available pilots, please wait');
+    Swal.showLoading();
     this.marketType='piloto';
     this.selectedFrame = frameNumber;
     this.showingMarket = true;
-    this.equipoService.getMercadoPilotos().then(res=>{
-      this.opcionesMercado = res;
+    this.currentPage = 0; 
+    this.equipoService.getMercadoPilotos(this.currentPage).then(res=>{
+      if(res){
+        this.opcionesMercado = res;
+        Swal.close();
+      }
     });
   }
 
   setActiveFrameEscuderia(frameNumber:number){
+    Swal.fire('Loading', 'Fetching available racing teams, please wait');
+    Swal.showLoading();
     this.marketType = 'escuderia';
     this.selectedFrame = frameNumber;
     this.showingMarket = true;
-    this.equipoService.getMercadoEscuderias().then(res=>{
-      this.opcionesMercado = res;
+    this.currentPage = 0; 
+    this.equipoService.getMercadoEscuderias(this.currentPage).then(res=>{
+      if(res){
+        this.opcionesMercado = res;
+        Swal.close();
+      }
     });
   }
 

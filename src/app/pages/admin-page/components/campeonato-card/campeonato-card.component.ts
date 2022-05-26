@@ -17,7 +17,7 @@ export class CampeonatoCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.campeonato = {
+    this.campeonato = this.campeonato?this.campeonato:{
       id:'',
       name:'',
       isCurrentChamp:false,
