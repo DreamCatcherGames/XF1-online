@@ -4,7 +4,6 @@ import {CarreraService} from 'src/app/service/carrera.service';
 
 import * as moment from 'moment';
 import Swal from 'sweetalert2';
-import * as countries from 'country-data';
 
 import {CustomValidatorsService} from 'src/app/service/custom-validators.service';
 import { CampeonatoService } from 'src/app/service/campeonato.service';
@@ -26,7 +25,6 @@ export class NuevaCarreraComponent implements OnInit {
   @Input() championshipId :string;
 
   championshipName:string;
-  paises:string[];
 
   constructor(
     private fb: FormBuilder,
