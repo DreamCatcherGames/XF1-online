@@ -38,8 +38,7 @@ export class NuevaEscuderiaComponent implements OnInit {
   }
 
   submit(){
-    console.log(this.formData);
-    //this.errorService.showLoading();
+    this.errorService.showLoading();
     if(this.formData.valid){
       this.escuderiaService.createNewEscuderia({
         Name:this.formData.value.nombre,
