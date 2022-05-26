@@ -2,6 +2,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
+import { VerificacionComponent } from './verificacion/verificacion.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,10 @@ const routes: Routes = [
 		  {
 			  path:'user',
 			  loadChildren: () => import('./user-page/user-page.module').then((m)=>m.UserPageModule)
+		  },
+		  {
+			path:'emailVerification/:token',
+			component:VerificacionComponent
 		  },
 		  {
 			  path:'',

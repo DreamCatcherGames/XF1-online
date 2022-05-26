@@ -5,10 +5,12 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { AdminComponentsModule } from './admin-page/components/admin-components.module';
 import { FormsModule } from '@angular/forms';
+import { VerificacionComponent } from './verificacion/verificacion.component';
 
 @NgModule({
   declarations: [
     PagesComponent,
+    VerificacionComponent,
   ],
   imports: [
     CommonModule,
