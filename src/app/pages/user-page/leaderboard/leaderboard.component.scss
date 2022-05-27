@@ -21,3 +21,20 @@ i{
     align-self: end;
     margin: 1rem 2rem;
 }
+
+
+.fa-user{
+    background-color: white;
+    padding: .5rem;
+    border-radius: 15rem;
+    font-size: 1.5rem;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.tabTitle{
+    background-color:white;
+    margin: 0;
+    padding: .5rem 1rem;
+}
