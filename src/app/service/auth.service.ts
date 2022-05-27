@@ -26,7 +26,6 @@ export class AuthService {
 
   setPerfil(perf : Perfil){
     this.perfil = perf;
-    console.log(this.perfil.Salt)
   }
 
   getPerfil(perfil:Perfil){

@@ -25,11 +25,13 @@ export class EquipoPageComponent implements OnInit {
   opcionesMercado:Escuderia[]|Piloto[] = [];
   currentPage:number;
   existsMoreContent;
+  filtro2:string=null;
+  filtroNombre:string=null;
 
   // Objetos del equipo
   escuderia:Escuderia;
   pilotos:Piloto[]=[];
-  escuderias:string[];
+  escuderias:string[]= [];
   paises:string[];
 
   constructor(
@@ -39,19 +41,25 @@ export class EquipoPageComponent implements OnInit {
     private router: Router
   ) { 
     this.renderer.listen('window', 'click', e=>{
-      console.log(e.target)
       if(
           e.target.className.includes("conformacion") || e.target.className.includes("escuderia") || e.target.className.includes("pilotos")
         ){
           this.showingMarket = false;
           this.selectedFrame = 0;
+          this.filtro2 = null;
+          this.filtroNombre = null;
         }
     })
   }
 
   ngOnInit(): void {
     this.paises = countries.countries.all;
-    if(!this.authService.perfilUsuario || !this.escuderiaInputJson || this.pilotosInputJson){
+    this.equipoService.getAllEscuderias().then((res:Escuderia[]|any)=>{
+      if(res as Escuderia){
+        res.forEach(e=>this.escuderias.push(e.Name));
+      }
+    })
+    if(!this.authService.perfilUsuario){
       this.escuderia = {
         Name:'',
         Country:'',
@@ -67,18 +75,14 @@ export class EquipoPageComponent implements OnInit {
         };
       }
     }else{
-      console.log(this.authService.perfilUsuario)
-      this.escuderia = JSON.parse(this.escuderiaInputJson);
-      this.pilotos = JSON.parse(this.pilotosInputJson);
+      console.log(this.equipoService.editingRacingTeam)
+      this.escuderia = this.equipoService.editingRacingTeam;
+      this.pilotos = this.equipoService.editingPilotos;
     }
   }
 
   buyOpcion(opcion:Escuderia|Piloto){
     let returnedMoney = 0;
-    if(this.authService.perfilUsuario.Money < opcion.Price){
-      Swal.fire('Not enough money', 'You dont have enough money to buy this!', 'warning');
-      return;
-    }
     if(this.selectedFrame == 1){
       if(this.escuderia){
         returnedMoney += this.escuderia.Price;
@@ -91,6 +95,10 @@ export class EquipoPageComponent implements OnInit {
         return; 
       }
       if(pilotoActual){
+        if(this.authService.perfilUsuario.Money+pilotoActual.Price < opcion.Price){
+          Swal.fire('Not enough money', 'You dont have enough money to buy this!', 'warning');
+          return;
+        }
         returnedMoney += pilotoActual.Price;
       }
       this.pilotos[this.selectedFrame==6?0:this.selectedFrame-1] = opcion as Piloto;
@@ -125,7 +133,7 @@ export class EquipoPageComponent implements OnInit {
     this.selectedFrame = frameNumber;
     this.showingMarket = true;
     this.currentPage = 0; 
-    this.equipoService.getMercadoPilotos(this.currentPage).then(res=>{
+    this.equipoService.getMercadoPilotos(this.currentPage, this.filtroNombre, this.filtro2).then(res=>{
       if(res){
         this.opcionesMercado = res;
         Swal.close();
@@ -140,7 +148,7 @@ export class EquipoPageComponent implements OnInit {
     this.selectedFrame = frameNumber;
     this.showingMarket = true;
     this.currentPage = 0; 
-    this.equipoService.getMercadoEscuderias(this.currentPage).then(res=>{
+    this.equipoService.getMercadoEscuderias(this.currentPage, this.filtroNombre, this.filtro2).then(res=>{
       if(res){
         this.opcionesMercado = res;
         Swal.close();
@@ -201,6 +209,15 @@ export class EquipoPageComponent implements OnInit {
   goToLeaderboards(){
     // CAMBIAR
     this.router.navigateByUrl('/user');
+  }
+
+  filter(){
+    this.filtroNombre = this.filtroNombre==''?null:this.filtroNombre;
+    if(this.marketType == 'piloto'){
+      this.setActiveFrame(this.selectedFrame);
+    }else{
+      this.setActiveFrameEscuderia(this.selectedFrame);
+    }
   }
 
 }

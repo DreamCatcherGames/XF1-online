@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import { Perfil } from 'src/app/models/perfil';
 import { PerfilUsuario } from 'src/app/models/perfilUsuario';
 import { AuthService } from 'src/app/service/auth.service';
+import { EquipoService } from 'src/app/service/equipo.service';
 import { ErrorService } from 'src/app/service/error.service';
 
 import Swal from 'sweetalert2';
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     public authService: AuthService,
-    private errorService: ErrorService
+    private errorService: ErrorService, 
+    private equipoService: EquipoService
   ) {
    }
 
@@ -52,6 +54,8 @@ export class LoginComponent implements OnInit {
       }).then(response=>{
         this.authService.perfilUsuario = response as PerfilUsuario;
         console.log(this.authService.perfilUsuario);
+        this.equipoService.editingRacingTeam = this.authService.perfilUsuario.Teams[0].Racing_Team;
+        this.equipoService.editingPilotos = this.authService.perfilUsuario.Teams[0].Pilots;
         this.router.navigateByUrl('/user/equipo')
         Swal.close();
       }).catch( error => {

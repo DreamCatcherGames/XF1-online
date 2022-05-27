@@ -14,6 +14,8 @@ import { RestService } from './rest.service';
 export class EquipoService {
 
   editingTeam:string='Team 1';
+  editingRacingTeam:Escuderia;
+  editingPilotos:Piloto[];
 
   constructor(
     private restService:RestService,
@@ -38,12 +40,32 @@ export class EquipoService {
     });
   }
 
-  getMercadoEscuderias(pageNumber:number):Promise<Escuderia[] | any >{
+  getAllEscuderias():Promise<Escuderia[] | any>{
+    return this.restService.get(
+      'RacingTeams/getAllRacingTeams/' + this.authService.perfilUsuario.Token + '/'+this.authService.perfilUsuario.Salt
+    ).then(res=>{
+      if(res.ok){
+        return res.json();
+      }else{
+        throw res;
+      }
+    }).catch(err=>{
+      this.errorService.handle(err);
+    }).catch(err=>{
+      Swal.fire('Error', 'There has been an unknown error', 'error');
+    })
+  }
+
+  getMercadoEscuderias(pageNumber:number, filtroNombre?:string, filtroPais?:string):Promise<Escuderia[] | any >{
     const pageSize = 5;
     
-    return this.restService.get(
-      'RacingTeams/getPage/' + this.authService.perfilUsuario.Token + '/'+this.authService.perfilUsuario.Salt + '/' + 
-      pageSize + '/' + pageNumber
+    return this.restService.post(
+      'RacingTeams/searchRacingTeam/' + this.authService.perfilUsuario.Token + '/'+this.authService.perfilUsuario.Salt + '/' + 
+      pageSize + '/' + pageNumber,
+      JSON.stringify({
+        Name:filtroNombre,
+        Country:filtroPais
+      })
     ).then(res=>{
         if(res.ok){
           return res.json();
@@ -64,13 +86,17 @@ export class EquipoService {
     });
   }
 
-  getMercadoPilotos(pageNumber:number):Promise<void | Piloto[]>{
+  getMercadoPilotos(pageNumber:number, filtroNombre?:string, filtroEscuderia?:string):Promise<void | Piloto[]>{
 
     const pageSize = 5;
     
-    return this.restService.get(
-      'Pilots/getPage/' + this.authService.perfilUsuario.Token + '/'+this.authService.perfilUsuario.Salt + '/' + 
-      pageSize + '/' + pageNumber
+    return this.restService.post(
+      'Pilots/searchPilot/' + this.authService.perfilUsuario.Token + '/'+this.authService.perfilUsuario.Salt + '/' + 
+      pageSize + '/' + pageNumber,
+      JSON.stringify({
+        Name:filtroNombre,
+        Racing_Team:filtroEscuderia  
+      })
     ).then(res=>{
         if(res.ok){
           return res.json();

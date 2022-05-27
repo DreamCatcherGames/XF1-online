@@ -72,7 +72,7 @@
 						<div class="nombre">
 							<mat-form-field appearance="fill" color="warn">
 								<mat-label>Nombre</mat-label>
-								<input matInput>
+								<input (change)='filter()' [(ngModel)]="filtroNombre" matInput>
 							</mat-form-field>
 						</div>
 					</div>
@@ -80,16 +80,17 @@
 						<div class="escuderia" *ngIf="this.marketType=='piloto'">
 							<mat-form-field>
 								<mat-label>Escuderia</mat-label>
-								<mat-select>
-									<mat-option [value]="'a'">First</mat-option>
+								<mat-select (selectionChange)="filter()" [(ngModel)]="filtro2">
+									<mat-option  *ngFor='let nameEscuderia of escuderias' [value]="nameEscuderia">{{nameEscuderia}}</mat-option>
 								</mat-select>
 							</mat-form-field>
 						</div>
 						<div class="pais" *ngIf="this.marketType=='escuderia'">
 							<mat-form-field>
 								<mat-label>Pais</mat-label>
-								<mat-select>
-									<mat-option *ngIf="let pais of paises" [value]="pais.name">{{pais.name}}</mat-option>
+								<mat-select (selectionChange)='filter()' [(ngModel)]="filtro2">
+									<mat-option [value]="null" default></mat-option>
+									<mat-option *ngFor="let pais of paises" [value]="pais.name">{{pais.name}}</mat-option>
 								</mat-select>
 							</mat-form-field>
 						</div>

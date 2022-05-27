@@ -63,7 +63,7 @@
 				</div>
 				<mat-form-field class="field" appearance="fill">
 					<mat-select formControlName="pais">
-						<mat-option [value]="'Costa Rica'" *ngFor="let pais of paises" [value]="pais.name">{{pais.name}}</mat-option>
+						<mat-option [value]="pais.name" *ngFor="let pais of paises" [value]="pais.name">{{pais.name}}</mat-option>
 					</mat-select>
 				</mat-form-field>
 			</div>
