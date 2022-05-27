@@ -1,27 +1,25 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 
-import { UserPageComponent } from './user-page.component';
+import { EquipoCardComponent } from './equipo-card.component';
 
-describe('UserPageComponent', () => {
-  let component: UserPageComponent;
-  let fixture: ComponentFixture<UserPageComponent>;
+describe('EquipoCardComponent', () => {
+  let component: EquipoCardComponent;
+  let fixture: ComponentFixture<EquipoCardComponent>;
 
-  let fakeRouter:Router;
+  let fakeRouter: Router;
 
   beforeEach(async () => {
-
     fakeRouter = jasmine.createSpyObj<Router>('Router', ['navigateByUrl']);
-
     await TestBed.configureTestingModule({
-      declarations: [ UserPageComponent ],
+      declarations: [ EquipoCardComponent ],
       providers: [{provide: Router, useValue: fakeRouter}]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserPageComponent);
+    fixture = TestBed.createComponent(EquipoCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
