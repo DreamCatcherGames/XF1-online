@@ -18,6 +18,11 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 8, name: 'Oxygen', points: 15.9994},
   {position: 9, name: 'Fluorine', points: 18.9984},
   {position: 10, name: 'Neon', points: 20.1797},
+  {position: 6, name: 'Carbon', points: 12.0107},
+  {position: 7, name: 'Nitrogen', points: 14.0067},
+  {position: 8, name: 'Oxygen', points: 15.9994},
+  {position: 9, name: 'Fluorine', points: 18.9984},
+  {position: 10, name: 'Neon', points: 20.1797},
 ];
 
 @Component({

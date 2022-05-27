@@ -10,13 +10,23 @@ import { Campeonato } from 'src/app/models/campeonato';
 })
 export class CampeonatoCardComponent implements OnInit {
 
-  @Input() campeonatoJson:string;
+  @Input() campeonatoJson:string='{}';
 
   campeonato:Campeonato;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.campeonato = this.campeonato?this.campeonato:{
+      id:'',
+      name:'',
+      isCurrentChamp:false,
+      rules:'',
+      startDate: '', 
+      endDate: '',
+      startTime: '',
+      endTime: '',
+    }
   }
 
   ngOnChanges(){

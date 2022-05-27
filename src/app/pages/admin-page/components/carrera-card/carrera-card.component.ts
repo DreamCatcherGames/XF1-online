@@ -12,17 +12,23 @@ import * as moment from 'moment';
 })
 export class CarreraCardComponent implements OnInit {
 
-  @Input() carreraJson:string;
+  @Input() carreraJson:string='{}';
 
   carrera:Carrera;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.carrera = this.carrera? this.carrera: new Carrera();
   }
 
   ngOnChanges(): void {
     this.carrera = JSON.parse(this.carreraJson);
+    console.log(this.carreraJson);
+  }
+
+  getCarreraName(){
+    return this.carrera.name;
   }
 
   getStartDateFormated(){

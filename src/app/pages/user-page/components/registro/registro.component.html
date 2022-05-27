@@ -3,13 +3,13 @@
 		<p>Account creation</p>
 	</div>
 
-	<form [formGroup]="formData">
+	<form [formGroup]="formData" (ngSubmit)="onSubmit()">
 
 		<div class="fields">
 
 			<div class="fields--nombre">
 				<div class="title">
-					<p>Mail</p>
+					<p>Email</p>
 				</div>
 				<mat-form-field class="field">
 					<mat-label> Email</mat-label>
@@ -29,20 +29,20 @@
 
             <div class="fields--nombre">
 				<div class="title">
-					<p>Firstname</p>
+					<p>First name</p>
 				</div>
 				<mat-form-field class="field">
-					<mat-label> Firstname</mat-label>
+					<mat-label> First name</mat-label>
 					<input matInput type="text" name="firstname" id="firstnameInput" formControlName="firstname">
 				</mat-form-field>
 			</div>
 
             <div class="fields--nombre">
 				<div class="title">
-					<p>Lastname</p>
+					<p>Last name</p>
 				</div>
 				<mat-form-field class="field">
-					<mat-label> Lastname</mat-label>
+					<mat-label> Last name</mat-label>
 					<input matInput type="text" name="lastname" id="lastnameInput" formControlName="lastname">
 				</mat-form-field>
 			</div>
@@ -62,9 +62,11 @@
 					<p>Country:</p>
 				</div>
 				<mat-form-field class="field" appearance="fill">
-					<mat-select formControlName="pais">
-						<mat-option [value]="'Costa Rica'">Costa Rica</mat-option>
-						<mat-option [value]="'Panama'">Panama</mat-option>
+					<mat-select formControlName="country">
+						<mat-option *ngFor="let country of countriesData" [value]="country.name">
+							{{country.name}}
+						</mat-option>
+
 					</mat-select>
 				</mat-form-field>
 			</div>
@@ -74,7 +76,7 @@
 					<p>Age</p>
 				</div>
 				<mat-form-field class="field">
-					<mat-label> 22</mat-label>
+					<mat-label>Age</mat-label>
 					<input matInput type="text" name="age" id="ageInput" formControlName="age">
 				</mat-form-field>
 			</div>
@@ -84,7 +86,7 @@
 		<p style="font-size: 0.7rem; color:gray;">* Fields are required.</p>
 
 		<div class="buttons">
-			<button mat-raised-button color="warn">Cancel</button>
+			<button (click)="this.closeModal()" mat-raised-button color="warn">Cancel</button>
 			<button type="submit" mat-raised-button color="primary">Create</button>
 		</div>
 	</form>

@@ -7,6 +7,7 @@ describe('CarreraInfoComponent', () => {
   let fixture: ComponentFixture<CarreraInfoComponent>;
 
   beforeEach(async () => {
+
     await TestBed.configureTestingModule({
       declarations: [ CarreraInfoComponent ]
     })

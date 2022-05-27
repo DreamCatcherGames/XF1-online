@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Perfil } from '../models/perfil';
+import { PerfilUsuario } from '../models/perfilUsuario';
 import { RestService } from './rest.service';
 
 
@@ -9,21 +10,27 @@ import { RestService } from './rest.service';
 export class AuthService {
 
   public perfil : Perfil
+  public perfilUsuario: PerfilUsuario;
 
   constructor(
     private restService: RestService,
   ) { }
 
   loginRequest(dataToSend):Promise<any>{
-    return this.restService.post("Admin/loginRequest",JSON.stringify(dataToSend)).then( response => {
+    return this.restService.post("Admin/loginRequest",JSON.stringify(dataToSend));
+  }
 
-      if(response.status == 200)
-      {
-        return response.json()
-      }else{
-        throw response
-      }
-    })
+  loginRequestUser(dataToSend):Promise<any>{
+    return this.restService.post("Player/loginRequest",JSON.stringify(dataToSend));
+  }
+
+  setPerfil(perf : Perfil){
+    this.perfil = perf;
+    console.log(this.perfil.Salt)
+  }
+
+  getPerfil(perfil:Perfil){
+    return perfil;
   }
 
 }

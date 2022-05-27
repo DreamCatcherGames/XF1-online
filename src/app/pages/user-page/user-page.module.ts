@@ -8,6 +8,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistroComponent } from './components/registro/registro.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
     HeaderComponent,
     FooterComponent,
     RegistroComponent,
-    LeaderboardComponent
+    LeaderboardComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
