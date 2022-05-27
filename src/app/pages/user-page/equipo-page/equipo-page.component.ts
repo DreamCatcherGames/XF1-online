@@ -54,14 +54,14 @@ export class EquipoPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.paises = countries.countries.all;
+
     this.equipoService.getAllEscuderias().then((res:Escuderia[]|any)=>{
       if(res as Escuderia){
         res.forEach(e=>this.escuderias.push(e.Name));
       }
     })
-    console.log(this.authService.perfilUsuario)
-    if(!this.authService.perfilUsuario && !this.authService.perfilUsuario.Token){
-      console.log('SASDSAD')
+
+    if((!this.authService.perfilUsuario && !this.authService.perfilUsuario.Token) || (this.equipoService.newEquipo)){
       this.escuderia = {
         Name:'',
         Country:'',
@@ -79,6 +79,7 @@ export class EquipoPageComponent implements OnInit {
     }else{
       this.escuderia = this.equipoService.editingRacingTeam;
       this.pilotos = this.equipoService.editingPilotos;
+      console.log(this.equipoService)
     }
   }
 
@@ -209,7 +210,7 @@ export class EquipoPageComponent implements OnInit {
 
   goToLeaderboards(){
     // CAMBIAR
-    this.router.navigateByUrl('/user');
+    this.router.navigateByUrl('user/perfil');
   }
 
   filter(){

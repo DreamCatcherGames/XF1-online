@@ -1,4 +1,9 @@
 import { Component, OnInit,Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { Equipo } from 'src/app/models/equipo';
+import { Escuderia } from 'src/app/models/escuderia';
+import { Piloto } from 'src/app/models/piloto';
+import { EquipoService } from 'src/app/service/equipo.service';
 
 @Component({
   selector: 'app-equipo-card',
@@ -7,17 +12,41 @@ import { Component, OnInit,Input } from '@angular/core';
 })
 export class EquipoCardComponent implements OnInit {
 
-  @Input() equipoInputString = null;
-  //equipo:Equipo
-  
-  isShowingExistingTeam: boolean=true;
+  @Input() equipoJson = null
+  @Input() equipoName:string;
+  equipo:Equipo;
 
-  constructor() { }
+  
+  @Input() isShowingExistingTeam: boolean=false;
+
+  imagenEscuderia:string;
+  imagenPilotos:string[]=[];
+
+  constructor(
+    private equipoService:EquipoService,
+    private router:Router
+  ) { }
 
   ngOnInit(): void {
-    if(this.equipoInputString){
+  }
 
+  ngOnChanges(): void {
+    if(this.equipoJson){
+      this.equipo = JSON.parse(this.equipoJson) as Equipo;
+      this.imagenEscuderia = this.equipo.Racing_Team.Photo;
+      this.equipo.Pilots.forEach(piloto=>{
+        this.imagenPilotos.push(piloto.Photo);
+      })
     }
+    console.log(this.equipo)
+  }
+
+  goToEdit(newEquipo=false){
+    this.equipoService.editingTeam = this.equipoName;
+    this.equipoService.editingRacingTeam = this.equipo.Racing_Team;
+    this.equipoService.editingPilotos = this.equipo.Pilots;
+    this.equipoService.newEquipo = newEquipo;
+    this.router.navigateByUrl('user/equipo');
   }
 
 }

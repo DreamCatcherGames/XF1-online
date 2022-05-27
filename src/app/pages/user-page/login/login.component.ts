@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
         console.log(this.authService.perfilUsuario);
         this.equipoService.editingRacingTeam = this.authService.perfilUsuario.Teams[0].Racing_Team;
         this.equipoService.editingPilotos = this.authService.perfilUsuario.Teams[0].Pilots;
-        this.router.navigateByUrl('/user/equipo')
+        this.router.navigateByUrl('/user/perfil')
         Swal.close();
       }).catch( error => {
         this.errorService.handle(error);

@@ -16,6 +16,7 @@ export class EquipoService {
   editingTeam:string='Team 1';
   editingRacingTeam:Escuderia;
   editingPilotos:Piloto[];
+  newEquipo:boolean;
 
   constructor(
     private restService:RestService,

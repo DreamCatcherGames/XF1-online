@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
 
 import { EquipoCardComponent } from './equipo-card.component';
 
@@ -6,9 +7,13 @@ describe('EquipoCardComponent', () => {
   let component: EquipoCardComponent;
   let fixture: ComponentFixture<EquipoCardComponent>;
 
+  let fakeRouter: Router;
+
   beforeEach(async () => {
+    fakeRouter = jasmine.createSpyObj<Router>('Router', ['navigateByUrl']);
     await TestBed.configureTestingModule({
-      declarations: [ EquipoCardComponent ]
+      declarations: [ EquipoCardComponent ],
+      providers: [{provide: Router, useValue: fakeRouter}]
     })
     .compileComponents();
   });
