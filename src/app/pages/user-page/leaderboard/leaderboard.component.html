@@ -1,7 +1,8 @@
 <div>
 
     <div class="container">
-      <i class="fa-solid fa-user"></i>
+  
+      <i (click)="toProfile()" class="fa-solid fa-user"></i>
 
 
     <p>Leaderboards</p>
@@ -17,24 +18,24 @@
             <td mat-cell *matCellDef="let element"> {{element.position}} </td>
           </ng-container>
         
-          <!-- Name Column -->
+  
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef> Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.puntaje.Username}} </td>
           </ng-container>
         
-          <!-- Points Column -->
+     
           <ng-container matColumnDef="points">
             <th mat-header-cell *matHeaderCellDef> Points </th>
-            <td mat-cell *matCellDef="let element"> {{element.points}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.puntaje.Points}} </td>
           </ng-container>
-        
+     
           <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
 
       </div>
-      <button class="button" mat-flat-button color="primary">Show more</button>
+      <button (click)="showMore()" mat-flat-button color="primary">Show more</button>
     </div>
 
 </div>

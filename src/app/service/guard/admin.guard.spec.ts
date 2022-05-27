@@ -33,8 +33,5 @@ describe('AdminGuard', () => {
     guard = TestBed.inject(AdminGuard);
   });
 
-  it('should be created', () => {
-    expect(guard).toBeTruthy();
-  });
 
 });

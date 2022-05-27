@@ -33,10 +33,16 @@ export class EquipoCardComponent implements OnInit {
   ngOnChanges(): void {
     if(this.equipoJson){
       this.equipo = JSON.parse(this.equipoJson) as Equipo;
+      if(this.equipo.Racing_Team){
       this.imagenEscuderia = this.equipo.Racing_Team.Photo;
       this.equipo.Pilots.forEach(piloto=>{
         this.imagenPilotos.push(piloto.Photo);
-      })
+      })}else{
+        this.imagenEscuderia='';
+        for(let i =0;i<5;i++){
+          this.imagenPilotos[i]='';
+        }
+      }
     }
     console.log(this.equipo)
   }

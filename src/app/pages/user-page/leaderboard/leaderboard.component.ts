@@ -1,28 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-
+import { LigaPublica } from 'src/app/models/liga';
+import { Puntaje } from 'src/app/models/puntaje';
+import { AuthService } from 'src/app/service/auth.service';
+import { LeaderboardService } from 'src/app/service/leaderboard.service';
+import Swal from 'sweetalert2';
+import {Router} from '@angular/router';
 
 export interface PeriodicElement {
-  name: string;
   position: number;
-  points: number;
+  puntaje: Puntaje;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', points: 1.0079},
-  {position: 2, name: 'Helium', points: 4.0026},
-  {position: 3, name: 'Lithium', points: 6.941},
-  {position: 4, name: 'Beryllium', points: 9.0122},
-  {position: 5, name: 'Boron', points: 10.811},
-  {position: 6, name: 'Carbon', points: 12.0107},
-  {position: 7, name: 'Nitrogen', points: 14.0067},
-  {position: 8, name: 'Oxygen', points: 15.9994},
-  {position: 9, name: 'Fluorine', points: 18.9984},
-  {position: 10, name: 'Neon', points: 20.1797},
-  {position: 6, name: 'Carbon', points: 12.0107},
-  {position: 7, name: 'Nitrogen', points: 14.0067},
-  {position: 8, name: 'Oxygen', points: 15.9994},
-  {position: 9, name: 'Fluorine', points: 18.9984},
-  {position: 10, name: 'Neon', points: 20.1797},
+  {position: 1, puntaje: {League_Key: '12', Username: 'Hydrogen', Points: 1.0079}}
 ];
 
 @Component({
@@ -34,11 +24,77 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class LeaderboardComponent implements OnInit {
 
   displayedColumns: string[] = ['position', 'name', 'points'];
-  dataSource = ELEMENT_DATA;
-
-  constructor() { }
+  //displayedColumns: string[] = ['position'];
+  dataSource:PeriodicElement[]=[]; 
+  puntajes:Puntaje[]=[];
+  currentPage = 0;
+  test = [0,1,2,3,4]
+  publicLeague:LigaPublica;
+  constructor(
+    private leaderboardService: LeaderboardService,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
+
+    this.leaderboardService.getPublicLeague().then(res=>{
+      if(res){
+        this.publicLeague = res as LigaPublica;
+        this.leaderboardService.publicLeagueID= this.publicLeague.Unique_Key;
+
+        this.leaderboardService.getPuntajes(this.currentPage).then(res => {
+          if(res){
+            res.forEach(e=>this.puntajes.push(e as Puntaje));
+            var index;
+            const tempArray = [];
+
+            for (index in this.puntajes){
+              console.log("Entre " + index)
+              tempArray.push({
+                position: index,
+                puntaje: this.puntajes[index]
+              })
+            }
+            console.log(tempArray)
+            this.dataSource = tempArray;
+            
+            console.log(ELEMENT_DATA)
+            
+          }
+        });
+
+        
+        
+      }
+    })
+  }
+
+  showMore(){
+    this.currentPage+=1;
+
+    this.leaderboardService.getPuntajes(this.currentPage).then(res => {
+      if(res){
+        res.forEach(e=>this.puntajes.push(e as Puntaje));
+        var index;
+        const tempArray = [];
+
+        for (index in this.puntajes){
+          console.log("Entre " + index)
+          tempArray.push({
+            position: index,
+            puntaje: this.puntajes[index]
+          })
+        }
+
+        this.dataSource = tempArray; 
+      }
+    });
+    
+
+  }
+
+  toProfile(){
+    this.router.navigateByUrl('/user/perfil')
   }
 
 }

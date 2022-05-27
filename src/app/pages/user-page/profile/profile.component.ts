@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.perfil = this.authService.perfilUsuario;
-    this.hasTeam1 = this.authService.perfilUsuario.Teams[0].Racing_Team_Name != '';
+    this.hasTeam1 = this.authService.perfilUsuario.Teams[0].Racing_Team_Name != null;
   }
 
   logout(){
