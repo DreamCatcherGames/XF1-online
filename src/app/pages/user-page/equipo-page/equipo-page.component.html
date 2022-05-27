@@ -111,6 +111,12 @@
 						<div class="precio">
 							<p>Price: ${{opcion.Price}}</p>
 						</div>
+						<div class="escuderia" *ngIf="this.marketType=='piloto'">
+							<p> Escuderia: {{opcion.Racing_Team}}</p>
+						</div>
+						<div class="pais" *ngIf="this.marketType=='escuderia'">
+							<p>Pais: {{opcion.Country}}</p>
+						</div>
 					</div>
 				</div>
 				<button mat-raised-button color="primary" (click)="showMore()" >Show more</button>

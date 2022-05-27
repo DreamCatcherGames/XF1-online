@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/service/auth.service';
 import { LeaderboardService } from 'src/app/service/leaderboard.service';
 import Swal from 'sweetalert2';
 import {Router} from '@angular/router';
+import { ErrorService } from 'src/app/service/error.service';
 
 export interface PeriodicElement {
   position: number;
@@ -33,6 +34,7 @@ export class LeaderboardComponent implements OnInit {
   constructor(
     private leaderboardService: LeaderboardService,
     private router: Router,
+    private errorService: ErrorService
   ) { }
 
   ngOnInit(): void {
@@ -51,7 +53,7 @@ export class LeaderboardComponent implements OnInit {
             for (index in this.puntajes){
               console.log("Entre " + index)
               tempArray.push({
-                position: index,
+                position: Number(index)+1,
                 puntaje: this.puntajes[index]
               })
             }
@@ -71,6 +73,7 @@ export class LeaderboardComponent implements OnInit {
 
   showMore(){
     this.currentPage+=1;
+    this.errorService.showLoading();
 
     this.leaderboardService.getPuntajes(this.currentPage).then(res => {
       if(res){
@@ -87,6 +90,7 @@ export class LeaderboardComponent implements OnInit {
         }
 
         this.dataSource = tempArray; 
+        Swal.close();
       }
     });
     

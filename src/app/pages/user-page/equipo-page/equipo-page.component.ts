@@ -131,10 +131,16 @@ export class EquipoPageComponent implements OnInit {
   setActiveFrame(frameNumber:number){
     Swal.fire('Loading', 'Fetching available pilots, please wait');
     Swal.showLoading();
-    this.marketType='piloto';
     this.selectedFrame = frameNumber;
     this.showingMarket = true;
     this.currentPage = 0; 
+
+    if(this.marketType == 'piloto'){
+      Swal.close();
+      return;
+    }
+    this.marketType='piloto';
+
     this.equipoService.getMercadoPilotos(this.currentPage, this.filtroNombre, this.filtro2).then(res=>{
       if(res){
         this.opcionesMercado = res;
