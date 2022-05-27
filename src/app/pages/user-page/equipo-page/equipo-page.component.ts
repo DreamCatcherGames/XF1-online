@@ -1,6 +1,6 @@
 import { Component, OnInit, Renderer2, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Escuderia } from 'src/app/models/Escuderia';
+import { Escuderia } from 'src/app/models/escuderia';
 import { Piloto } from 'src/app/models/piloto';
 import { AuthService } from 'src/app/service/auth.service';
 import { EquipoService } from 'src/app/service/equipo.service';

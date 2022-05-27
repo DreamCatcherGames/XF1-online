@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Equipo } from '../models/equipo';
-import { Escuderia } from '../models/Escuderia';
+import { Escuderia } from '../models/escuderia';
 import { PerfilUsuario } from '../models/perfilUsuario';
 import { Piloto } from '../models/piloto';
 import { AuthService } from './auth.service';
