@@ -27,4 +27,16 @@ export class RestService {
     return fetch(fullUrl, requestObj);
   }
 
+  put(endpoint:string, body:string){
+    const fullUrl = this.url + '/' + endpoint;
+    const requestObj = {
+      method : 'PUT',
+      headers : {
+        'Content-Type' : 'application/json'
+      },
+      body: body,
+    };
+    return fetch(fullUrl, requestObj);
+  }
+
 }
