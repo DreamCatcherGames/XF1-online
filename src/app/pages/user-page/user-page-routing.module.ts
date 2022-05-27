@@ -4,6 +4,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { EquipoPageComponent } from './equipo-page/equipo-page.component';
 import { LoginComponent } from './login/login.component';
 import { UserPageComponent } from './user-page.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 const routes: Routes = [
     {
@@ -19,10 +20,13 @@ const routes: Routes = [
         },{
           path:'equipo',
           component:EquipoPageComponent
+        },{
+          path:'leaderboard',
+          component:LeaderboardComponent
         },
         {
           path:'',
-          redirectTo: 'equipo',
+          redirectTo: 'login',
           pathMatch: 'full'
         }
       ]

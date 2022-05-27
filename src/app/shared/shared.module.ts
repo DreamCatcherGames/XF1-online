@@ -8,6 +8,7 @@ import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerMod
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card'; 
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -21,6 +22,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     NgxMatTimepickerModule,
     MatButtonModule,
     MatSelectModule,
+    MatTableModule,
     MatCardModule,
     MatExpansionModule,
   ],
@@ -34,6 +36,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     NgxMatNativeDateModule,
     MatButtonModule,
     MatSelectModule,
+    MatTableModule,
     MatCardModule,
     MatExpansionModule
   ]
