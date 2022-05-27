@@ -29,7 +29,7 @@ export class EquipoPageComponent implements OnInit {
   filtroNombre:string=null;
 
   // Objetos del equipo
-  escuderia:Escuderia;
+  escuderia:Escuderia=new Escuderia();
   pilotos:Piloto[]=[];
   escuderias:string[]= [];
   paises:string[];
@@ -59,7 +59,9 @@ export class EquipoPageComponent implements OnInit {
         res.forEach(e=>this.escuderias.push(e.Name));
       }
     })
-    if(!this.authService.perfilUsuario){
+    console.log(this.authService.perfilUsuario)
+    if(!this.authService.perfilUsuario && !this.authService.perfilUsuario.Token){
+      console.log('SASDSAD')
       this.escuderia = {
         Name:'',
         Country:'',
@@ -75,7 +77,6 @@ export class EquipoPageComponent implements OnInit {
         };
       }
     }else{
-      console.log(this.equipoService.editingRacingTeam)
       this.escuderia = this.equipoService.editingRacingTeam;
       this.pilotos = this.equipoService.editingPilotos;
     }

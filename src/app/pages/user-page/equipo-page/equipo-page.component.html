@@ -3,9 +3,9 @@
 		<div class="escuderia">
 			<div class="escuderia--image" [ngClass]="(selectedFrame==1?'active':'')">
 				<img #frame1 src="assets/frame.png"  class="toggleMarket" (click)="setActiveFrameEscuderia(1)">
-				<img class="escuderia--logo" src="{{this.escuderia.Photo}}" >
-				<p  class="escuderia--name">{{this.escuderia.Name}}</p>
-				<p  class="escuderia--pais">{{this.escuderia.Country}}</p>
+				<img class="escuderia--logo" src="{{this.escuderia?this.escuderia.Photo:''}}" >
+				<p  class="escuderia--name">{{this.escuderia?this.escuderia.Name:''}}</p>
+				<p  class="escuderia--pais">{{this.escuderia?this.escuderia.Country:''}}</p>
 			</div>
 		</div>
 
