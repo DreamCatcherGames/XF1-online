@@ -21,14 +21,7 @@ export class AuthService {
   }
 
   loginRequestUser(dataToSend):Promise<any>{
-    return this.restService.post("Player/loginRequest",JSON.stringify(dataToSend)).then( response => {
-      if(response.status == 200)
-      {
-        return response.json()
-      }else{
-        return response.text().then(text=>{throw new Error(text)});
-      }
-    })
+    return this.restService.post("Player/loginRequest",JSON.stringify(dataToSend));
   }
 
   setPerfil(perf : Perfil){

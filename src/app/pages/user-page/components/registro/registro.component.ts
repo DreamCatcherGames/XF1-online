@@ -5,6 +5,7 @@ import { CustomValidatorsService } from 'src/app/service/custom-validators.servi
 import { RegistroService } from 'src/app/service/registro.service';
 import Swal from 'sweetalert2';
 import * as countries from 'country-data';
+import { ErrorService } from 'src/app/service/error.service';
 
 @Component({
   selector: 'app-registro',
@@ -17,7 +18,8 @@ export class RegistroComponent implements OnInit {
   countriesData = countries.countries.all;
   constructor(
     private fb: FormBuilder,
-    private registroService: RegistroService
+    private registroService: RegistroService, 
+    private errorService: ErrorService
   ) { }
 
   ngOnInit(): void {
@@ -43,7 +45,7 @@ export class RegistroComponent implements OnInit {
 
   onSubmit(){
     if(this.formData.valid){
-   
+      this.errorService.showLoading();
       this.registroService.createNewUser(
         {
           Username:this.formData.value.username,
@@ -67,11 +69,7 @@ export class RegistroComponent implements OnInit {
         );
         this.closeModal();
       }).catch((err)=>{
-        Swal.fire(
-          'Error',
-          'Ocurrio un error, por favor revise su formulario',
-          'error'
-        )
+        this.errorService.handle(err);
       })
     }
   }

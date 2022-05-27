@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import { Perfil } from 'src/app/models/perfil';
 import { PerfilUsuario } from 'src/app/models/perfilUsuario';
 import { AuthService } from 'src/app/service/auth.service';
+import { ErrorService } from 'src/app/service/error.service';
 
 import Swal from 'sweetalert2';
 
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    public authService: AuthService
+    public authService: AuthService,
+    private errorService: ErrorService
   ) {
    }
 
@@ -36,16 +38,23 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if(this.formData.valid){
+      this.errorService.showLoading();
       const dataToSend = {
         "Username":this.formData.value.email,
         "Encrypted_Password":this.formData.value.password
       }
      this.authService.loginRequestUser(dataToSend).then( response => {
+        if(response.status == 200){
+          return response.text();
+        }else{
+          throw response;
+        }
+      }).then(response=>{
         this.authService.perfilUsuario = response as PerfilUsuario;
         this.router.navigateByUrl('/admin')
+        Swal.close();
       }).catch( error => {
-        console.log(error);
-        Swal.fire({title:'Error', text:error, icon:'error'})
+        this.errorService.handle(error);
       })
     }
   }
