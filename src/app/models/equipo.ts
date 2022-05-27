@@ -1,4 +1,4 @@
-import { Escuderia } from "./Escuderia";
+import { Escuderia } from "./escuderia";
 import { Piloto } from "./piloto";
 
 export class Equipo {
