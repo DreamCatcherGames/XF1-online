@@ -1,0 +1,13 @@
+<div class="body">
+	<div class="lista-campeonatos">
+		<div class="title">
+			<p>List of past championships</p>
+		</div>
+		
+		<app-lista-campeonatos [listaCampeonatosJson]="this.campeonatos | json"></app-lista-campeonatos>
+
+	</div>
+
+	<button mat-raised-button color="primary" (click)="goToInicial()">View initial race</button>
+
+</div>

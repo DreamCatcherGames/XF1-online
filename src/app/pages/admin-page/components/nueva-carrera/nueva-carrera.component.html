@@ -1,0 +1,103 @@
+<div class="content">
+	<div class="title title__first">
+		<p>Creation of new race</p>
+	</div>
+
+	<form [formGroup]="formData" (ngSubmit)="submit()">
+		
+		<div class="fields">
+
+			<div class="fields--nombre">
+				<div class="title">
+					<p>Name of new race</p>
+				</div>
+				<mat-form-field class="field">
+					<mat-label> Name</mat-label>
+					<input matInput type="text" name="nombre" id="nameInput" formControlName="nombre">
+				</mat-form-field>
+			</div>
+
+			<div class="fields--dates">
+
+				<div class="title">
+					<p>Initial and ending date</p>
+				</div>
+
+				<mat-form-field class="field field__start">
+					<input matInput formControlName="startDatetime" [ngxMatDatetimePicker]="startDatePicker" placeholder="Initial date and time">
+					<mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+					<ngx-mat-datetime-picker #startDatePicker></ngx-mat-datetime-picker>
+				</mat-form-field>
+
+				<mat-form-field class="field field__end">
+					<input matInput formControlName="endDatetime" [ngxMatDatetimePicker]="endDatePicker" placeholder="Ending date and time">
+					<mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+					<ngx-mat-datetime-picker #endDatePicker></ngx-mat-datetime-picker>
+				</mat-form-field>
+
+			</div>
+			
+			<div class="fields--dates">
+
+				<div class="title">
+					<p>Classification and competition date</p>
+				</div>
+
+				<mat-form-field class="field field__start">
+					<input matInput formControlName="clasificatoriaDatetime" [ngxMatDatetimePicker]="clasificatoriaDatePicker" placeholder="Classification date">
+					<mat-datepicker-toggle matSuffix [for]="clasificatoriaDatePicker"></mat-datepicker-toggle>
+					<ngx-mat-datetime-picker #clasificatoriaDatePicker></ngx-mat-datetime-picker>
+				</mat-form-field>
+
+				<mat-form-field class="field field__end">
+					<input matInput formControlName="competenciaDatetime" [ngxMatDatetimePicker]="competenciaDatePicker" placeholder="Competition date">
+					<mat-datepicker-toggle matSuffix [for]="competenciaDatePicker"></mat-datepicker-toggle>
+					<ngx-mat-datetime-picker #competenciaDatePicker></ngx-mat-datetime-picker>
+				</mat-form-field>
+
+			</div>
+
+			<div class="fields--pais">
+				<div class="title">
+					<p>Country:</p>
+				</div>
+				<mat-form-field class="field" appearance="fill">
+					<mat-select formControlName="pais">
+						<mat-option [value]="pais.name" *ngFor="let pais of paises" [value]="pais.name">{{pais.name}}</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>
+
+			<div class="fields--nombre-pista">
+				<div class="title">
+					<p>Name of Road:</p>
+				</div>
+				<mat-form-field class="field">
+					<mat-label> Road</mat-label>
+					<input formControlName="nombrePista" matInput type="text" name="nombre" id="nameInput">
+				</mat-form-field>
+			</div>
+
+			<div class="fields--campeonato">
+				<div class="title">
+					<p>Name of championship:</p>
+				</div>
+				<mat-form-field class="field">
+					<mat-label> Name </mat-label>
+					<input formControlName="nombreCampeonato" matInput disabled type="text" name="nombre" id="nameInput">
+				</mat-form-field>
+			</div>
+
+		</div>
+
+		<p style="font-size: 0.7rem; color:gray;">* Fields are required.</p>
+
+		<div class="buttons">
+			<button mat-raised-button color="warn" (click)="closeModal()">Cancel</button>
+			<button type="submit" mat-raised-button color="primary">Create</button>
+		</div>
+
+	</form>
+
+
+</div>

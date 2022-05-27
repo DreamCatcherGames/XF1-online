@@ -1,0 +1,129 @@
+<div class="content">
+	<div class="conformacion"> 
+		<div class="escuderia">
+			<div class="escuderia--image" [ngClass]="(selectedFrame==1?'active':'')">
+				<img #frame1 src="assets/frame.png"  class="toggleMarket" (click)="setActiveFrameEscuderia(1)">
+				<img class="escuderia--logo" src="{{this.escuderia?this.escuderia.Photo:''}}" >
+				<p  class="escuderia--name">{{this.escuderia?this.escuderia.Name:''}}</p>
+				<p  class="escuderia--pais">{{this.escuderia?this.escuderia.Country:''}}</p>
+			</div>
+		</div>
+
+		<div class="pilotos">
+				<div class="top--image image-div piloto" [ngClass]="(selectedFrame==2?'active':'')">
+					<img  src="assets/frame.png"  class="piloto toggleMarket"(click)="setActiveFrame(2)">
+					<img src="{{this.pilotos[1].Photo}}"  class="piloto--image">
+					<p  class="piloto--name">{{this.pilotos[1].Name}}</p>
+				</div>
+				<div class="top--image image-div"[ngClass]="(selectedFrame==3?'active':'')">
+					<img  src="assets/frame.png" alt="Frame" class="piloto toggleMarket"(click)="setActiveFrame(3)">
+					<img src="{{this.pilotos[2].Photo}}"  class="piloto--image">
+					<p  class="piloto--name">{{this.pilotos[2].Name}}</p>
+				</div>
+				<div class="top--image image-div"[ngClass]="(selectedFrame==4?'active':'')">
+					<img src="assets/frame.png" alt="Frame" class="piloto toggleMarket"(click)="setActiveFrame(4)">
+					<img src="{{this.pilotos[3].Photo}}"  class="piloto--image">
+					<p  class="piloto--name">{{this.pilotos[3].Name}}</p>
+				</div>
+				<div class="bottom--image image-div"[ngClass]="(selectedFrame==5?'active':'')">
+					<img src="assets/frame.png" alt="Frame" class="piloto toggleMarket"(click)="setActiveFrame(5)">
+					<img src="{{this.pilotos[4].Photo}}"  class="piloto--image">
+					<p  class="piloto--name">{{this.pilotos[4].Name}}</p>
+				</div>
+				<div class="bottom--image image-div"[ngClass]="(selectedFrame==6?'active':'')">
+					<img src="assets/frame.png" alt="Frame" class="piloto toggleMarket"(click)="setActiveFrame(6)">
+					<img src="{{this.pilotos[0].Photo}}"  class="piloto--image">
+					<p  class="piloto--name">{{this.pilotos[0].Name}}</p>
+				</div>
+		</div>
+
+		<div class="buttons">
+			<div class="cancel">
+				<button mat-raised-button color="warn" (click)="goToLeaderboards()">Cancel</button>
+			</div>
+			<div class="Guardar">
+				<button mat-raised-button color="primary" (click)="saveTeam()">Save</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="market" *ngIf="showingMarket">
+		<div class="section-saldo">
+			<div class="title">
+				<p>Available</p>
+			</div>
+
+			<div class="saldo">
+				<p>${{this.authService.perfilUsuario?this.authService.perfilUsuario.Money.toFixed(2):1000000}}</p>
+			</div>	
+		</div>
+
+		<div class="items">
+
+			<mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+			<mat-expansion-panel-header>
+				<mat-panel-title>
+					Filters
+				</mat-panel-title>
+			</mat-expansion-panel-header>
+				<div class="filtros">
+					<div class="up">
+						<div class="nombre">
+							<mat-form-field appearance="fill" color="warn">
+								<mat-label>Nombre</mat-label>
+								<input (change)='filter()' [(ngModel)]="filtroNombre" matInput>
+							</mat-form-field>
+						</div>
+					</div>
+					<div class="down">
+						<div class="escuderia" *ngIf="this.marketType=='piloto'">
+							<mat-form-field>
+								<mat-label>Escuderia</mat-label>
+								<mat-select (selectionChange)="filter()" [(ngModel)]="filtro2">
+									<mat-option  *ngFor='let nameEscuderia of escuderias' [value]="nameEscuderia">{{nameEscuderia}}</mat-option>
+								</mat-select>
+							</mat-form-field>
+						</div>
+						<div class="pais" *ngIf="this.marketType=='escuderia'">
+							<mat-form-field>
+								<mat-label>Pais</mat-label>
+								<mat-select (selectionChange)='filter()' [(ngModel)]="filtro2">
+									<mat-option [value]="null" default></mat-option>
+									<mat-option *ngFor="let pais of paises" [value]="pais.name">{{pais.name}}</mat-option>
+								</mat-select>
+							</mat-form-field>
+						</div>
+					</div>
+				</div>
+			</mat-expansion-panel>
+
+
+			<div class="opciones">
+				<div class="card-item" *ngFor="let opcion of this.opcionesMercado" (click)='buyOpcion(opcion)'>
+					<div class="image">
+						<img src="{{opcion.Photo}}" alt="Imagen de piloto">
+					</div>
+					<div class="description">
+						<div class="nombre">
+							<p>{{opcion.Name}}</p>
+						</div>
+						<div class="precio">
+							<p>Price: ${{opcion.Price}}</p>
+						</div>
+						<div class="escuderia" *ngIf="this.marketType=='piloto'">
+							<p> Escuderia: {{opcion.Racing_Team}}</p>
+						</div>
+						<div class="pais" *ngIf="this.marketType=='escuderia'">
+							<p>Pais: {{opcion.Country}}</p>
+						</div>
+					</div>
+				</div>
+				<button mat-raised-button color="primary" (click)="showMore()" >Show more</button>
+			
+			</div>
+
+		</div>
+
+	</div>
+</div>

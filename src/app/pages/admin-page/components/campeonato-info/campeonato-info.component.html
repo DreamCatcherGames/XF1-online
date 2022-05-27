@@ -1,0 +1,52 @@
+<div class="body">
+
+	<div class="left">
+
+		<div class="nombre">
+			<p class="nombre--title">Name:</p>
+			<mat-form-field class="nombre--field">
+				<mat-label>Name of the championship</mat-label>
+				<input matInput type="text" name="nombre" id="nameInput" disabled [(ngModel)]="this.campeonato.name">
+			</mat-form-field>
+		</div>
+
+		<div class="reglas">
+			<p class="reglas--title">Scoring rules:</p>
+			<mat-form-field class="reglas--field">
+				<mat-label>Scoring rules</mat-label>
+				<textarea matInput disabled type="text" name="reglas" [(ngModel)]="this.campeonato.rules" ></textarea>
+			</mat-form-field>
+		</div>
+
+	</div>
+
+	<div class="right">
+
+		<div class="fecha-inicio">
+			<p class="fecha-inicio--title">Initial date:</p>
+			<mat-form-field class="fecha-inicio--field">
+				<input 
+					matInput [ngxMatDatetimePicker]="startDatePicker" 
+					placeholder="Initial date and time" [(ngModel)]="this.campeonato.startDate"
+					disabled 
+				>
+				<mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+				<ngx-mat-datetime-picker #startDatePicker></ngx-mat-datetime-picker>
+			</mat-form-field>
+		</div>
+
+		<div class="fecha-final">
+			<p class="fecha-final--title">Ending Date:</p>
+			<mat-form-field class="fecha-final--field">
+				<input matInput [ngxMatDatetimePicker]="endDatePicker" 
+					placeholder="Ending date and time" [(ngModel)]="this.campeonato.endDate"
+					disabled
+				>
+				<mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+				<ngx-mat-datetime-picker #endDatePicker></ngx-mat-datetime-picker>
+			</mat-form-field>
+		</div>
+
+	</div>
+
+</div>

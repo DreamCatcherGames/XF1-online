@@ -1,0 +1,36 @@
+<div *ngIf="isShowingExistingTeam">
+    <mat-card class="card1">
+        <div class="subcontainer">
+            
+        <div style="width:20%" class="logo">
+            <img [src]="this.imagenEscuderia" alt="XF1 Logo" class="logo--image">
+        </div>
+
+        <div class="logo">
+            <img [src]="this.imagenPilotos[0]" alt="XF1 Logo" class="logo--image">
+        </div>
+
+        <div class="logo">
+            <img [src]="this.imagenPilotos[1]" alt="XF1 Logo" class="logo--image">
+        </div>
+        
+        <div class="logo">
+            <img [src]="this.imagenPilotos[2]" alt="XF1 Logo" class="logo--image">
+        </div>
+
+        <div class="logo">
+            <img [src]="this.imagenPilotos[3]" alt="XF1 Logo" class="logo--image">
+        </div>
+
+        <div class="logo">
+            <img [src]="this.imagenPilotos[4]" alt="XF1 Logo" class="logo--image">
+        </div>
+
+    </div>
+    <button style= "width: 30%" mat-raised-button color="warn" (click)="goToEdit()">Edit team</button>
+    </mat-card>
+</div>
+
+<div *ngIf="!isShowingExistingTeam" (click)="goToEdit(true)">
+    <mat-card class="card2">Add Team</mat-card>
+</div>

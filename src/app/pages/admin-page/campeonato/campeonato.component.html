@@ -1,0 +1,37 @@
+<div class="body">
+	<div class="campeonato-info">
+		<div class="title">
+			<p>Information of current championship</p>
+		</div>
+		<app-campeonato-info [inputCampeonatoJson]="this.campeonatoActual | json"></app-campeonato-info>
+	</div>
+
+	<div class="lista-carreras">
+		<div class="title">
+			<p>List of races from championship</p>
+		</div>
+
+		<app-lista-carreras [listaCarrerasJson]="this.carreras | json"></app-lista-carreras>
+	</div>
+
+	<div class="buttons">
+		<div class="buttons--new-campeonato">
+			<button mat-raised-button color="primary" (click)="this.isShowingNuevoCampeonatoModal=true">Create new championship</button>
+		</div>
+		<div class="buttons--new-carrera"> 
+			<button mat-raised-button color="primary" (click)="this.isShowingNuevaCarreraModal=true">Create new race</button>
+		</div>
+		<div class="buttons--historico">
+			<button mat-raised-button color="primary"  (click)="showHistorico()">View past championships</button>
+		</div>
+	</div>
+
+</div>
+
+<div class="modal modal--nuevo-campeonato" *ngIf="isShowingNuevoCampeonatoModal">
+	<app-nuevo-campeonato (closeEvent)="closeNuevoCampeonatoModal()" ></app-nuevo-campeonato>
+</div>
+
+<div class="modal modal--nueva-carrera" *ngIf="isShowingNuevaCarreraModal">
+	<app-nueva-carrera (closeEvent)="closeNuevaCarreraModal()" [championshipId]="this.campeonatoActual.id" ></app-nueva-carrera>
+</div>

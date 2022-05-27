@@ -1,0 +1,16 @@
+.content{
+	background-color:#dedede;
+	padding: 1rem;
+	border-radius: 15px;
+	.lista{
+		display: flex;
+		flex-direction: column;
+		max-height: 30rem;
+	}
+	 
+	app-campeonato-card{
+		margin-bottom: 1rem;
+		cursor: pointer;
+	}
+
+}

@@ -1,0 +1,39 @@
+
+<div class="contenedor"> <!--Contenedor principal-->
+
+    <div class="contenedor-izq"> <!--Contenedor izquierda-->
+        <div class="logo">
+            <img src="assets/defaultProfile.png" alt="XF1 Logo" class="logo--image">
+        </div>
+
+        <p class="name"> {{this.authService.perfilUsuario.First_Name}} {{this.authService.perfilUsuario.Last_Name}} </p>
+
+        <div class="label-a">
+            <i class="fa-solid fa-envelope"></i>
+            <p> {{this.authService.perfilUsuario.Email}} </p>
+        </div>
+
+        <button style="margin: 1rem; width: 60%;" mat-raised-button color="accent">Edit my info</button>
+        <button style= "width: 60%" mat-raised-button color="warn" (click)="logout()" >Sign out</button>
+        <button style="margin-top: 4rem; margin-bottom: 3rem; width: 60%" mat-raised-button color="primary">Delete account</button>
+        
+    </div>
+
+    <div class="contenedor-der"> <!--Contenedor derecha-->
+       
+        <app-equipo-card 
+            [isShowingExistingTeam]="this.authService.perfilUsuario.Teams[0] && this.authService.perfilUsuario.Teams[0].Racing_Team_Name!=null" 
+            [equipoName]="'Team 1'" [equipoJson]='this.authService.perfilUsuario.Teams[0] | json'
+            class="equipo-card">
+        </app-equipo-card>
+
+        <app-equipo-card 
+            [isShowingExistingTeam]='this.authService.perfilUsuario.Teams[1] && this.authService.perfilUsuario.Teams[1].Racing_Team_Name!=null' 
+            [equpoName]="'Team 2'" [equipoJson]='this.authService.perfilUsuario.Teams[1] | json' 
+            *ngIf="hasTeam1" class="equipo-card">
+        </app-equipo-card> 
+
+
+    </div>
+
+</div>

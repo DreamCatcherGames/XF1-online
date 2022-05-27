@@ -1,0 +1,38 @@
+<div>
+
+    <div class="container">
+  
+      <i (click)="toProfile()" class="fa-solid fa-user"></i>
+
+    <p class="tabTitle">Leaderboards</p>
+    <div class="tableMat">
+
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+          <!-- Position Column -->
+          <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+          </ng-container>
+        
+  
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.puntaje.Username}} </td>
+          </ng-container>
+        
+     
+          <ng-container matColumnDef="points">
+            <th mat-header-cell *matHeaderCellDef> Points </th>
+            <td mat-cell *matCellDef="let element"> {{element.puntaje.Points}} </td>
+          </ng-container>
+     
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+      </div>
+      <button (click)="showMore()" mat-flat-button color="primary">Show more</button>
+    </div>
+
+</div>

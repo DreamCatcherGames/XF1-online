@@ -35,4 +35,5 @@ jobs:
           npm install
           npm run-script build
       - name: Testing
-        run: npm test
+        run: npm run-script test
+
