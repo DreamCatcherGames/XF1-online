@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PerfilUsuario } from 'src/app/models/perfilUsuario';
 import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
@@ -9,11 +10,14 @@ import { AuthService } from 'src/app/service/auth.service';
 export class ProfileComponent implements OnInit {
   hasTeam1: boolean = true;
 
+  perfil:PerfilUsuario;
+
   constructor(
-    authService: AuthService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
+    this.perfil = this.authService.perfilUsuario;
   }
 
 }

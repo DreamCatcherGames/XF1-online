@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 
 @Component({
   selector: 'app-equipo-card',
@@ -6,12 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./equipo-card.component.scss']
 })
 export class EquipoCardComponent implements OnInit {
+
+  @Input() equipoInputString = null;
+  //equipo:Equipo
   
   isShowingExistingTeam: boolean=true;
 
   constructor() { }
 
   ngOnInit(): void {
+    if(this.equipoInputString){
+
+    }
   }
 
 }
