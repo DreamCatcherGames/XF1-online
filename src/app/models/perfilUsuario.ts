@@ -1,4 +1,7 @@
+import { Equipo } from "./equipo";
+
 export class PerfilUsuario {
+	Teams:Equipo[];
 	Username:string;
 	Country:string;
 	First_Name:string;

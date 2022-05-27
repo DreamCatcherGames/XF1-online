@@ -9,8 +9,8 @@ import { RestService } from './rest.service';
 })
 export class AuthService {
 
-  public perfil : Perfil
-  public perfilUsuario: PerfilUsuario;
+  public perfil : Perfil;
+  public perfilUsuario : PerfilUsuario;
 
   constructor(
     private restService: RestService,
@@ -26,7 +26,6 @@ export class AuthService {
 
   setPerfil(perf : Perfil){
     this.perfil = perf;
-    console.log(this.perfil.Salt)
   }
 
   getPerfil(perfil:Perfil){
