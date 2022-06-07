@@ -13,6 +13,8 @@ export class ProfileComponent implements OnInit {
 
   perfil:PerfilUsuario;
 
+  showCreateLeague:boolean = true;
+
   constructor(
     public authService: AuthService,
     private router:Router
@@ -25,6 +27,10 @@ export class ProfileComponent implements OnInit {
 
   logout(){
     this.router.navigateByUrl('/user/login')
+  }
+
+  closeCreateLeague(){
+    this.showCreateLeague = false;
   }
 
 }

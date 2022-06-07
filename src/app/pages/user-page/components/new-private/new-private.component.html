@@ -1,0 +1,21 @@
+<div class="content">
+	<div class="title title__first">
+		<p>New Private League</p>
+	</div>
+	<div class="fields--nombre">
+		<div class="title">
+			<p>Name:</p>
+		</div>
+		<mat-form-field class="field">
+			<mat-label>Name</mat-label>
+			<input matInput type="text" [(ngModel)]="leagueName">
+		</mat-form-field>
+	</div>
+
+
+	<div class="buttons">
+		<button (click)="this.closeModal()" mat-raised-button color="warn">Cancel</button>
+		<button (click)="onSubmit()" mat-raised-button color="primary">Create</button>
+	</div>
+
+</div>
