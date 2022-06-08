@@ -49,7 +49,8 @@
              [leagueTitle]="'Public league'"
              [place]="this.publicLeaderboardInfo.position"
              [numUsers]="this.publicLeaderboardInfo.leaguePlayerCount"
-             class="leaderboard-card">
+             class="leaderboard-card"
+             (click)="toPublicLeague()">
               </app-leaderboard-card> 
         </div>
        

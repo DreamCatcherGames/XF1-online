@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     public authService: AuthService,
     private router:Router,
-    public leaderboardCardService: LeaderboardCardService
+    public leaderboardCardService: LeaderboardCardService,
   ) { }
 
   async ngOnInit() {
@@ -31,7 +31,9 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  
+  toPublicLeague(){
+    this.router.navigateByUrl('/user/leaderboard')
+  }
 
   logout(){
     this.router.navigateByUrl('/user/login')
