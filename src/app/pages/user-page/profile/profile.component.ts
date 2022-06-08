@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/service/auth.service';
 export class ProfileComponent implements OnInit {
   hasTeam1: boolean;
 
+  showJoinModal:boolean = true;
   perfil:PerfilUsuario;
 
   constructor(
@@ -25,6 +26,10 @@ export class ProfileComponent implements OnInit {
 
   logout(){
     this.router.navigateByUrl('/user/login')
+  }
+
+  closeJoinModal(){
+    this.showJoinModal = false;
   }
 
 }

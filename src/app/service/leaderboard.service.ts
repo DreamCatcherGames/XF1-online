@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
-import { LigaPublica } from '../models/liga';
+import { LigaPrivada, LigaPublica } from '../models/liga';
 import { Puntaje } from '../models/puntaje';
 import { AuthService } from './auth.service';
 import { ErrorService } from './error.service';
@@ -59,6 +59,39 @@ export class LeaderboardService {
     }).catch(err=>{
       Swal.fire('Error', 'There has been an unknown error', 'error');
     })
+  }
+
+  getPrivateLeagues():Promise<LigaPrivada[] | any>{
+    return this.restService.get(
+      'League/getPrivateLeagues/'+
+      this.authService.perfilUsuario.Token + '/'+
+      this.authService.perfilUsuario.Salt
+    ).then(res=>{
+      if(res.status == 200){
+        return res.json();
+      }
+    }).catch(err=>{
+      this.errorService.handle(err);
+    })
+  }
+
+  requestJoin(privateLeagueCode:string): Promise<any>{
+    return this.restService.post(
+      'League/joinLeague/' + 
+      this.authService.perfilUsuario.Token + '/' +
+      this.authService.perfilUsuario.Salt,
+      JSON.stringify({
+        Unique_Key: privateLeagueCode
+      })
+    ).then(res=>{
+      if(res.status==200){
+        return res.text();
+      }else{
+        throw res;
+      }
+    }).catch(err=>{
+      this.errorService.handle(err);
+    });
   }
 
 }

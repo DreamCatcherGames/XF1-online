@@ -36,4 +36,8 @@
 
     </div>
 
+    <div class="modal join" *ngIf="showJoinModal">
+        <app-join-league (closeEvent)="closeJoinModal()"></app-join-league>
+    </div>
+
 </div>
