@@ -1,0 +1,17 @@
+.card1{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: gray;
+    flex-direction: column;
+    width: 7rem;
+    height: 10.5rem;
+    
+    .subcontainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}

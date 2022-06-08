@@ -12,7 +12,8 @@ import { RestService } from './rest.service';
 export class LeaderboardService {
 
   publicLeagueID:string='';
-  
+  privateLeagueID:string='';
+
   constructor(
     private restService:RestService,
     private authService:AuthService,
@@ -45,7 +46,7 @@ export class LeaderboardService {
     }); 
   }
 
-  getPublicLeague():Promise<LigaPublica | any>{
+  getPublicLeague():Promise<LigaPublica>{
     return this.restService.get(
       'League/getPublicLeague/' + this.authService.perfilUsuario.Token + '/'+this.authService.perfilUsuario.Salt
     ).then(res=>{

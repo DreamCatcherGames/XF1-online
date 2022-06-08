@@ -13,6 +13,7 @@ import { EquipoCardComponent } from './components/equipo-card/equipo-card.compon
 import { RegistroComponent } from './components/registro/registro.component';
 import { LoginComponent } from './login/login.component';
 import { NewPrivateComponent } from './components/new-private/new-private.component';
+import { LeaderboardCardComponent } from './components/leaderboard-card/leaderboard-card.component';
 
 @NgModule({
   declarations: [
@@ -25,14 +26,15 @@ import { NewPrivateComponent } from './components/new-private/new-private.compon
     RegistroComponent,
     LeaderboardComponent,
     LoginComponent,
-    NewPrivateComponent
+    NewPrivateComponent,
+    LeaderboardCardComponent
   ],
   imports: [
     CommonModule,
     UserPageRoutingModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, 
   ]
 })
 export class UserPageModule { }

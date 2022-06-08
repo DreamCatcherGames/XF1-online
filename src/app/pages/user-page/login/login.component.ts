@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
         "Encrypted_Password":this.formData.value.password
       }
      this.authService.loginRequestUser(dataToSend).then( response => {
+       console.log(response);
         if(response.status == 200){
           return response.json();
         }else{
