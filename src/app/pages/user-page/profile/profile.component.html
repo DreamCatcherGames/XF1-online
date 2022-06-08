@@ -17,6 +17,8 @@
         <button style= "width: 60%" mat-raised-button color="warn" (click)="logout()" >Sign out</button>
         <button style="margin-top: 4rem; margin-bottom: 3rem; width: 60%" mat-raised-button color="primary">Delete account</button>
         
+
+       
     </div>
 
     <div class="contenedor-der"> <!--Contenedor derecha-->
@@ -33,6 +35,24 @@
             *ngIf="hasTeam1" class="equipo-card">
         </app-equipo-card> 
 
+        <div class="leaderboard-section">
+            <app-leaderboard-card
+            [hasLeaderboard]="false"
+            [leagueTitle]="'Private league'"
+            [place]="'8th'"
+            [numUsers]="'9 users'"
+            class="leaderboard-card">
+             </app-leaderboard-card>
+
+             <app-leaderboard-card
+             [hasLeaderboard]="true"
+             [leagueTitle]="'Public league'"
+             [place]="this.publicLeaderboardInfo.position"
+             [numUsers]="this.publicLeaderboardInfo.leaguePlayerCount"
+             class="leaderboard-card">
+              </app-leaderboard-card> 
+        </div>
+       
 
     </div>
 
