@@ -54,7 +54,8 @@
         background: rgba(0,0,0,0.2);
         top: 0;
         left:0;
-
+        
+        app-notification-center,
         app-join-league{
             position: absolute;
             top: 50%;
@@ -64,4 +65,9 @@
     }
 }
 
+.fab-div{
+    position: absolute;
+    top: .5rem;
+    right:1rem;
+}
 

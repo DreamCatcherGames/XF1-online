@@ -94,5 +94,26 @@ export class LeaderboardService {
     });
   }
 
+  sendJoinResult(leagueId:string, userId:string, approval:boolean): Promise<any>{
+    const body = JSON.stringify({
+      League_Key:leagueId,
+      Requesting_User:userId
+    });
+    return this.restService.post(
+      'League/aproveJoin/'+approval+'/'+
+      this.authService.perfilUsuario.Token + '/' +
+      this.authService.perfilUsuario.Salt,
+      body 
+    ).then(res=>{
+      if(res.status == 200){
+        return res.text();
+      }else{
+        throw res;
+      }
+    }).catch(err=>{
+      this.errorService.handle(err);
+    });
+  }
+
 }
  

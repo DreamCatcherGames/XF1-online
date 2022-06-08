@@ -11,8 +11,10 @@ import { AuthService } from 'src/app/service/auth.service';
 export class ProfileComponent implements OnInit {
   hasTeam1: boolean;
 
-  showJoinModal:boolean = true;
+  showJoinModal:boolean = false;
+  showNotificationModal:boolean;
   perfil:PerfilUsuario;
+  hasNotifications = false;
 
   constructor(
     public authService: AuthService,
@@ -20,8 +22,12 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.showNotificationModal = true;
     this.perfil = this.authService.perfilUsuario;
     this.hasTeam1 = this.authService.perfilUsuario.Teams[0].Racing_Team_Name != null;
+    this.authService.hasNotifications().then(res=>{
+      this.hasNotifications = res;
+    });
   }
 
   logout(){
@@ -30,6 +36,10 @@ export class ProfileComponent implements OnInit {
 
   closeJoinModal(){
     this.showJoinModal = false;
+  }
+
+  closeNotificationModal(){
+    this.showNotificationModal = false;
   }
 
 }

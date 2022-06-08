@@ -13,6 +13,7 @@ import { EquipoCardComponent } from './components/equipo-card/equipo-card.compon
 import { RegistroComponent } from './components/registro/registro.component';
 import { LoginComponent } from './login/login.component';
 import { JoinLeagueComponent } from './components/join-league/join-league.component';
+import { NotificationCenterComponent } from './components/notification-center/notification-center.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { JoinLeagueComponent } from './components/join-league/join-league.compon
     RegistroComponent,
     LeaderboardComponent,
     LoginComponent,
-    JoinLeagueComponent
+    JoinLeagueComponent,
+    NotificationCenterComponent
   ],
   imports: [
     CommonModule,

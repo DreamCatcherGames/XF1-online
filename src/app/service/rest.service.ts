@@ -39,4 +39,16 @@ export class RestService {
     return fetch(fullUrl, requestObj);
   }
 
+  delete(endpoint:string, body:string){
+    const fullUrl = this.url + '/' + endpoint;
+    const requestObj = {
+      method : 'DELETE',
+      headers : {
+        'Content-Type' : 'application/json'
+      },
+      body: body,
+    };
+    return fetch(fullUrl, requestObj);
+  }
+
 }
