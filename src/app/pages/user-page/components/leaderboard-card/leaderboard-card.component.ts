@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-leaderboard-card',
@@ -12,9 +12,20 @@ export class LeaderboardCardComponent implements OnInit {
   @Input() place:string;
   @Input() numUsers:string;
 
+  @Output() openCreate = new EventEmitter();
+  @Output() openJoin = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onClickCreate(){
+    this.openCreate.emit();
+  }
+
+  onClickJoin(){
+    this.openJoin.emit();
   }
 
 }

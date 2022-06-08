@@ -36,10 +36,12 @@
 
         <div class="leaderboard-section">
             <app-leaderboard-card
-            [hasLeaderboard]="false"
+            [hasLeaderboard]="this.privateLeaderboardInfo.hasLeaderboard"
             [leagueTitle]="'Private league'"
-            [place]="'8th'"
-            [numUsers]="'9 users'"
+            [place]="this.privateLeaderboardInfo.position"
+            [numUsers]="this.privateLeaderboardInfo.leaguePlayerCount"
+            (openCreate)="this.openCreate()"
+            (openJoin)="this.openJoin()"
             class="leaderboard-card">
              </app-leaderboard-card>
 
@@ -56,7 +58,7 @@
 
     </div>
     <div class="modal new-league" *ngIf="showCreateLeague">
-        <app-new-private (closeEvent)="closeCreateLeague()"></app-new-private>
+        <app-new-private (closeEvent)="closeCreateLeague($event)"></app-new-private>
     </div>
 
 </div>

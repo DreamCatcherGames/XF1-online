@@ -1,4 +1,5 @@
-.card1{
+.card1,
+.card2{
     text-align: center;
     display: flex;
     justify-content: center;
@@ -13,5 +14,17 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        text-align: center;
     }
+    
+}
+
+.card1{
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.card2{
+    width:fit-content;
 }
