@@ -1,0 +1,23 @@
+<div>
+    <mat-card *ngIf="hasLeaderboard" class="card1">
+        <div class="subcontainer">
+
+            <p>
+                {{leagueTitle}}
+            </p>
+
+            <p>
+                Place: {{place}}
+            </p>
+
+            <p>
+                No. players: {{numUsers}} 
+            </p>
+        </div>
+            
+    </mat-card>
+</div>
+
+<div *ngIf="!hasLeaderboard">
+    <mat-card class="card2">Add Leaderboard</mat-card>
+</div>

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Equipo } from '../models/equipo';
 import { Perfil } from '../models/perfil';
 import { PerfilUsuario } from '../models/perfilUsuario';
 import { RestService } from './rest.service';
