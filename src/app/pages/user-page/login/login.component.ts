@@ -54,6 +54,10 @@ export class LoginComponent implements OnInit {
         }
       }).then(response=>{
         this.authService.perfilUsuario = response as PerfilUsuario;
+        if(!this.authService.perfilUsuario.Active){
+          Swal.fire('Verification Error', 'Please verify your account through the email we sent you before proceeding!', 'error');
+          return;
+        }
         console.log(this.authService.perfilUsuario);
         this.equipoService.editingRacingTeam = this.authService.perfilUsuario.Teams[0].Racing_Team;
         this.equipoService.editingPilotos = this.authService.perfilUsuario.Teams[0].Pilots;
