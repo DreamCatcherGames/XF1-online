@@ -56,6 +56,8 @@
         </div>
        
 
+    <div class="modal join" *ngIf="showJoinModal">
+        <app-join-league (closeEvent)="closeJoinModal()"></app-join-league>
     </div>
     <div class="modal new-league" *ngIf="showCreateLeague">
         <app-new-private (closeEvent)="closeCreateLeague($event)"></app-new-private>
@@ -63,3 +65,15 @@
 
 </div>
 
+    <div class="modal notifications" *ngIf="showNotificationModal">
+        <app-notification-center (closeEvent)="closeNotificationModal()"></app-notification-center>
+    </div>
+
+</div>
+
+<div class="fab-div">
+    <button mat-mini-fab color="primary" (click)="showNotificationModal=true">
+        <mat-icon *ngIf="!hasNotifications">notifications</mat-icon>
+        <mat-icon *ngIf="hasNotifications">notifications_active</mat-icon>
+    </button>
+</div>

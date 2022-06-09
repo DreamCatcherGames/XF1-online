@@ -14,7 +14,10 @@ import { LeaderboardService } from 'src/app/service/leaderboard.service';
 export class ProfileComponent implements OnInit {
   hasTeam1: boolean;
 
+  showJoinModal:boolean = false;
+  showNotificationModal:boolean;
   perfil:PerfilUsuario;
+  hasNotifications = false;
   publicLeaderboardInfo:positionInfo = new positionInfo();
   privateLeaderboardInfo:positionInfo = new positionInfo();
 
@@ -29,9 +32,13 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
+    this.showNotificationModal = false;
     this.errorService.showLoading();
     this.perfil = this.authService.perfilUsuario;
     this.hasTeam1 = this.authService.perfilUsuario.Teams[0].Racing_Team_Name != null;
+    this.authService.hasNotifications().then(res=>{
+      this.hasNotifications = res;
+    });
     this.publicLeaderboardInfo = await this.leaderboardCardService.getPublicLeagueInfo() as positionInfo;
 
     this.leaderboardService.getPrivateLeagueInfo().then(async (res)=>{
@@ -59,6 +66,14 @@ export class ProfileComponent implements OnInit {
     this.router.navigateByUrl('/user/login')
   }
 
+  closeJoinModal(){
+    this.showJoinModal = false;
+  }
+
+  closeNotificationModal(){
+    this.showNotificationModal = false;
+  }
+
   closeCreateLeague(created){
     this.showCreateLeague = false;
     if(created){
@@ -73,7 +88,7 @@ export class ProfileComponent implements OnInit {
   }
 
   openJoin(){
-    console.log('Open join');
+    this.showJoinModal = true;
   }
 
 }

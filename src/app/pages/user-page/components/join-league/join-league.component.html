@@ -1,0 +1,32 @@
+<div class="content">
+	<div class="title title__first">
+		<p>Account creation</p>
+	</div>
+
+	<div class="fields--nombre">
+		<div class="title">
+			<p>Paste your code here:</p>
+		</div>
+		<mat-form-field class="field">
+			<mat-label> Invitation code</mat-label>
+			<input matInput type="text" [(ngModel)]="code">
+		</mat-form-field>
+		<button mat-raised-button color="primary" (click)="sendCode()">Join selected</button>
+	</div>
+
+	<div class="information">
+		<p>If you dont have a code choose a league from below!</p>
+	</div>
+
+	<div class="league-list">
+		<div class="league" *ngFor="let league of leagueList" (click)="changeCode(league.Unique_Key)">
+			<p>Nombre: {{league.Name}}</p>
+			<p>Code: {{league.Unique_Key}}</p>
+		</div>
+	</div>
+
+	<div class="buttons">
+		<button class="cancel-button" mat-raised-button color="warn" (click)="closeModal()">Cancel</button>
+	</div>
+
+</div>
