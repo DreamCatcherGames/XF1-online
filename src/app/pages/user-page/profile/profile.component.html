@@ -37,11 +37,12 @@
 
         <div class="leaderboard-section">
             <app-leaderboard-card
-            [hasLeaderboard]="false"
+            [hasLeaderboard]="true"
             [leagueTitle]="'Private league'"
-            [place]="'8th'"
-            [numUsers]="'9 users'"
-            class="leaderboard-card">
+            [place]="this.privateLeaderboardInfo.position"
+            [numUsers]="this.privateLeaderboardInfo.leaguePlayerCount"
+            class="leaderboard-card"
+            (click)="toPrivateLeague()">
              </app-leaderboard-card>
 
              <app-leaderboard-card

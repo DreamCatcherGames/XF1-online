@@ -5,6 +5,7 @@ import { EquipoPageComponent } from './equipo-page/equipo-page.component';
 import { LoginComponent } from './login/login.component';
 import { UserPageComponent } from './user-page.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { PrivateLeagueComponent } from './private-league/private-league.component';
 
 const routes: Routes = [
     {
@@ -23,6 +24,10 @@ const routes: Routes = [
         },{
           path:'leaderboard',
           component:LeaderboardComponent
+        },
+        {
+          path:'privateLeague',
+          component:PrivateLeagueComponent
         },
         {
           path:'',

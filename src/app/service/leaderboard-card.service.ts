@@ -15,7 +15,6 @@ export class positionInfo {
 })
 export class LeaderboardCardService {
 
-  privateLeagueID:string = '';
   positionPublic:positionInfo;
   positionprivate:positionInfo;
 

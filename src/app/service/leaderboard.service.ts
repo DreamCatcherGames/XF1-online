@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
-import { LigaPublica } from '../models/liga';
+import { LigaPrivada, LigaPublica } from '../models/liga';
 import { Puntaje } from '../models/puntaje';
 import { AuthService } from './auth.service';
 import { ErrorService } from './error.service';
@@ -12,13 +12,29 @@ import { RestService } from './rest.service';
 export class LeaderboardService {
 
   publicLeagueID:string='';
-  privateLeagueID:string='';
+  privateLeagueID:string='XVHubzxPcS';
 
   constructor(
     private restService:RestService,
     private authService:AuthService,
     private errorService: ErrorService
   ) { }
+
+  getPrivateLeague():Promise<LigaPrivada>{
+    return this.restService.get(
+      'Player/getPrivateLeague/' + this.authService.perfilUsuario.Token + '/'+this.authService.perfilUsuario.Salt
+    ).then(res=>{
+      if(res.ok){
+        return res.json();
+      }else{
+        throw res;
+      }
+    }).catch(err=>{
+      this.errorService.handle(err);
+    }).catch(err=>{
+      Swal.fire('Error', 'There has been an unknown error', 'error');
+    })
+  }
 
   getPuntajes(pageNumber:number):Promise<Puntaje[] | any>{
 
@@ -60,6 +76,32 @@ export class LeaderboardService {
     }).catch(err=>{
       Swal.fire('Error', 'There has been an unknown error', 'error');
     })
+  }
+
+  getPuntajesPrivate(pageNumber:number):Promise<Puntaje[] | any>{
+
+    const pageSizePrivate = 20;
+    
+    return this.restService.get(
+      'League/getPage/' + this.privateLeagueID + '/'+ this.authService.perfilUsuario.Token + '/'+this.authService.perfilUsuario.Salt + '/' + 
+      pageSizePrivate + '/' + pageNumber).then(res=>{
+        if(res.ok){
+          return res.json();
+        }else{
+          throw res;
+        }
+    }).then(res=>{
+      const puntajeArray:Puntaje[]=[];
+
+      res.forEach(element=>{
+        puntajeArray.push(element as Puntaje);
+      })
+
+      return puntajeArray;
+    }).catch(err=>{
+      console.log(err)
+      Swal.fire('Error', 'There has been an unknown error, please contact support', 'error');
+    }); 
   }
 
 }

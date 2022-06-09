@@ -13,6 +13,7 @@ import { EquipoCardComponent } from './components/equipo-card/equipo-card.compon
 import { RegistroComponent } from './components/registro/registro.component';
 import { LoginComponent } from './login/login.component';
 import { LeaderboardCardComponent } from './components/leaderboard-card/leaderboard-card.component';
+import { PrivateLeagueComponent } from './private-league/private-league.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { LeaderboardCardComponent } from './components/leaderboard-card/leaderbo
     RegistroComponent,
     LeaderboardComponent,
     LoginComponent,
-    LeaderboardCardComponent
+    LeaderboardCardComponent,
+    PrivateLeagueComponent
   ],
   imports: [
     CommonModule,
