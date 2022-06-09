@@ -11,7 +11,22 @@ import { RestService } from './rest.service';
 export class AuthService {
 
   public perfil : Perfil;
-  public perfilUsuario : PerfilUsuario;
+  public perfilUsuario : PerfilUsuario={
+    Teams:[
+      new Equipo(),
+      new Equipo()
+    ],
+    Username:'',
+    Country:'',
+    First_Name:'',
+    Last_Name:'',
+    Email:'',
+    Money:0,
+    Encrypted_Password:'',
+    Salt:'',
+    Token:'',
+    Active:true
+  };
 
   constructor(
     private restService: RestService,

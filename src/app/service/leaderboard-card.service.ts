@@ -8,6 +8,7 @@ import { LeaderboardService } from './leaderboard.service';
 export class positionInfo {
   position:number;
   leaguePlayerCount:number;
+  hasLeaderboard?:boolean;
 }
 
 @Injectable({
@@ -41,7 +42,7 @@ export class LeaderboardCardService {
     }
 
     async getPrivateLeagueInfo(){
-      const httpResponse:positionInfo = await this.restService.get('League/getPlayerPos/'+this.leaderboardService.privateLeagueID+ '/' +this.authService.perfilUsuario.Token+'/'+this.authService.perfilUsuario.Salt).then(response=>{
+      const httpResponse:positionInfo = await this.restService.get('League/getPlayerPos/'+this.privateLeagueID+ '/' +this.authService.perfilUsuario.Token+'/'+this.authService.perfilUsuario.Salt).then(response=>{
         return response.json();
       });
 
