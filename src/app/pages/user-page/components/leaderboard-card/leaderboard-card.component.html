@@ -1,0 +1,32 @@
+<div>
+    <mat-card *ngIf="hasLeaderboard" class="card1">
+        <div class="subcontainer">
+
+            <p>
+                {{leagueTitle}}
+            </p>
+
+            <p>
+                Place: {{place}}
+            </p>
+
+            <p>
+                No. players: {{numUsers}} 
+            </p>
+        </div>
+            
+    </mat-card>
+</div>
+
+<div *ngIf="!hasLeaderboard">
+    <mat-card class="card2">
+        <div class="subcontainer">
+            <button mat-raised-button color="primary" (click)="onClickJoin()">Join league</button>
+
+            <p>Or</p>
+
+            <button mat-raised-button color="secondary" (click)="onClickCreate()">Create new league</button>
+
+        </div>
+    </mat-card>
+</div>

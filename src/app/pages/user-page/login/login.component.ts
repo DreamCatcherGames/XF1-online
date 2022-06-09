@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
         "Encrypted_Password":this.formData.value.password
       }
      this.authService.loginRequestUser(dataToSend).then( response => {
+       console.log(response);
         if(response.status == 200){
           return response.json();
         }else{
@@ -53,6 +54,10 @@ export class LoginComponent implements OnInit {
         }
       }).then(response=>{
         this.authService.perfilUsuario = response as PerfilUsuario;
+        if(!this.authService.perfilUsuario.Active){
+          Swal.fire('Verification Error', 'Please verify your account through the email we sent you before proceeding!', 'error');
+          return;
+        }
         console.log(this.authService.perfilUsuario);
         this.equipoService.editingRacingTeam = this.authService.perfilUsuario.Teams[0].Racing_Team;
         this.equipoService.editingPilotos = this.authService.perfilUsuario.Teams[0].Pilots;

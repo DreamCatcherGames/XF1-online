@@ -14,6 +14,8 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { LoginComponent } from './login/login.component';
 import { JoinLeagueComponent } from './components/join-league/join-league.component';
 import { NotificationCenterComponent } from './components/notification-center/notification-center.component';
+import { NewPrivateComponent } from './components/new-private/new-private.component';
+import { LeaderboardCardComponent } from './components/leaderboard-card/leaderboard-card.component';
 
 @NgModule({
   declarations: [
@@ -27,14 +29,16 @@ import { NotificationCenterComponent } from './components/notification-center/no
     LeaderboardComponent,
     LoginComponent,
     JoinLeagueComponent,
-    NotificationCenterComponent
+    NotificationCenterComponent,
+    NewPrivateComponent,
+    LeaderboardCardComponent
   ],
   imports: [
     CommonModule,
     UserPageRoutingModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, 
   ]
 })
 export class UserPageModule { }

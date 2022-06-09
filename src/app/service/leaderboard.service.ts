@@ -12,7 +12,8 @@ import { RestService } from './rest.service';
 export class LeaderboardService {
 
   publicLeagueID:string='';
-  
+  privateLeagueID:string='';
+
   constructor(
     private restService:RestService,
     private authService:AuthService,
@@ -45,7 +46,7 @@ export class LeaderboardService {
     }); 
   }
 
-  getPublicLeague():Promise<LigaPublica | any>{
+  getPublicLeague():Promise<LigaPublica>{
     return this.restService.get(
       'League/getPublicLeague/' + this.authService.perfilUsuario.Token + '/'+this.authService.perfilUsuario.Salt
     ).then(res=>{
@@ -60,11 +61,23 @@ export class LeaderboardService {
       Swal.fire('Error', 'There has been an unknown error', 'error');
     })
   }
-
   getPrivateLeagues():Promise<LigaPrivada[] | any>{
     return this.restService.get(
       'League/getPrivateLeagues/'+
       this.authService.perfilUsuario.Token + '/'+
+      this.authService.perfilUsuario.Salt
+    ).then(res=>{
+      if(res.status == 200){
+        return res.json();
+      }
+    }).catch(err=>{
+      this.errorService.handle(err);
+    })
+  }
+
+  getPrivateLeagueInfo(){
+    return this.restService.get(
+      'Player/getPrivateLeague/'+this.authService.perfilUsuario.Token+'/'+
       this.authService.perfilUsuario.Salt
     ).then(res=>{
       if(res.status == 200){
