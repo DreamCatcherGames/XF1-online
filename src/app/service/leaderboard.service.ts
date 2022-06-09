@@ -12,7 +12,7 @@ import { RestService } from './rest.service';
 export class LeaderboardService {
 
   publicLeagueID:string='';
-  privateLeagueID:string='XVHubzxPcS';
+  privateLeagueID:string='';
 
   constructor(
     private restService:RestService,

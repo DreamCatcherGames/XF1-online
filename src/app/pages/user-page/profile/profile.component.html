@@ -42,7 +42,8 @@
             [numUsers]="this.privateLeaderboardInfo.leaguePlayerCount"
             (openCreate)="this.openCreate()"
             (openJoin)="this.openJoin()"
-            class="leaderboard-card">
+            class="leaderboard-card"
+            (click)="toPrivateLeague()">
              </app-leaderboard-card>
 
              <app-leaderboard-card
