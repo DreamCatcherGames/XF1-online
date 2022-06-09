@@ -28,6 +28,7 @@ export class NotificationCenterComponent implements OnInit {
     this.authService.getNotifications().then(res=>{
       this.notifList = res;
       this.errorService.hideLoading();
+      this.hasNotifications = this.notifList.length > 0;
     })
     this.hasNotifications = this.notifList.length > 0;
   }

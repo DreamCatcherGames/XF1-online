@@ -88,7 +88,7 @@ export class ProfileComponent implements OnInit {
   }
 
   openJoin(){
-    console.log('Open join');
+    this.showJoinModal = true;
   }
 
 }
