@@ -14,7 +14,7 @@ import { LeaderboardService } from 'src/app/service/leaderboard.service';
 export class NotificationCenterComponent implements OnInit {
 
   code:string;
-  notifList:Notification[];
+  notifList:Notification[]=[];
   hasNotifications:boolean = false;
 
   constructor(
