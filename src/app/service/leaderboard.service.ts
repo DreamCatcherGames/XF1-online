@@ -62,5 +62,20 @@ export class LeaderboardService {
     })
   }
 
+  getPrivateLeagueInfo(){
+    return this.restService.get(
+      'Player/getPrivateLeague/'+this.authService.perfilUsuario.Token+'/'+
+      this.authService.perfilUsuario.Salt
+    ).then(res=>{
+      if(res.status == 200){
+        return res.json();
+      }else{
+        throw res;
+      }
+    }).catch(err=>{
+      this.errorService.handle(err);
+    });
+  }
+
 }
  
