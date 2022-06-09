@@ -1,4 +1,3 @@
-
 <div class="contenedor"> <!--Contenedor principal-->
 
     <div class="contenedor-izq"> <!--Contenedor izquierda-->
@@ -37,12 +36,13 @@
 
         <div class="leaderboard-section">
             <app-leaderboard-card
-            [hasLeaderboard]="true"
+            [hasLeaderboard]="this.privateLeaderboardInfo.hasLeaderboard"
             [leagueTitle]="'Private league'"
             [place]="this.privateLeaderboardInfo.position"
             [numUsers]="this.privateLeaderboardInfo.leaguePlayerCount"
-            class="leaderboard-card"
-            (click)="toPrivateLeague()">
+            (openCreate)="this.openCreate()"
+            (openJoin)="this.openJoin()"
+            class="leaderboard-card">
              </app-leaderboard-card>
 
              <app-leaderboard-card
@@ -56,6 +56,24 @@
         </div>
        
 
+    <div class="modal join" *ngIf="showJoinModal">
+        <app-join-league (closeEvent)="closeJoinModal()"></app-join-league>
+    </div>
+    <div class="modal new-league" *ngIf="showCreateLeague">
+        <app-new-private (closeEvent)="closeCreateLeague($event)"></app-new-private>
     </div>
 
+</div>
+
+    <div class="modal notifications" *ngIf="showNotificationModal">
+        <app-notification-center (closeEvent)="closeNotificationModal()"></app-notification-center>
+    </div>
+
+</div>
+
+<div class="fab-div">
+    <button mat-mini-fab color="primary" (click)="showNotificationModal=true">
+        <mat-icon *ngIf="!hasNotifications">notifications</mat-icon>
+        <mat-icon *ngIf="hasNotifications">notifications_active</mat-icon>
+    </button>
 </div>

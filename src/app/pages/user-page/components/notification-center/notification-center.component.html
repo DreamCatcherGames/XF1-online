@@ -1,0 +1,19 @@
+<div class="content">
+	<div class="title title__first">
+		<p>Notification Center</p>
+	</div>
+
+	<div class="league-list">
+		<div class="league" *ngFor="let notif of notifList" (click)="openNotification(notif)">
+			<p>{{this.determineMessageToShow(notif)}}</p>
+		</div>
+		<div class="league empty" *ngIf="!hasNotifications">
+			<p> You dont have notifications left to read!</p>
+		</div>
+	</div>
+
+	<div class="buttons">
+		<button class="cancel-button" mat-raised-button color="warn" (click)="closeModal()">Exit</button>
+	</div>
+
+</div>

@@ -12,6 +12,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { EquipoCardComponent } from './components/equipo-card/equipo-card.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { LoginComponent } from './login/login.component';
+import { JoinLeagueComponent } from './components/join-league/join-league.component';
+import { NotificationCenterComponent } from './components/notification-center/notification-center.component';
+import { NewPrivateComponent } from './components/new-private/new-private.component';
 import { LeaderboardCardComponent } from './components/leaderboard-card/leaderboard-card.component';
 import { PrivateLeagueComponent } from './private-league/private-league.component';
 
@@ -27,7 +30,11 @@ import { PrivateLeagueComponent } from './private-league/private-league.componen
     LeaderboardComponent,
     LoginComponent,
     LeaderboardCardComponent,
-    PrivateLeagueComponent
+    PrivateLeagueComponent,
+    JoinLeagueComponent,
+    NotificationCenterComponent,
+    NewPrivateComponent,
+    LeaderboardCardComponent
   ],
   imports: [
     CommonModule,
