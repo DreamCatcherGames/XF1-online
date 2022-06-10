@@ -20,6 +20,22 @@ export class LeaderboardService {
     private errorService: ErrorService
   ) { }
 
+  getPrivateLeague():Promise<LigaPrivada>{
+    return this.restService.get(
+      'Player/getPrivateLeague/' + this.authService.perfilUsuario.Token + '/'+this.authService.perfilUsuario.Salt
+    ).then(res=>{
+      if(res.ok){
+        return res.json();
+      }else{
+        throw res;
+      }
+    }).catch(err=>{
+      this.errorService.handle(err);
+    }).catch(err=>{
+      Swal.fire('Error', 'There has been an unknown error', 'error');
+    })
+  }
+
   getPuntajes(pageNumber:number):Promise<Puntaje[] | any>{
 
     const pageSize = 10;
@@ -126,6 +142,32 @@ export class LeaderboardService {
     }).catch(err=>{
       this.errorService.handle(err);
     });
+  }
+
+  getPuntajesPrivate(pageNumber:number):Promise<Puntaje[] | any>{
+
+    const pageSizePrivate = 20;
+    
+    return this.restService.get(
+      'League/getPage/' + this.privateLeagueID + '/'+ this.authService.perfilUsuario.Token + '/'+this.authService.perfilUsuario.Salt + '/' + 
+      pageSizePrivate + '/' + pageNumber).then(res=>{
+        if(res.ok){
+          return res.json();
+        }else{
+          throw res;
+        }
+    }).then(res=>{
+      const puntajeArray:Puntaje[]=[];
+
+      res.forEach(element=>{
+        puntajeArray.push(element as Puntaje);
+      })
+
+      return puntajeArray;
+    }).catch(err=>{
+      console.log(err)
+      Swal.fire('Error', 'There has been an unknown error, please contact support', 'error');
+    }); 
   }
 
 }
