@@ -16,6 +16,7 @@ import { JoinLeagueComponent } from './components/join-league/join-league.compon
 import { NotificationCenterComponent } from './components/notification-center/notification-center.component';
 import { NewPrivateComponent } from './components/new-private/new-private.component';
 import { LeaderboardCardComponent } from './components/leaderboard-card/leaderboard-card.component';
+import { PrivateLeagueComponent } from './private-league/private-league.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,8 @@ import { LeaderboardCardComponent } from './components/leaderboard-card/leaderbo
     RegistroComponent,
     LeaderboardComponent,
     LoginComponent,
+    LeaderboardCardComponent,
+    PrivateLeagueComponent,
     JoinLeagueComponent,
     NotificationCenterComponent,
     NewPrivateComponent,

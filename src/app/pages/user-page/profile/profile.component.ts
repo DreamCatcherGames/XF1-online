@@ -26,8 +26,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     public authService: AuthService,
     private router:Router,
-    private leaderboardCardService: LeaderboardCardService,
-    private leaderboardService:LeaderboardService,
+    public leaderboardCardService: LeaderboardCardService,
+    public leaderboardService: LeaderboardService,
     private errorService:ErrorService
   ) { }
 
@@ -40,14 +40,17 @@ export class ProfileComponent implements OnInit {
       this.hasNotifications = res;
     });
     this.publicLeaderboardInfo = await this.leaderboardCardService.getPublicLeagueInfo() as positionInfo;
+    if(this.leaderboardService.privateLeagueID != ''){
+      this.privateLeaderboardInfo = await this.leaderboardCardService.getPrivateLeagueInfo() as positionInfo;
+    }
 
     this.leaderboardService.getPrivateLeagueInfo().then(async (res)=>{
       if(res){
         this.privateLeaderboardInfo.hasLeaderboard = true;
-        this.leaderboardCardService.privateLeagueID = res.Unique_Key;
+        this.leaderboardService.privateLeagueID = res.Unique_Key;
 
-        if(this.leaderboardCardService.privateLeagueID != ''){
-          console.log(this.leaderboardCardService.privateLeagueID);
+        if(this.leaderboardService.privateLeagueID != ''){
+          console.log(this.leaderboardService.privateLeagueID);
           this.privateLeaderboardInfo = await this.leaderboardCardService.getPrivateLeagueInfo() as positionInfo;
           this.privateLeaderboardInfo.hasLeaderboard = true;
         }
@@ -66,6 +69,9 @@ export class ProfileComponent implements OnInit {
     this.router.navigateByUrl('/user/login')
   }
 
+  toPrivateLeague(){
+    this.router.navigateByUrl('/user/privateLeague')
+  }
   closeJoinModal(){
     this.showJoinModal = false;
   }
