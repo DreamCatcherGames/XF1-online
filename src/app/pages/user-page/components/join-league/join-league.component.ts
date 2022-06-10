@@ -49,8 +49,9 @@ export class JoinLeagueComponent implements OnInit {
       Swal.fire('Loading', 'Uploading your request, please wait...');
       Swal.showLoading();
       this.leaderboardService.requestJoin(this.code).then(res=>{
-        Swal.fire('Success!', 'We will notify the owner of the league of your request, so keep an eye on your notifications!', 'success');
-        this.closeModal();
+        Swal.fire('Success!', 'We will notify the owner of the league of your request, so keep an eye on your notifications!', 'success').then(()=>{
+          this.closeModal();
+        })
       });
     }
   }
