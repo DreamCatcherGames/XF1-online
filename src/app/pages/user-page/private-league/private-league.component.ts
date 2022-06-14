@@ -49,7 +49,7 @@ export class PrivateLeagueComponent implements OnInit {
 
   
   async ngOnInit(){
-
+    this.errorService.showLoading();
     this.privateLeaderboardInfo = await this.leaderboardCardService.getPrivateLeagueInfo() as positionInfo;
     this.privateLeague = await this.leaderboardService.getPrivateLeague() as LigaPrivada;
     this.leaderboardService.getPuntajesPrivate(this.currentPage).then(res=>{
@@ -73,6 +73,7 @@ export class PrivateLeagueComponent implements OnInit {
             console.log(tempArray)
             this.dataSource = tempArray;
           }
+          this.errorService.hideLoading();
         });
       }
     })
@@ -91,7 +92,7 @@ export class PrivateLeagueComponent implements OnInit {
         for (index in this.puntajes){
           console.log("Entre " + index)
           tempArray.push({
-            position: index,
+            position: Number(index)+1,
             puntaje: this.puntajes[index]
           })
         }

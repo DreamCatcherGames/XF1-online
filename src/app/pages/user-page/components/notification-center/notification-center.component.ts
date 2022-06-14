@@ -84,13 +84,7 @@ export class NotificationCenterComponent implements OnInit {
   }
 
   determineMessageToShow(notification:Notification){
-    let message:string='';
-    if(notification.Type == NotificationType.JOIN_NOTIFICATION){
-      message='New request to join your league';
-    }else{
-      message='Waiting for confirmation...';
-    }
-    return message;
+    return notification.Message;
   }
 
 

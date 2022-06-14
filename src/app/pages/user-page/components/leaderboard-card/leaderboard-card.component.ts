@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-leaderboard-card',
@@ -15,7 +16,9 @@ export class LeaderboardCardComponent implements OnInit {
   @Output() openCreate = new EventEmitter();
   @Output() openJoin = new EventEmitter();
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
@@ -26,6 +29,10 @@ export class LeaderboardCardComponent implements OnInit {
 
   onClickJoin(){
     this.openJoin.emit();
+  }
+
+  toPrivateLeague(){
+    this.router.navigateByUrl('/user/privateLeague')
   }
 
 }

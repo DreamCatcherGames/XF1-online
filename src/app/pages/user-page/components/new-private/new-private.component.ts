@@ -43,8 +43,9 @@ export class NewPrivateComponent implements OnInit {
             throw res;
           }
         }).then(res=>{
-          Swal.fire('success','The league has been created successfully','success');
-          this.closeModal(true);
+          Swal.fire('success','The league has been created successfully','success').then(()=>{
+            this.closeModal(true);
+          });
         }).catch(err=>{
           this.errorService.handle(err);
         })

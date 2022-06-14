@@ -83,7 +83,7 @@ export class ProfileComponent implements OnInit {
   closeCreateLeague(created){
     this.showCreateLeague = false;
     if(created){
-      console.log('Cerrando ciclos')
+      console.log('Cerrando ciclos');
       this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
       this.router.navigate(['/user/perfil']));
     }
