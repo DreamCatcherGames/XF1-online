@@ -71,15 +71,15 @@
 					<div class="up">
 						<div class="nombre">
 							<mat-form-field appearance="fill" color="warn">
-								<mat-label>Nombre</mat-label>
+								<mat-label>Name</mat-label>
 								<input (change)='filter()' [(ngModel)]="filtroNombre" matInput>
 							</mat-form-field>
 						</div>
 					</div>
-					<div class="down">
+					<div class="down" style="flex-direction:column">
 						<div class="escuderia" *ngIf="this.marketType=='piloto'">
 							<mat-form-field>
-								<mat-label>Escuderia</mat-label>
+								<mat-label>Racing Team</mat-label>
 								<mat-select (selectionChange)="filter()" [(ngModel)]="filtro2">
 									<mat-option  *ngFor='let nameEscuderia of escuderias' [value]="nameEscuderia">{{nameEscuderia}}</mat-option>
 								</mat-select>
@@ -87,11 +87,24 @@
 						</div>
 						<div class="pais" *ngIf="this.marketType=='escuderia'">
 							<mat-form-field>
-								<mat-label>Pais</mat-label>
+								<mat-label>Country</mat-label>
 								<mat-select (selectionChange)='filter()' [(ngModel)]="filtro2">
 									<mat-option [value]="null" default></mat-option>
 									<mat-option *ngFor="let pais of paises" [value]="pais.name">{{pais.name}}</mat-option>
 								</mat-select>
+							</mat-form-field>
+						</div>
+
+						<div class="nombre">
+							<mat-form-field>
+								<mat-label>Min price 0 to 199999</mat-label>
+								<input (change)='filter()' [(ngModel)]="filtroMinP" matInput>
+							</mat-form-field>
+						</div>
+						<div class="nombre">
+							<mat-form-field>
+								<mat-label>Max price 1 to 200000</mat-label>
+								<input (change)='filter()' [(ngModel)]="filtroMaxP" matInput>
 							</mat-form-field>
 						</div>
 					</div>
