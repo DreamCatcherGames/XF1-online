@@ -57,7 +57,7 @@ export class EquipoService {
     })
   }
 
-  getMercadoEscuderias(pageNumber:number, filtroNombre?:string, filtroPais?:string):Promise<Escuderia[] | any >{
+  getMercadoEscuderias(pageNumber:number, filtroNombre?:string, filtroPais?:string, filtroMinP?:number, filtroMaxP?:number):Promise<Escuderia[] | any >{
     const pageSize = 5;
     
     return this.restService.post(
@@ -65,7 +65,9 @@ export class EquipoService {
       pageSize + '/' + pageNumber,
       JSON.stringify({
         Name:filtroNombre,
-        Country:filtroPais
+        Country:filtroPais,
+        minPrice:filtroMinP,
+        maxPrice:filtroMaxP
       })
     ).then(res=>{
         if(res.ok){
@@ -87,7 +89,7 @@ export class EquipoService {
     });
   }
 
-  getMercadoPilotos(pageNumber:number, filtroNombre?:string, filtroEscuderia?:string):Promise<void | Piloto[]>{
+  getMercadoPilotos(pageNumber:number, filtroNombre?:string, filtroEscuderia?:string,  filtroMinP?:number, filtroMaxP?:number):Promise<void | Piloto[]>{
 
     const pageSize = 5;
     
@@ -96,7 +98,9 @@ export class EquipoService {
       pageSize + '/' + pageNumber,
       JSON.stringify({
         Name:filtroNombre,
-        Racing_Team:filtroEscuderia  
+        Racing_Team:filtroEscuderia,
+        minPrice:filtroMinP,
+        maxPrice:filtroMaxP  
       })
     ).then(res=>{
         if(res.ok){

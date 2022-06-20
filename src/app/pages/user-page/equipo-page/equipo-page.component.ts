@@ -27,6 +27,8 @@ export class EquipoPageComponent implements OnInit {
   existsMoreContent;
   filtro2:string=null;
   filtroNombre:string=null;
+  filtroMinP:number=null;
+  filtroMaxP:number=200000;
 
   // Objetos del equipo
   escuderia:Escuderia=new Escuderia();
@@ -48,6 +50,8 @@ export class EquipoPageComponent implements OnInit {
           this.selectedFrame = 0;
           this.filtro2 = null;
           this.filtroNombre = null;
+          this.filtroMinP = null;
+          this.filtroMaxP = 1000000;
         }
     })
   }
@@ -128,20 +132,20 @@ export class EquipoPageComponent implements OnInit {
     }
   }
 
-  setActiveFrame(frameNumber:number){
+  setActiveFrame(frameNumber:number, isFilter=false){
     Swal.fire('Loading', 'Fetching available pilots, please wait');
     Swal.showLoading();
     this.selectedFrame = frameNumber;
     this.showingMarket = true;
     this.currentPage = 0; 
 
-    if(this.marketType == 'piloto'){
+    if(this.marketType == 'piloto' && !isFilter){
       Swal.close();
       return;
     }
     this.marketType='piloto';
 
-    this.equipoService.getMercadoPilotos(this.currentPage, this.filtroNombre, this.filtro2).then(res=>{
+    this.equipoService.getMercadoPilotos(this.currentPage, this.filtroNombre, this.filtro2, this.filtroMinP, this.filtroMaxP).then(res=>{
       if(res){
         this.opcionesMercado = res;
         Swal.close();
@@ -156,9 +160,10 @@ export class EquipoPageComponent implements OnInit {
     this.selectedFrame = frameNumber;
     this.showingMarket = true;
     this.currentPage = 0; 
-    this.equipoService.getMercadoEscuderias(this.currentPage, this.filtroNombre, this.filtro2).then(res=>{
+    this.equipoService.getMercadoEscuderias(this.currentPage, this.filtroNombre, this.filtro2, this.filtroMinP, this.filtroMaxP).then(res=>{
       if(res){
         this.opcionesMercado = res;
+        console.log(this.opcionesMercado)
         Swal.close();
       }
     });
@@ -220,11 +225,23 @@ export class EquipoPageComponent implements OnInit {
   }
 
   filter(){
-    this.filtroNombre = this.filtroNombre==''?null:this.filtroNombre;
-    if(this.marketType == 'piloto'){
-      this.setActiveFrame(this.selectedFrame);
+    
+    if(this.filtroMinP>=this.filtroMaxP)
+    {
+      Swal.fire('Warning','Make sure that min price is lesser than max price');
+      return;
+    }
+    else if(this.filtroMinP>199999 || this.filtroMinP<0 || this.filtroMaxP>200000 || this.filtroMaxP<1){
+      Swal.fire('Warning','Make sure that prices filter is within the range allowed');
+      return;
     }else{
-      this.setActiveFrameEscuderia(this.selectedFrame);
+      this.filtroNombre = this.filtroNombre==''?null:this.filtroNombre;
+      this.filtroMaxP = this.filtroMaxP==null?200000:this.filtroMaxP;
+      if(this.marketType == 'piloto'){
+        this.setActiveFrame(this.selectedFrame, true);
+      }else{
+        this.setActiveFrameEscuderia(this.selectedFrame);
+      }
     }
   }
 
